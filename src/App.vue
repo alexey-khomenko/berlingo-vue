@@ -1,30 +1,928 @@
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link>
-        |
-        <router-link to="/about">About</router-link>
+    <div class="wrapper-outer">
+        <div class="wrapper-inner">
+
+            <div id="nav">
+                <router-link to="/">Home</router-link>
+                |
+                <router-link to="/account">Account</router-link>
+                |
+                <router-link to="/winners">Winners</router-link>
+                |
+                <router-link to="/pens">Pens</router-link>
+            </div>
+            <router-view/>
+
+        </div>
     </div>
-    <router-view/>
+
+    <!-- todo shadow -->
+    <div class="shadow">
+        <div class="modal-wrapper">
+            <section class="modal modal_auth" data-modal-name="login" data-modal-important="off">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="titles"><span class="title">Авторизация</span><span class="center">или</span><a
+                                    href="#" data-modal-open="register">регистрация</a></div>
+                            <div class="subtitles">
+                                <div class="subtitles__left">Пожалуйста, авторизуйся, чтобы войти в личный кабинет и
+                                    зарегистрировать чек
+                                </div>
+                                <div class="subtitles__right">
+                                    Ещё нет личного кабинета?
+                                    <a href="#" data-modal-open="register">Зарегистрируйся</a>
+                                </div>
+                            </div>
+                            <form class="form">
+                                <div class="form__inputs">
+                                    <label class="form__input">
+                                        <input type="text" name="login-email" maxlength="200"
+                                               placeholder="Введи свой e-mail *">
+                                    </label>
+                                    <label class="form__input">
+                                        <input type="password" name="login-password" maxlength="200"
+                                               placeholder="Введи пароль *">
+                                    </label>
+                                </div>
+                                <button class="button" type="submit"><span>Войти</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_auth" data-modal-name="register" data-modal-important="off">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="titles"><a href="#" data-modal-open="login">Авторизация</a><span class="center">или</span><span
+                                    class="title">регистрация</span></div>
+                            <div class="subtitles">
+                                <div class="subtitles__left">Пожалуйста, зарегистрируйся, чтобы войти в личный кабинет и
+                                    зарегистрировать чек
+                                </div>
+                                <div class="subtitles__right">
+                                    Уже зарегистрирован?
+                                    <a href="#" data-modal-open="login">Войди</a>
+                                    в личный кабинет
+                                </div>
+                            </div>
+                            <form class="form">
+                                <div class="form__inputs">
+                                    <label class="form__input">
+                                        <input type="text" name="register-email" maxlength="200"
+                                               placeholder="Введи свой e-mail *">
+                                    </label>
+                                    <label class="form__input">
+                                        <input type="tel" name="register-phone" maxlength="200"
+                                               placeholder="Введи свой телефон *">
+                                    </label>
+                                </div>
+                                <div class="form__inputs">
+                                    <label class="form__input">
+                                        <input type="password" name="register-password" maxlength="200"
+                                               placeholder="Придумай пароль *">
+                                    </label>
+                                    <label class="form__input form__input_select">
+                                        <input type="text" name="register-city" maxlength="200"
+                                               placeholder="Выбери свой город *">
+                                    </label>
+                                </div>
+                                <input type="checkbox" name="receipt-agree" id="register-agree" data-hidden="on">
+                                <label class="form__checkbox" for="register-agree">
+                                    <div class="form__check">
+                                        <svg width="14" height="10" viewBox="0 0 14 10"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.7368 1.52152C14.0878 1.17389 14.0878 0.608145 13.7365 0.260618C13.3852 -0.0868728 12.8134 -0.0868728 12.4621 0.260618L4.79273 7.84818L1.53821 4.62843C1.36809 4.46013 1.14184 4.36745 0.901202 4.36745C0.660493 4.36745 0.43417 4.46023 0.263908 4.62864C0.0937165 4.79701 0 5.02089 0 5.25906C0 5.49719 0.0937165 5.72107 0.263873 5.88937L4.15519 9.73936C4.50668 10.0868 5.07846 10.0869 5.42963 9.7394L13.7368 1.52152Z"
+                                                  fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                    <span>
+                      Я согласен с
+                      <a href="#" download>политикой обработки персональных данных</a>
+                      и
+                      <a href="#" download>условиями акции</a></span>
+                                </label>
+                                <button class="button" type="submit"><span>Зарегистрироваться</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_auth" data-modal-name="success" data-modal-important="off">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="titles"><a href="#" data-modal-open="login">Авторизация</a><span class="center">или</span><span
+                                    class="title">регистрация</span></div>
+                            <div class="subtitle">
+                                Успех! Твой личный кабинет создан. Чтобы войти в него, перейди по ссылке в письме,
+                                отправленном
+                                тебе на e-mail.
+                            </div>
+                            <a class="button" href="#" data-modal-close><span>Хорошо</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_receipt" data-modal-name="receipt" data-modal-important="off">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="title">Зарегистрируй чек</div>
+                            <div class="subtitle">
+                                После регистрации чека, он поступит на модерирование. Статус модерации чека ты сможешь
+                                отследить
+                                в личном кабинете
+                            </div>
+                            <form class="form">
+                                <div class="form__inputs">
+                                    <label class="form__input">
+                                        <input type="text" name="receipt-shop" maxlength="200"
+                                               placeholder="Укажи магазин покупки">
+                                    </label>
+                                    <label class="button form__file" data-text="только JPG, JPEG, PNG до 20Мб"
+                                           data-hidden="off">
+                                        <input type="file" name="receipt-file"><span>Загрузи фото Чека</span>
+                                    </label>
+                                    <div class="form__file-selected" data-hidden="on"><img alt="" src=""><span></span><a
+                                            href="#" data-receipt-shop-reset>
+                                        <svg width="16" height="16" viewBox="0 0 16 16"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.6673 0.335559L15.6639 0.332131C15.221 -0.11071 14.5033 -0.11071 14.0605 0.332131L7.99971 6.39349L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L6.39349 7.99971L0.332131 14.0611C-0.11071 14.5039 -0.11071 15.2216 0.332131 15.6644L0.335559 15.6679C0.7784 16.1107 1.49609 16.1107 1.93893 15.6679L7.99971 9.60594L14.0611 15.6673C14.5039 16.1101 15.2216 16.1101 15.6644 15.6673L15.6679 15.6639C16.1107 15.221 16.1107 14.5033 15.6679 14.0605L9.60594 7.99971L15.6673 1.93836C16.1101 1.49609 16.1101 0.7784 15.6673 0.335559Z"
+                                                  fill="currentColor"></path>
+                                        </svg>
+                                    </a></div>
+                                </div>
+                                <input type="checkbox" name="receipt-agree" id="receipt-agree" data-hidden="on">
+                                <label class="form__checkbox" for="receipt-agree">
+                                    <div class="form__check">
+                                        <svg width="14" height="10" viewBox="0 0 14 10"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.7368 1.52152C14.0878 1.17389 14.0878 0.608145 13.7365 0.260618C13.3852 -0.0868728 12.8134 -0.0868728 12.4621 0.260618L4.79273 7.84818L1.53821 4.62843C1.36809 4.46013 1.14184 4.36745 0.901202 4.36745C0.660493 4.36745 0.43417 4.46023 0.263908 4.62864C0.0937165 4.79701 0 5.02089 0 5.25906C0 5.49719 0.0937165 5.72107 0.263873 5.88937L4.15519 9.73936C4.50668 10.0868 5.07846 10.0869 5.42963 9.7394L13.7368 1.52152Z"
+                                                  fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Я согласен с
+                      <a href="#" download>политикой обработки персональных данных</a>
+                      и
+                      <a href="#" download>условиями акции</a>
+                                    </span>
+                                </label>
+                                <button class="button form__button" type="submit"><span>Зарегистрировать чек</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_1" data-modal-important="off">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="back">
+                            <img class="image_lg" alt="" src="assets/images/modal-test-1-lg.png">
+                            <img class="image_md" alt="" src="assets/images/modal-test-1-md.png">
+                            <img class="image_sm" alt="" src="assets/images/modal-test-1-sm.png">
+                        </div>
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="text">
+                                Я подготовил для тебя необычный тест. Просто выбирай картинки, которые тебе нравятся, а
+                                я подберу ручки,
+                                которые подчеркнут твою индивидуальность лучше всего! Погнали?
+                            </div>
+                            <div class="title">Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
+                            </div>
+                            <a class="button" href="#" data-modal-open="test_2"><span>Начать тест</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_2" data-modal-important="on">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="title">Шаг 1/4</div>
+                            <div class="subtitle">Выбери знак, который тебе больше нравится</div>
+                            <form>
+                                <input type="radio" name="step_1" value="10" id="i-1_1">
+                                <label for="i-1_1">
+                                    <img alt="" src="assets/images/modal-test-2-1.png"
+                                         data-selected="off">
+                                    <img alt="" src="assets/images/modal-test-2-1-selected.png"
+                                         data-selected="on">
+                                </label>
+                                <input type="radio" name="step_1" value="20" id="i-1_2">
+                                <label for="i-1_2">
+                                    <img alt="" src="assets/images/modal-test-2-2.png"
+                                         data-selected="off">
+                                    <img
+                                            alt="" src="assets/images/modal-test-2-2-selected.png"
+                                            data-selected="on">
+                                </label>
+                                <input type="radio" name="step_1" value="30" id="i-1_3">
+                                <label for="i-1_3"><img alt="" src="assets/images/modal-test-2-3.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-2-3-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_1" value="40" id="i-1_4">
+                                <label for="i-1_4"><img alt="" src="assets/images/modal-test-2-4.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-2-4-selected.png"
+                                        data-selected="on"></label>
+                            </form>
+                            <a class="button" href="#" data-modal-open="test_3"
+                               data-disabled="on"><span>Дальше</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_3" data-modal-important="on">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="title">Шаг 2/4</div>
+                            <div class="subtitle">Выбери знак, который тебе больше нравится</div>
+                            <form>
+                                <input type="radio" name="step_2" value="10" id="i-2_1">
+                                <label for="i-2_1"><img alt="" src="assets/images/modal-test-3-1.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-3-1-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_2" value="20" id="i-2_2">
+                                <label for="i-2_2"><img alt="" src="assets/images/modal-test-3-2.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-3-2-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_2" value="30" id="i-2_3">
+                                <label for="i-2_3"><img alt="" src="assets/images/modal-test-3-3.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-3-3-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_2" value="40" id="i-2_4">
+                                <label for="i-2_4"><img alt="" src="assets/images/modal-test-3-4.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-3-4-selected.png"
+                                        data-selected="on"></label>
+                            </form>
+                            <a class="button" href="#" data-modal-open="test_4"
+                               data-disabled="on"><span>Дальше</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_4" data-modal-important="on">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="title">Шаг 3/4</div>
+                            <div class="subtitle">Выбери знак, который тебе больше нравится</div>
+                            <form>
+                                <input type="radio" name="step_3" value="10" id="i-3_1">
+                                <label for="i-3_1"><img alt="" src="assets/images/modal-test-4-1.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-4-1-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_3" value="20" id="i-3_2">
+                                <label for="i-3_2"><img alt="" src="assets/images/modal-test-4-2.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-4-2-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_3" value="30" id="i-3_3">
+                                <label for="i-3_3"><img alt="" src="assets/images/modal-test-4-3.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-4-3-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_3" value="40" id="i-3_4">
+                                <label for="i-3_4"><img alt="" src="assets/images/modal-test-4-4.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-4-4-selected.png"
+                                        data-selected="on"></label>
+                            </form>
+                            <a class="button" href="#" data-modal-open="test_5"
+                               data-disabled="on"><span>Дальше</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_5" data-modal-important="on">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <div class="title">Шаг 4/4</div>
+                            <div class="subtitle">Выбери знак, который тебе больше нравится</div>
+                            <form>
+                                <input type="radio" name="step_4" value="10" id="i-4_1">
+                                <label for="i-4_1"><img alt="" src="assets/images/modal-test-5-1.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-5-1-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_4" value="20" id="i-4_2">
+                                <label for="i-4_2"><img alt="" src="assets/images/modal-test-5-2.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-5-2-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_4" value="30" id="i-4_3">
+                                <label for="i-4_3"><img alt="" src="assets/images/modal-test-5-3.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-5-3-selected.png"
+                                        data-selected="on"></label>
+                                <input type="radio" name="step_4" value="40" id="i-4_4">
+                                <label for="i-4_4"><img alt="" src="assets/images/modal-test-5-4.png"
+                                                        data-selected="off"><img
+                                        alt="" src="assets/images/modal-test-5-4-selected.png"
+                                        data-selected="on"></label>
+                            </form>
+                            <a class="button" href="#" data-modal-open="test_6"
+                               data-disabled="on"><span>Дальше</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="modal modal_test" data-modal-name="test_6" data-modal-important="on">
+                <div class="modal__body-0">
+                    <div class="modal__body-1">
+                        <div class="back"><img class="image_lg" alt="" src="assets/images/modal-test-6-lg.png"><img
+                                class="image_md" alt="" src="assets/images/modal-test-6-md.png"><img class="image_sm"
+                                                                                                     alt=""
+                                                                                                     src="assets/images/modal-test-6-sm.png">
+                        </div>
+                        <div class="modal__body-2"><a class="modal__close" href="#" data-modal-close>
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.6673 0.335559L23.6639 0.332131C23.221 -0.11071 22.5033 -0.11071 22.0605 0.332131L11.9997 10.3935L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L10.3935 11.9997L0.332131 22.0611C-0.11071 22.5039 -0.11071 23.2216 0.332131 23.6644L0.335559 23.6679C0.7784 24.1107 1.49609 24.1107 1.93893 23.6679L11.9997 13.6059L22.0611 23.6673C22.5039 24.1101 23.2216 24.1101 23.6644 23.6673L23.6679 23.6639C24.1107 23.221 24.1107 22.5033 23.6679 22.0605L13.6059 11.9997L23.6673 1.93836C24.1101 1.49609 24.1101 0.7784 23.6673 0.335559Z"
+                                      fill="currentColor"></path>
+                            </svg>
+                        </a>
+                            <!-- result="1"-->
+                            <div class="title" data-result="1" data-hidden="on">Добряк</div>
+                            <div class="subtitle" data-result="1" data-hidden="on">
+                                Нежные оттенки для легких и солнечных людей, которые ценят свой комфорт и спойную,
+                                теплую
+                                атмосферу вокруг них.
+                            </div>
+                            <div class="pens" data-result="1" data-hidden="on"><a class="pens__button" href="#"
+                                                                                  data-pens-toggler>
+                                <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </a>
+                                <div class="pen" data-slider="0" data-hidden="off"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pen" data-slider="1" data-hidden="on"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone 2</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- result="2"-->
+                            <div class="title" data-result="2" data-hidden="on">Бунтарь</div>
+                            <div class="subtitle" data-result="2" data-hidden="on">
+                                Буйство красок для дерзких и активных личностей, которые всегда хотят выделяться из
+                                общей массы и
+                                быть заметными. Не боятся отстаивать свои позиции.
+                            </div>
+                            <div class="pens" data-result="2" data-hidden="on"><a class="pens__button" href="#"
+                                                                                  data-pens-toggler>
+                                <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </a>
+                                <div class="pen" data-slider="0" data-hidden="off"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pen" data-slider="1" data-hidden="on"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone 2</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- result="3"-->
+                            <div class="title" data-result="3" data-hidden="on">Прагматик</div>
+                            <div class="subtitle" data-result="3" data-hidden="on">
+                                Классическая простота - для людей, которые предпочитают практичность вещей и всегда
+                                страются
+                                держать фокус на важных задачах, не отвлекаясь на мелочи.
+                            </div>
+                            <div class="pens" data-result="3" data-hidden="on"><a class="pens__button" href="#"
+                                                                                  data-pens-toggler>
+                                <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </a>
+                                <div class="pen" data-slider="0" data-hidden="off"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pen" data-slider="1" data-hidden="on"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone 2</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- result="4"-->
+                            <div class="title" data-result="4" data-hidden="on">Мечтатель</div>
+                            <div class="subtitle" data-result="4" data-hidden="on">
+                                Ручки с необычными узорами для творческих и воздушных людей с горящими глазами, которых
+                                вдохновляет мир вокруг них.
+                            </div>
+                            <div class="pens" data-result="4" data-hidden="on"><a class="pens__button" href="#"
+                                                                                  data-pens-toggler>
+                                <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
+                                          fill="currentColor"></path>
+                                </svg>
+                            </a>
+                                <div class="pen" data-slider="0" data-hidden="off"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pen" data-slider="1" data-hidden="on"><a class="pen__link" href="#"><img
+                                        class="pen__image" alt="" src="assets/images/0_content-modal-pens.png"></a>
+                                    <div class="pen__texts">
+                                        <div class="pen__title">Color Zone 2</div>
+                                        <div class="pen__text">
+                                            Эффектная шариковая ручка Berlingo Color Zone с клипом является частью
+                                            одноименной
+                                            яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ручки
+                                            обеспечивают высокий уровень комфорта при ее использовании.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text">Я подобрал для тебя ручки, которые подойдут именно тебе и подчеркнут твою
+                                индивидуальность лучше всех!
+                            </div>
+                            <div class="buttons"><a class="button button_shops" href="#" data-anchor="shops"><span>Где купить?</span></a><a
+                                    class="button button_prizes" href="#"
+                                    data-anchor="prizes"><span>Выигать призы!</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </template>
 
-<style lang="scss">
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+<style scoped lang="scss">
+
+label, input, textarea, button, select, a, summary {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#nav {
-    padding: 30px;
+a:focus, button:focus, input:focus {
+    outline: none !important;
+}
 
-    a {
-        font-weight: bold;
-        color: #2c3e50;
+button::-moz-focus-inner {
+    outline: none !important;
+    border: 0 !important;
+}
 
-        &.router-link-exact-active {
-            color: #42b983;
+img {
+    display: block;
+    border: none;
+}
+
+svg {
+    display: block;
+}
+
+//---------------------------------------------------------------------***
+
+@font-face {
+    font-family: "PF Din Text Cond Pro";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+    url("assets/fonts/PF-Din-Text-Cond-Pro.woff2") format("woff2"),
+    url("assets/fonts/PF-Din-Text-Cond-Pro.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 700;
+    src: local(""),
+    url("assets/fonts/Bebas-Neue-Bold.woff2") format("woff2"),
+    url("assets/fonts/Bebas-Neue-Bold.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+    url("assets/fonts/Bebas-Neue-Regular.woff2") format("woff2"),
+    url("assets/fonts/Bebas-Neue-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+//---------------------------------------------------------------------***
+
+$lg_min: 1200px;
+$md_max: 1199px;
+$md_min: 960px;
+$sm_max: 959px;
+
+$container_lg: 1160px;
+$container_md: 940px;
+$container_sm: 280px;
+
+$lg_min_pens: 1540px;
+$md_max_pens: 1539px;
+$md_min_pens: 940px;
+$sm_max_pens: 939px;
+
+$container_lg_pens: 1500px;
+$container_md_pens: 920px;
+$container_sm_pens: 280px;
+
+//---------------------------------------------------------------------***
+
+.wrapper {
+    &-outer {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: #000000;
+    }
+
+    &-inner {
+        overflow: hidden;
+    }
+}
+
+.section {
+    display: block;
+    position: relative;
+}
+
+.back {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main {
+    display: block;
+    z-index: 10;
+    width: $container_lg;
+
+    @media (max-width: $md_max) {
+        width: $container_md;
+    }
+
+    @media (max-width: $sm_max) {
+        width: $container_sm;
+    }
+
+    &_abs {
+        position: absolute;
+    }
+
+    &_rel {
+        position: relative;
+    }
+}
+
+.main-pens {
+    display: block;
+    z-index: 10;
+    width: $container_lg_pens;
+
+    @media (max-width: $md_max_pens) {
+        width: $container_md_pens;
+    }
+
+    @media (max-width: $sm_max_pens) {
+        width: $container_sm_pens;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+[data-hidden="on"]:not([data-slider]) {
+    display: none !important;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+.image {
+    &_lg, &_md, &_sm {
+        display: none;
+    }
+
+    &_lg {
+        @media (min-width: $lg_min) {
+            display: block;
+        }
+    }
+
+    &_md {
+        @media (min-width: $md_min) and (max-width: $md_max) {
+            display: block;
+        }
+    }
+
+    &_sm {
+        @media (max-width: $sm_max) {
+            display: block;
+        }
+    }
+}
+
+.image-pens {
+    &_lg, &_md, &_sm {
+        display: none;
+    }
+
+    &_lg {
+        @media (min-width: $lg_min_pens) {
+            display: block;
+        }
+    }
+
+    &_md {
+        @media (min-width: $md_min_pens) and (max-width: $md_max_pens) {
+            display: block;
+        }
+    }
+
+    &_sm {
+        @media (max-width: $sm_max_pens) {
+            display: block;
+        }
+    }
+}
+
+//---------------------------------------------------------------------***
+
+.shadow {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, .65);
+
+    &.open {
+        z-index: 600;
+    }
+
+    .modal-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        transform: translateY(-100%);
+
+        transition-duration: 450ms;
+        transition-property: transform;
+        transition-timing-function: ease-in;
+
+        padding: 5px;
+
+        @media (max-width: $sm_max) {
+            padding: 0;
+        }
+
+        &.open {
+            transform: translateY(0%);
+        }
+
+        .modal {
+            position: relative;
+            z-index: 700;
+            width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            display: none;
+            max-width: 1160px;
+
+            @media (max-width: $md_max) {
+                max-width: 940px;
+            }
+
+            @media (max-width: $sm_max) {
+                max-width: 320px;
+            }
+
+            &.open {
+                display: block;
+            }
+
+            &__body-0 {
+                overflow: hidden;
+            }
+
+            &__body-1 {
+                overflow: visible;
+                background-color: #ffffff;
+            }
+
+            &__body-2 {
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            &__body-0, &__body-1, &__body-2 {
+                display: block;
+                position: relative;
+                border-radius: 40px;
+
+                @media (max-width: $sm_max) {
+                    border-radius: 0;
+                }
+            }
+
+            &__close {
+                position: absolute;
+                transform: translate(50%, -50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                top: 39px;
+                right: 39px;
+
+                @media (max-width: $sm_max) {
+                    top: 20px;
+                    right: 20px;
+                }
+
+                &:hover svg, &:focus svg {
+                    transform: scale(1.2);
+                }
+
+                svg {
+                    transition: transform 500ms ease;
+                    color: #000000;
+                    width: 24px;
+                    height: 24px;
+
+                    @media (max-width: $sm_max) {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+            }
+
+            .button {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 99999px;
+                box-sizing: border-box;
+                text-decoration: none;
+                height: 80px;
+
+                @media (max-width: $sm_max) {
+                    height: 60px;
+                }
+
+                &:hover span, &:focus span {
+                    transform: scale(1.05, 1.15);
+                }
+
+                span {
+                    padding-top: 3px;
+                    transition: transform 500ms ease;
+                    text-transform: uppercase;
+                    font-family: "Bebas Neue", sans-serif;
+                    font-style: normal;
+                    font-weight: 700;
+                    letter-spacing: 0.01em;
+                    font-size: 20px;
+
+                    @media (max-width: $sm_max) {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            * {
+                box-sizing: border-box;
+            }
         }
     }
 }
