@@ -1,5 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 
+// todo titles
+
 const routes = [
     {
         path: '/',

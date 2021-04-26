@@ -1,0 +1,145 @@
+<template>
+    <div class="shadow">
+        <div class="modal-wrapper">
+            <slot></slot>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'PageShadow',
+};
+</script>
+
+<style lang="scss">
+@import "/src/assets/scss/_variables.scss";
+.shadow {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, .65);
+
+    &.open {
+        z-index: 600;
+    }
+
+    .modal-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        transform: translateY(-100%);
+
+        transition-duration: 450ms;
+        transition-property: transform;
+        transition-timing-function: ease-in;
+
+        padding: 5px;
+
+        @media (max-width: $sm_max) {
+            padding: 0;
+        }
+
+        &.open {
+            transform: translateY(0%);
+        }
+
+        .modal {
+            position: relative;
+            z-index: 700;
+            width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            display: none;
+            max-width: 1160px;
+
+            @media (max-width: $md_max) {
+                max-width: 940px;
+            }
+
+            @media (max-width: $sm_max) {
+                max-width: 320px;
+            }
+
+            &.open {
+                display: block;
+            }
+
+            &__body-0 {
+                overflow: hidden;
+            }
+
+            &__body-1 {
+                overflow: visible;
+                background-color: #ffffff;
+            }
+
+            &__body-2 {
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            &__body-0, &__body-1, &__body-2 {
+                display: block;
+                position: relative;
+                border-radius: 40px;
+
+                @media (max-width: $sm_max) {
+                    border-radius: 0;
+                }
+            }
+
+            .button {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 99999px;
+                box-sizing: border-box;
+                text-decoration: none;
+                height: 80px;
+
+                @media (max-width: $sm_max) {
+                    height: 60px;
+                }
+
+                &:hover span, &:focus span {
+                    transform: scale(1.05, 1.15);
+                }
+
+                span {
+                    padding-top: 3px;
+                    transition: transform 500ms ease;
+                    text-transform: uppercase;
+                    font-family: "Bebas Neue", sans-serif;
+                    font-style: normal;
+                    font-weight: 700;
+                    letter-spacing: 0.01em;
+                    font-size: 20px;
+
+                    @media (max-width: $sm_max) {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+</style>
