@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "/src/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 .shadow {
     display: flex;
     flex-flow: row nowrap;

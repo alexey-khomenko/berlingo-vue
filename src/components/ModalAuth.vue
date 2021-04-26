@@ -20,10 +20,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "/src/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .modal_auth {
-
     .modal__body-0, .modal__body-1, .modal__body-2 {
         height: 702px;
 
@@ -416,68 +415,6 @@ export default {
                         }
                     }
                 }
-            }
-        }
-
-        &__checkbox {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: flex-start;
-            align-items: center;
-            height: 40px;
-            margin: 0 0 40px;
-
-            @media (max-width: $sm_max) {
-                margin-top: -10px;
-                height: 52px;
-            }
-
-            span {
-                font-family: "PF Din Text Cond Pro", sans-serif;
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 19px;
-
-                @media (max-width: $sm_max) {
-                    font-size: 14px;
-                    line-height: 17px;
-                }
-            }
-
-            a {
-                color: #000000;
-                display: inline;
-                text-decoration: underline;
-
-                &:hover, &:focus {
-                    color: #828282;
-                }
-            }
-        }
-
-        &__check {
-            display: block;
-            flex-shrink: 0;
-            cursor: pointer;
-            position: relative;
-            margin-right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 99999px;
-            border: 1px solid #000000;
-
-            &.error {
-                border-color: #ff327c;
-            }
-
-            svg {
-                position: absolute;
-                transform: translate(-50%, -50%);
-                top: 50%;
-                left: 50%;
-                width: 14px;
-                height: 10px;
             }
         }
     }
