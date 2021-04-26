@@ -1,22 +1,19 @@
 <template>
     <ModalTestStart/>
-    <ModalTestStage stage="1"/>
-    <ModalTestStage stage="2"/>
-    <ModalTestStage stage="3"/>
-    <ModalTestStage stage="4"/>
+    <ModalTestStages/>
     <ModalTestFinish/>
 </template>
 
 <script>
 import ModalTestStart from '/src/components/ModalTestStart.vue';
-import ModalTestStage from '/src/components/ModalTestStage.vue';
+import ModalTestStages from '/src/components/ModalTestStages.vue';
 import ModalTestFinish from '/src/components/ModalTestFinish.vue';
 
 export default {
     name: 'ModalTest',
     components: {
         ModalTestStart,
-        ModalTestStage,
+        ModalTestStages,
         ModalTestFinish,
     },
 };

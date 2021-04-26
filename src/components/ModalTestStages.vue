@@ -1,5 +1,6 @@
 <template>
-    <section class="modal modal_test modal_stage" :data-modal-name="`test_${modalNumber}`" data-modal-important="on">
+    <section class="modal modal_test modal_stage" :data-modal-name="`test_${stage + 1}`" data-modal-important="on"
+             v-for="(stage) in stages" :key="stage">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
@@ -11,14 +12,15 @@
                             <input type="radio" :id="`i-${stage}_${number}`"
                                    :name="`step_${stage}`" :value="number * 10">
                             <label :for="`i-${stage}_${number}`">
-                                <img alt="" :src="require(`../assets/images/modal-test-${modalNumber}-${number}.png`)"
+                                <img alt="" :src="require(`../assets/images/modal-test-${stage + 1}-${number}.png`)"
                                      data-selected="off">
-                                <img alt="" :src="require(`../assets/images/modal-test-${modalNumber}-${number}-selected.png`)"
+                                <img alt=""
+                                     :src="require(`../assets/images/modal-test-${stage + 1}-${number}-selected.png`)"
                                      data-selected="on">
                             </label>
                         </template>
                     </form>
-                    <a class="button" href="#" :data-modal-open="`test_${nextModalNumber}`" data-disabled="on">
+                    <a class="button" href="#" :data-modal-open="`test_${stage + 2}`" data-disabled="on">
                         <span>Дальше</span>
                     </a>
                 </div>
@@ -35,16 +37,10 @@ export default {
     components: {
         ModalButtonClose,
     },
-    props: {
-        stage: String,
-    },
-    computed: {
-        modalNumber() {
-            return +this.stage + 1;
-        },
-        nextModalNumber() {
-            return +this.modalNumber + 1;
-        },
+    data() {
+        return {
+            stages: [1, 2, 3, 4],
+        };
     },
 };
 </script>
