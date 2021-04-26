@@ -11,9 +11,9 @@
                             <input type="radio" :id="`i-${stage}_${number}`"
                                    :name="`step_${stage}`" :value="number * 10">
                             <label :for="`i-${stage}_${number}`">
-                                <img alt="" :src="`../assets/images/modal-test-${modalNumber}-${number}.png`"
+                                <img alt="" :src="require(`../assets/images/modal-test-${modalNumber}-${number}.png`)"
                                      data-selected="off">
-                                <img alt="" :src="`../assets/images/modal-test-${modalNumber}-${number}-selected.png`"
+                                <img alt="" :src="require(`../assets/images/modal-test-${modalNumber}-${number}-selected.png`)"
                                      data-selected="on">
                             </label>
                         </template>
@@ -36,7 +36,7 @@ export default {
         ModalButtonClose,
     },
     props: {
-        stage: Number,
+        stage: String,
     },
     computed: {
         modalNumber() {

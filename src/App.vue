@@ -1,6 +1,6 @@
 <template>
     <PageWrapper>
-        <div id="nav">
+        <div>
             <router-link to="/">Home</router-link>
             |
             <router-link to="/account">Account</router-link>
@@ -33,7 +33,7 @@ export default {
         ModalAuth,
         ModalReceipt,
         ModalTest,
-    },
+    }
 };
 </script>
 
@@ -64,12 +64,6 @@ svg {
 
 [data-hidden="on"]:not([data-slider]) {
     display: none !important;
-}
-
-// todo header__mobile
-
-.header__mobile {
-    visibility: hidden;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

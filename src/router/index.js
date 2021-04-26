@@ -5,25 +5,33 @@ const routes = [
         path: '/',
         name: 'Home',
         component: () => import('../views/Home.vue'),
-        meta: {title: 'Акция - Berlingo'},
+        meta: {
+            title: 'Акция - Berlingo'
+        },
     },
     {
         path: '/account',
         name: 'Account',
         component: () => import('../views/Account.vue'),
-        meta: {title: 'Профиль - Berlingo'},
+        meta: {
+            title: 'Профиль - Berlingo'
+        },
     },
     {
         path: '/winners',
         name: 'Winners',
         component: () => import('../views/Winners.vue'),
-        meta: {title: 'Победители - Berlingo'},
+        meta: {
+            title: 'Победители - Berlingo'
+        },
     },
     {
         path: '/pens',
         name: 'Pens',
         component: () => import('../views/Pens.vue'),
-        meta: {title: 'О ручках - Berlingo'},
+        meta: {
+            title: 'О ручках - Berlingo'
+        },
     },
 ];
 

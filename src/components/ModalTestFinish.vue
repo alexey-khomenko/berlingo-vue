@@ -72,7 +72,7 @@ export default {
                         {
                             number: 0,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 1 0',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -81,7 +81,7 @@ export default {
                         {
                             number: 1,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 1 1',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -98,7 +98,7 @@ export default {
                         {
                             number: 0,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 2 0',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -107,7 +107,7 @@ export default {
                         {
                             number: 1,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 2 1',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -124,7 +124,7 @@ export default {
                         {
                             number: 0,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 3 0',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -133,7 +133,7 @@ export default {
                         {
                             number: 1,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 3 1',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -150,7 +150,7 @@ export default {
                         {
                             number: 0,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 3 0',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
@@ -159,7 +159,7 @@ export default {
                         {
                             number: 1,
                             link: '#',
-                            image: '../assets/images/0_content-modal-pens.png',
+                            image: require('../assets/images/0_content-modal-pens.png'),
                             title: 'Color Zone 3 1',
                             text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
                                 'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
