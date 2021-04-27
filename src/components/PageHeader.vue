@@ -1,5 +1,5 @@
 <template>
-    <header class="header section" :class="`${page}-header`">
+    <header class="header section" :class="`header_${page}`">
         <slot></slot>
     </header>
 </template>
@@ -35,12 +35,6 @@ export default {
         text-decoration: none;
         color: #ffffff;
     }
-}
-
-.account-header {
-    @media (max-width: $sm_max) {
-        height: 40px;
-    }
 
     .content {
         display: flex;
@@ -66,18 +60,8 @@ export default {
             justify-content: space-between;
             align-items: center;
 
-            @media (max-width: $md_max) {
-                &.content__left {
-                    display: none;
-                }
-            }
-
             a:not(:last-of-type) {
                 margin-right: 40px;
-
-                @media (max-width: $sm_max) {
-                    margin-right: 20px;
-                }
             }
 
             .text {
@@ -90,10 +74,6 @@ export default {
                 letter-spacing: 0.01em;
                 font-size: 20px;
 
-                @media (max-width: $sm_max) {
-                    display: none;
-                }
-
                 &:hover, &:focus {
                     transform: scale(1.05, 1.15);
                 }
@@ -103,26 +83,21 @@ export default {
                 justify-content: center;
                 align-items: center;
 
+                &:hover svg, &:focus svg {
+                    transform: scale(1.2);
+                }
+
+                svg {
+                    transition: transform 500ms ease;
+                }
+
                 &_user {
                     display: flex;
                     margin-right: 0 !important;
 
-                    @media (max-width: $md_max) {
-                        margin-right: 40px !important;
-                    }
-
-                    @media (max-width: $sm_max) {
-                        margin-right: 20px !important;
-                    }
-
                     svg {
                         width: 17px;
                         height: 20px;
-
-                        @media (max-width: $sm_max) {
-                            width: 12px;
-                            height: 14px;
-                        }
                     }
                 }
 
@@ -134,216 +109,84 @@ export default {
                     height: 40px;
                     display: none;
 
-                    @media (max-width: $md_max) {
-                        display: flex;
-                    }
-
-                    @media (max-width: $sm_max) {
-                        width: 28px;
-                        height: 28px;
-                    }
-
                     svg {
                         width: 16px;
                         height: 14px;
-
-                        @media (max-width: $sm_max) {
-                            width: 12px;
-                            height: 9px;
-                        }
                     }
-                }
-
-                &:hover svg, &:focus svg {
-                    transform: scale(1.2);
-                }
-
-                svg {
-                    transition: transform 500ms ease;
                 }
             }
         }
     }
-}
 
-.index-header {
-    @media (max-width: $sm_max) {
-        height: 40px;
-    }
-
-    .content {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-
-        &__logo {
-            display: block;
+    &_account, &_index, &_winners {
+        @media (max-width: $sm_max) {
+            height: 40px;
         }
 
-        &__left {
-            margin-left: 69px;
-        }
-
-        &__right {
-            margin-left: auto;
-        }
-
-        nav {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-
-            @media (max-width: $md_max) {
-                &.content__left {
-                    display: none;
-                }
-            }
-
-            a:not(:last-of-type) {
-                margin-right: 40px;
-
-                @media (max-width: $sm_max) {
-                    margin-right: 20px;
-                }
-            }
-
-            .text {
-                padding-top: 4px;
-                transition: transform 500ms ease;
-                text-transform: uppercase;
-                font-family: "Bebas Neue", sans-serif;
-                font-style: normal;
-                font-weight: 700;
-                letter-spacing: 0.01em;
-                font-size: 20px;
-
-                @media (max-width: $sm_max) {
-                    display: none;
-                }
-
-                &:hover, &:focus {
-                    transform: scale(1.05, 1.15);
-                }
-            }
-
-            .link {
-                justify-content: center;
-                align-items: center;
-
-                &_user {
-                    display: flex;
-                    margin-right: 0 !important;
-
-                    @media (max-width: $md_max) {
-                        margin-right: 40px !important;
-                    }
-
-                    @media (max-width: $sm_max) {
-                        margin-right: 20px !important;
-                    }
-
-                    svg {
-                        width: 17px;
-                        height: 20px;
-
-                        @media (max-width: $sm_max) {
-                            width: 12px;
-                            height: 14px;
-                        }
-                    }
-                }
-
-                &_menu {
-                    border-radius: 99999px;
-                    background-color: #ffffff;
-                    color: #000000;
-                    width: 40px;
-                    height: 40px;
-                    display: none;
-
-                    @media (max-width: $md_max) {
-                        display: flex;
-                    }
-
-                    @media (max-width: $sm_max) {
-                        width: 28px;
-                        height: 28px;
-                    }
-
-                    svg {
-                        width: 16px;
-                        height: 14px;
-
-                        @media (max-width: $sm_max) {
-                            width: 12px;
-                            height: 9px;
-                        }
-                    }
-                }
-
-                &:hover svg, &:focus svg {
-                    transform: scale(1.2);
-                }
-
-                svg {
-                    transition: transform 500ms ease;
-                }
-            }
-        }
-    }
-}
-
-.pens-header {
-    @media (max-width: $sm_max_pens) {
-        height: 40px;
-    }
-
-    .content {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-
-        &__logo {
-            display: block;
-        }
-
-        &__left {
-            margin-left: 69px;
-
-            @media (max-width: $md_max_pens) {
+        @media (max-width: $md_max) {
+            .content__left {
                 margin-left: 39px;
             }
         }
 
-        &__right {
-            margin-left: auto;
-        }
+        .content nav {
+            a:not(:last-of-type) {
+                @media (max-width: $md_max) {
+                    margin-right: 43px;
+                }
 
-        nav {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-
-            @media (max-width: $md_max_pens) {
-                //&.content__left {
-                //    display: none;
-                //}
-
-            }
-
-            @media (max-width: $sm_max_pens) {
-                &.content__left {
-                    display: none;
+                @media (max-width: $sm_max) {
+                    margin-right: 20px;
                 }
             }
 
-            a:not(:last-of-type) {
-                margin-right: 40px;
+            @media (max-width: $sm_max) {
+                &.content__left {
+                    display: none;
+                }
 
+                .text {
+                    display: none;
+                }
+
+                .link {
+                    &_user {
+                        margin-right: 20px !important;
+
+                        svg {
+                            width: 12px;
+                            height: 14px;
+                        }
+                    }
+
+                    &_menu {
+                        display: flex;
+                        width: 28px;
+                        height: 28px;
+
+                        svg {
+                            width: 12px;
+                            height: 9px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &_pens {
+        @media (max-width: $sm_max_pens) {
+            height: 40px;
+        }
+
+        @media (max-width: $md_max_pens) {
+            .content__left {
+                margin-left: 39px;
+            }
+        }
+
+        .content nav {
+            a:not(:last-of-type) {
                 @media (max-width: $md_max_pens) {
                     margin-right: 39px;
                 }
@@ -353,216 +196,35 @@ export default {
                 }
             }
 
-            .text {
-                padding-top: 4px;
-                transition: transform 500ms ease;
-                text-transform: uppercase;
-                font-family: "Bebas Neue", sans-serif;
-                font-style: normal;
-                font-weight: 700;
-                letter-spacing: 0.01em;
-                font-size: 20px;
-
-                @media (max-width: $sm_max_pens) {
-                    display: none;
-                }
-
-                &:hover, &:focus {
-                    transform: scale(1.05, 1.15);
-                }
-            }
-
-            .link {
-                justify-content: center;
-                align-items: center;
-
-                &_user {
-                    display: flex;
-                    margin-right: 0 !important;
-
-                    @media (max-width: $md_max_pens) {
-                        //    margin-right: 40px !important;
-                    }
-
-                    @media (max-width: $sm_max_pens) {
-                        margin-right: 20px !important;
-                    }
-
-                    svg {
-                        width: 17px;
-                        height: 20px;
-
-                        @media (max-width: $sm_max_pens) {
-                            width: 12px;
-                            height: 14px;
-                        }
-                    }
-                }
-
-                &_menu {
-                    border-radius: 99999px;
-                    background-color: #ffffff;
-                    color: #000000;
-                    width: 40px;
-                    height: 40px;
-                    display: none;
-
-                    @media (max-width: $md_max_pens) {
-                        //    display: flex;
-                    }
-
-                    @media (max-width: $sm_max_pens) {
-                        display: flex;
-                        width: 28px;
-                        height: 28px;
-                    }
-
-                    svg {
-                        width: 16px;
-                        height: 14px;
-
-                        @media (max-width: $sm_max_pens) {
-                            width: 12px;
-                            height: 9px;
-                        }
-                    }
-                }
-
-                &:hover svg, &:focus svg {
-                    transform: scale(1.2);
-                }
-
-                svg {
-                    transition: transform 500ms ease;
-                }
-            }
-        }
-    }
-}
-
-.winners-header {
-    @media (max-width: $sm_max) {
-        height: 40px;
-    }
-
-    .content {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-
-        &__logo {
-            display: block;
-        }
-
-        &__left {
-            margin-left: 69px;
-        }
-
-        &__right {
-            margin-left: auto;
-        }
-
-        nav {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-
-            @media (max-width: $md_max) {
+            @media (max-width: $sm_max_pens) {
                 &.content__left {
                     display: none;
                 }
-            }
 
-            a:not(:last-of-type) {
-                margin-right: 40px;
-
-                @media (max-width: $sm_max) {
-                    margin-right: 20px;
-                }
-            }
-
-            .text {
-                padding-top: 4px;
-                transition: transform 500ms ease;
-                text-transform: uppercase;
-                font-family: "Bebas Neue", sans-serif;
-                font-style: normal;
-                font-weight: 700;
-                letter-spacing: 0.01em;
-                font-size: 20px;
-
-                @media (max-width: $sm_max) {
+                .text {
                     display: none;
                 }
 
-                &:hover, &:focus {
-                    transform: scale(1.05, 1.15);
-                }
-            }
-
-            .link {
-                justify-content: center;
-                align-items: center;
-
-                &_user {
-                    display: flex;
-                    margin-right: 0 !important;
-
-                    @media (max-width: $md_max) {
-                        margin-right: 40px !important;
-                    }
-
-                    @media (max-width: $sm_max) {
+                .link {
+                    &_user {
                         margin-right: 20px !important;
-                    }
 
-                    svg {
-                        width: 17px;
-                        height: 20px;
-
-                        @media (max-width: $sm_max) {
+                        svg {
                             width: 12px;
                             height: 14px;
                         }
                     }
-                }
 
-                &_menu {
-                    border-radius: 99999px;
-                    background-color: #ffffff;
-                    color: #000000;
-                    width: 40px;
-                    height: 40px;
-                    display: none;
-
-                    @media (max-width: $md_max) {
+                    &_menu {
                         display: flex;
-                    }
-
-                    @media (max-width: $sm_max) {
                         width: 28px;
                         height: 28px;
-                    }
 
-                    svg {
-                        width: 16px;
-                        height: 14px;
-
-                        @media (max-width: $sm_max) {
+                        svg {
                             width: 12px;
                             height: 9px;
                         }
                     }
-                }
-
-                &:hover svg, &:focus svg {
-                    transform: scale(1.2);
-                }
-
-                svg {
-                    transition: transform 500ms ease;
                 }
             }
         }

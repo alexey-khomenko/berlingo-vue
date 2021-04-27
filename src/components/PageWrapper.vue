@@ -47,15 +47,6 @@ export default {
 .main {
     display: block;
     z-index: 10;
-    width: $container_lg;
-
-    @media (max-width: $md_max) {
-        width: $container_md;
-    }
-
-    @media (max-width: $sm_max) {
-        width: $container_sm;
-    }
 
     &_abs {
         position: absolute;
@@ -64,20 +55,29 @@ export default {
     &_rel {
         position: relative;
     }
-}
 
-.main-pens {
-    display: block;
-    z-index: 10;
-    width: $container_lg_pens;
+    &_account, &_index, &_winners {
+        width: $container_lg;
 
-    @media (max-width: $md_max_pens) {
-        width: $container_md_pens;
+        @media (max-width: $md_max) {
+            width: $container_md;
+        }
+
+        @media (max-width: $sm_max) {
+            width: $container_sm;
+        }
     }
 
-    @media (max-width: $sm_max_pens) {
-        width: $container_sm_pens;
+    &_pens {
+        width: $container_lg_pens;
+
+        @media (max-width: $md_max_pens) {
+            width: $container_md_pens;
+        }
+
+        @media (max-width: $sm_max_pens) {
+            width: $container_sm_pens;
+        }
     }
 }
-
 </style>

@@ -1,14 +1,5 @@
 <template>
     <PageWrapper>
-        <div>
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/account">Account</router-link>
-            |
-            <router-link to="/winners">Winners</router-link>
-            |
-            <router-link to="/pens">Pens</router-link>
-        </div>
         <router-view/>
     </PageWrapper>
     <PageShadow>
@@ -105,43 +96,37 @@ svg {
         display: none;
     }
 
-    &_lg {
+    &_lg:not(.pens) {
         @media (min-width: $lg_min) {
             display: block;
         }
     }
 
-    &_md {
-        @media (min-width: $md_min) and (max-width: $md_max) {
-            display: block;
-        }
-    }
-
-    &_sm {
-        @media (max-width: $sm_max) {
-            display: block;
-        }
-    }
-}
-
-.image-pens {
-    &_lg, &_md, &_sm {
-        display: none;
-    }
-
-    &_lg {
+    &_lg.pens {
         @media (min-width: $lg_min_pens) {
             display: block;
         }
     }
 
-    &_md {
+    &_md:not(.pens) {
+        @media (min-width: $md_min) and (max-width: $md_max) {
+            display: block;
+        }
+    }
+
+    &_md.pens {
         @media (min-width: $md_min_pens) and (max-width: $md_max_pens) {
             display: block;
         }
     }
 
-    &_sm {
+    &_sm:not(.pens) {
+        @media (max-width: $sm_max) {
+            display: block;
+        }
+    }
+
+    &_sm.pens {
         @media (max-width: $sm_max_pens) {
             display: block;
         }
