@@ -3,9 +3,10 @@
         <PageHeaderMain page="pens"/>
         <PageHeaderMobile page="pens"/>
     </PageHeader>
-
-    <div style="height: 100vh"></div>
-
+    <PensContent>
+        <PensContentBack/>
+        <PensContentMain/>
+    </PensContent>
     <PageFooter page="pens">
         <PageFooterMain page="pens"/>
     </PageFooter>
@@ -15,7 +16,9 @@
 import PageHeader from '/src/components/PageHeader.vue';
 import PageHeaderMain from '/src/components/PageHeaderMain.vue';
 import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
-
+import PensContent from '/src/components/PensContent.vue';
+import PensContentBack from '/src/components/PensContentBack.vue';
+import PensContentMain from '/src/components/PensContentMain.vue';
 import PageFooter from '/src/components/PageFooter.vue';
 import PageFooterMain from '/src/components/PageFooterMain.vue';
 
@@ -25,13 +28,11 @@ export default {
         PageHeader,
         PageHeaderMain,
         PageHeaderMobile,
-
+        PensContent,
+        PensContentBack,
+        PensContentMain,
         PageFooter,
         PageFooterMain,
     },
 };
 </script>
-
-<style scoped lang="scss">
-
-</style>

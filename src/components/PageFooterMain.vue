@@ -1,5 +1,5 @@
 <template>
-    <div class="main main_abs footer__main" :class="`main_${page}`">
+    <div class="main main_abs footer__main" :class="`main_${page} footer__main_${page}`">
         <div class="content">
             
             <div class="content__left">
