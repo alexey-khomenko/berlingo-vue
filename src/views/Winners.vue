@@ -5,8 +5,8 @@
         <PageHeaderMobile page="winners"/>
     </PageHeader>
     <WinnersTop>
-        <!-- todo winners top back -->
-        <!-- todo winners top main -->
+        <WinnersTopBack/>
+        <WinnersTopMain/>
     </WinnersTop>
     <WinnersTabs/>
     <PageFooter page="winners">
@@ -20,6 +20,8 @@ import PageHeaderBack from '/src/components/PageHeaderBack.vue';
 import PageHeaderMain from '/src/components/PageHeaderMain.vue';
 import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
 import WinnersTop from '/src/components/WinnersTop.vue';
+import WinnersTopBack from '/src/components/WinnersTopBack.vue';
+import WinnersTopMain from '/src/components/WinnersTopMain.vue';
 import WinnersTabs from '/src/components/WinnersTabs.vue';
 import PageFooter from '/src/components/PageFooter.vue';
 import PageFooterMain from '/src/components/PageFooterMain.vue';
@@ -32,6 +34,8 @@ export default {
         PageHeaderMain,
         PageHeaderMobile,
         WinnersTop,
+        WinnersTopBack,
+        WinnersTopMain,
         WinnersTabs,
         PageFooter,
         PageFooterMain,

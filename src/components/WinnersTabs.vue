@@ -1,7 +1,30 @@
 <template>
-    <section class="section main winners-tab" v-for="(tab, idx) in tabs" :key="idx">
-        <!-- todo tabs -->
-        {{ tab }}
+    <section class="section winners-tabs">
+        <div class="main main_rel main_winners winners-tabs__main" v-for="(group, i) in groups" :key="i">
+            <div class="title">
+                {{ group.title }}
+            </div>
+            <div class="subtitle" v-if="group.subtitle">
+                {{ group.subtitle }}
+            </div>
+
+            <div class="tabs">
+                <div class="tabs__head">
+                    <a href="#"
+                       class="button" :class="`button_${tab.type}`"
+                       :data-tab-open="j" :data-selected="tab.selected"
+                       v-for="(tab, j) in group.tabs" :key="j"
+                    >
+                        <span>
+                            {{ tab.title }}
+                        </span>
+                    </a>
+                </div>
+                <div class="tabs__body">
+
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -10,8 +33,38 @@ export default {
     name: 'WinnersTabs',
     data() {
         return {
-            tabs: [
-                1, 2, 3,
+            groups: [
+                {
+                    title: 'Главные призы',
+                    subtitle: null,
+                    tabs: [
+                        {
+                            type: 'bike',
+                            title: 'Велосипед',
+                            selected: 'on',
+                        },
+                        {
+                            type: 'playstation',
+                            title: 'PlayStation 5',
+                            selected: 'off',
+                        },
+                        {
+                            type: 'applewatch',
+                            title: 'Apple Watch',
+                            selected: 'off',
+                        },
+                    ],
+                },
+                {
+                    title: 'Еженедельные призы',
+                    subtitle: null,
+                    tabs: [],
+                },
+                {
+                    title: 'Ежедневные призы',
+                    subtitle: 'Бокс с канцелярией Berlingo',
+                    tabs: [],
+                },
             ],
         };
     },
@@ -21,8 +74,7 @@ export default {
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-.winners-tab {
-    position: relative;
+.winners-tabs__main {
     margin: 0 auto 100px;
 
     @media (max-width: $md_max) {
