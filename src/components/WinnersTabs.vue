@@ -1,6 +1,6 @@
 <template>
     <section class="section winners-tabs">
-        <div class="main main_rel main_winners winners-tabs__main" v-for="(group, i) in groups" :key="i">
+        <div class="main main_rel main_winners winners-tabs__main" v-for="(group, idx) in groups" :key="idx">
             <div class="title">
                 {{ group.title }}
             </div>
@@ -9,19 +9,41 @@
             </div>
 
             <div class="tabs">
-                <div class="tabs__head">
-                    <a href="#"
-                       class="button" :class="`button_${tab.type}`"
-                       :data-tab-open="j" :data-selected="tab.selected"
-                       v-for="(tab, j) in group.tabs" :key="j"
+                <div class="tabs__head" v-if="group.tabs.head.length">
+                    <a href="#" class="button" :class="`button_${tab.type}`"
+                       :data-tab-open="tab.number" :data-selected="tab.selected"
+                       v-for="tab in group.tabs.head" :key="tab.number"
                     >
                         <span>
                             {{ tab.title }}
                         </span>
                     </a>
                 </div>
-                <div class="tabs__body">
-
+                <div class="tabs__body"
+                     :data-tab-body="tab.number" :data-hidden="tab.hidden"
+                     v-for="tab in group.tabs.body" :key="tab.number"
+                >
+                    <div class="tabs__image">
+                        <img alt="" :src="require(`../assets/images/account-my-${tab.image}.png`)" />
+                    </div>
+                    <div class="list-wrapper" v-if="tab.winners.length">
+                        <ul class="tabs__list">
+                            <li class="winner" v-for="(winner, i) in tab.winners" :key="`${tab.number}-${i}`">
+                                <span class="winner__date">
+                                    {{ winner.date }}
+                                </span>
+                                <span class="winner__nick">
+                                    {{ winner.nick }}
+                                </span>
+                                <span class="winner__phone">
+                                    {{ winner.phone }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tabs__warning" v-else>
+                        Победители ещё не определны. Розыгрыш состоится 16.05.2021
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,33 +59,433 @@ export default {
                 {
                     title: 'Главные призы',
                     subtitle: null,
-                    tabs: [
-                        {
-                            type: 'bike',
-                            title: 'Велосипед',
-                            selected: 'on',
-                        },
-                        {
-                            type: 'playstation',
-                            title: 'PlayStation 5',
-                            selected: 'off',
-                        },
-                        {
-                            type: 'applewatch',
-                            title: 'Apple Watch',
-                            selected: 'off',
-                        },
-                    ],
+                    tabs: {
+                        head: [
+                            {
+                                type: 'bike',
+                                title: 'Велосипед',
+                                selected: 'on',
+                                number: 0,
+                            },
+                            {
+                                type: 'playstation',
+                                title: 'PlayStation 5',
+                                selected: 'off',
+                                number: 1,
+                            },
+                            {
+                                type: 'applewatch',
+                                title: 'Apple Watch',
+                                selected: 'off',
+                                number: 2,
+                            },
+                        ],
+                        body: [
+                            {
+                                image: 'bike',
+                                winners: [],
+                                hidden: 'off',
+                                number: 0,
+                            },
+                            {
+                                image: 'playstation',
+                                winners: [],
+                                hidden: 'on',
+                                number: 1,
+                            },
+                            {
+                                image: 'applewatch',
+                                winners: [],
+                                hidden: 'on',
+                                number: 2,
+                            },
+                        ],
+                    },
                 },
                 {
                     title: 'Еженедельные призы',
                     subtitle: null,
-                    tabs: [],
+                    tabs: {
+                        head: [
+                            {
+                                type: 'okko',
+                                title: 'Подписка Okko',
+                                selected: 'on',
+                                number: 3,
+                            },
+                            {
+                                type: 'yandex',
+                                title: 'Подписка Яндекс.Музыка',
+                                selected: 'off',
+                                number: 4,
+                            },
+                            {
+                                type: 'litres',
+                                title: 'Подписка Литрес',
+                                selected: 'off',
+                                number: 5,
+                            },
+                        ],
+                        body: [
+                            {
+                                image: 'okko',
+                                winners: [
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                ],
+                                hidden: 'off',
+                                number: 3,
+                            },
+                            {
+                                image: 'yandex',
+                                winners: [
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                ],
+                                hidden: 'on',
+                                number: 4,
+                            },
+                            {
+                                image: 'litres',
+                                winners: [
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                ],
+                                hidden: 'on',
+                                number: 5,
+                            },
+                        ],
+                    },
                 },
                 {
                     title: 'Ежедневные призы',
                     subtitle: 'Бокс с канцелярией Berlingo',
-                    tabs: [],
+                    tabs: {
+                        head: [],
+                        body: [
+                            {
+                                image: 'box',
+                                winners: [
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                    {
+                                        date: '29.04.2021',
+                                        nick: 'aleksei7676',
+                                        phone: '+7 (***) *** 64 56',
+                                    },
+                                ],
+                                hidden: 'off',
+                                number: 6,
+                            },
+                        ],
+                    },
                 },
             ],
         };
