@@ -8,6 +8,11 @@
         <AccountTopBack/>
         <AccountTopMain/>
     </AccountTop>
+    <AccountReceipts>
+        <AccountReceiptsMain/>
+    </AccountReceipts>
+
+<!--    todo prizes -->
 
     <PageFooter page="account">
         <PageFooterBack page="account"/>
@@ -16,17 +21,19 @@
 </template>
 
 <script>
-import PageHeader from '/src/components/PageHeader.vue';
-import PageHeaderBack from '/src/components/PageHeaderBack.vue';
-import PageHeaderMain from '/src/components/PageHeaderMain.vue';
-import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
+import PageHeader from '/src/components/PageHeader';
+import PageHeaderBack from '/src/components/PageHeaderBack';
+import PageHeaderMain from '/src/components/PageHeaderMain';
+import PageHeaderMobile from '/src/components/PageHeaderMobile';
 import AccountTop from '/src/components/AccountTop';
 import AccountTopBack from '/src/components/AccountTopBack';
 import AccountTopMain from '/src/components/AccountTopMain';
+import AccountReceipts from '/src/components/AccountReceipts';
+import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
 
-import PageFooter from '/src/components/PageFooter.vue';
-import PageFooterBack from '/src/components/PageFooterBack.vue';
-import PageFooterMain from '/src/components/PageFooterMain.vue';
+import PageFooter from '/src/components/PageFooter';
+import PageFooterBack from '/src/components/PageFooterBack';
+import PageFooterMain from '/src/components/PageFooterMain';
 
 export default {
     name: 'Account',
@@ -38,6 +45,8 @@ export default {
         AccountTop,
         AccountTopBack,
         AccountTopMain,
+        AccountReceipts,
+        AccountReceiptsMain,
 
         PageFooter,
         PageFooterBack,

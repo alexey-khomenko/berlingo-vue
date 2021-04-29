@@ -69,6 +69,7 @@ export default {
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 
+// todo
 .button {
     display: flex;
     justify-content: center;

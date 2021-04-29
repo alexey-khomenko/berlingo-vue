@@ -16,6 +16,7 @@
                     <div class="title">
                         Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
                     </div>
+<!--                    todo button -->
                     <a class="button" href="#" data-modal-open="test_2"><span>Начать тест</span></a>
                 </div>
             </div>
@@ -137,6 +138,7 @@ export default {
         }
     }
 
+    // todo
     .button {
         background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
         color: #ffffff;

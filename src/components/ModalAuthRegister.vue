@@ -45,6 +45,7 @@
 
                         <ModalButtonAgree name="register-agree"/>
 
+                        <!--                    todo button -->
                         <button class="button" type="submit"><span>Зарегистрироваться</span></button>
                     </form>
                 </div>

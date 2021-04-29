@@ -131,6 +131,7 @@ export default {
         }
     }
 
+    // todo
     .button {
         color: #ffffff;
         cursor: pointer;
@@ -138,6 +139,7 @@ export default {
         border: none;
     }
 
+    // todo
     &[data-modal-name="login"] .button {
         margin: 0;
         width: 162px;
@@ -147,6 +149,7 @@ export default {
         }
     }
 
+    // todo
     &[data-modal-name="register"] .button {
         margin: 0;
         width: 264px;
@@ -156,6 +159,7 @@ export default {
         }
     }
 
+    // todo
     &[data-modal-name="success"] .button {
         margin: 0 100px 80px;
         width: 173px;

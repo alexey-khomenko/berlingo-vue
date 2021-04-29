@@ -29,6 +29,7 @@
                                        placeholder="Введи пароль *">
                             </label>
                         </div>
+                        <!--                    todo button -->
                         <button class="button" type="submit"><span>Войти</span></button>
                     </form>
                 </div>

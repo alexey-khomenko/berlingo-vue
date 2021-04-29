@@ -20,6 +20,7 @@
                             </label>
                         </template>
                     </form>
+                    <!--                    todo button -->
                     <a class="button" href="#" :data-modal-open="`test_${stage + 2}`" data-disabled="on">
                         <span>Дальше</span>
                     </a>
@@ -183,6 +184,7 @@ export default {
         }
     }
 
+    // todo
     .button {
         margin: 0 100px 54px;
         background: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);

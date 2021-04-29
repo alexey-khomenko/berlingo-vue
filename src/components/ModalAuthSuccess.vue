@@ -13,6 +13,7 @@
                         Успех! Твой личный кабинет создан. Чтобы войти в него, перейди по ссылке в письме,
                         отправленном тебе на e-mail.
                     </div>
+                    <!--                    todo button -->
                     <a class="button" href="#" data-modal-close><span>Хорошо</span></a>
                 </div>
             </div>
