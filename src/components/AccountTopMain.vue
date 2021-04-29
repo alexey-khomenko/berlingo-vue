@@ -5,22 +5,22 @@
         </div>
         <div class="buttons">
             <div class="buttons__receipt" data-modal-open="receipt">
-                <PageButtonLink color="white">Зарегистрируй чек и получи призы</PageButtonLink>
+                <PageButton type="a" color="white">Зарегистрируй чек и получи призы</PageButton>
             </div>
             <div class="buttons__exit" data-auth-exit>
-                <PageButtonLink color="black" border="true">Выйти</PageButtonLink>
+                <PageButton type="a" color="black" border>Выйти</PageButton>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import PageButtonLink from '/src/components/PageButtonLink';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'AccountTopMain',
     components: {
-        PageButtonLink,
+        PageButton,
     }
 };
 </script>

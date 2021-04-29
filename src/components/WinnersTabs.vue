@@ -7,24 +7,25 @@
             <div class="subtitle" v-if="group.subtitle">
                 {{ group.subtitle }}
             </div>
-
             <div class="tabs">
                 <div class="tabs__head" v-if="group.tabs.head.length">
-                    <a href="#" class="button" :class="`button_${tab.type}`"
-                       :data-tab-open="tab.number" :data-selected="tab.selected"
-                       v-for="tab in group.tabs.head" :key="tab.number"
+                    <div :class="`btn btn_${tab.type}`"
+                         :data-tab-open="tab.number" :data-selected="tab.selected"
+                         v-for="tab in group.tabs.head" :key="tab.number"
                     >
-                        <span>
+                        <PageButton type="a" :border="tab.selected === 'off'"
+                                    :color="tab.selected === 'off' ? 'black' : tab.color"
+                        >
                             {{ tab.title }}
-                        </span>
-                    </a>
+                        </PageButton>
+                    </div>
                 </div>
                 <div class="tabs__body"
                      :data-tab-body="tab.number" :data-hidden="tab.hidden"
                      v-for="tab in group.tabs.body" :key="tab.number"
                 >
                     <div class="tabs__image">
-                        <img alt="" :src="require(`../assets/images/account-my-${tab.image}.png`)" />
+                        <img alt="" :src="require(`../assets/images/account-my-${tab.image}.png`)"/>
                     </div>
                     <div class="list-wrapper" v-if="tab.winners.length">
                         <ul class="tabs__list">
@@ -51,8 +52,13 @@
 </template>
 
 <script>
+import PageButton from '/src/components/PageButton';
+
 export default {
     name: 'WinnersTabs',
+    components: {
+        PageButton,
+    },
     data() {
         return {
             groups: [
@@ -63,18 +69,21 @@ export default {
                         head: [
                             {
                                 type: 'bike',
+                                color: 'green',
                                 title: 'Велосипед',
                                 selected: 'on',
                                 number: 0,
                             },
                             {
                                 type: 'playstation',
+                                color: 'blue',
                                 title: 'PlayStation 5',
                                 selected: 'off',
                                 number: 1,
                             },
                             {
                                 type: 'applewatch',
+                                color: 'red',
                                 title: 'Apple Watch',
                                 selected: 'off',
                                 number: 2,
@@ -109,18 +118,21 @@ export default {
                         head: [
                             {
                                 type: 'okko',
+                                color: 'red',
                                 title: 'Подписка Okko',
                                 selected: 'on',
                                 number: 3,
                             },
                             {
                                 type: 'yandex',
+                                color: 'green',
                                 title: 'Подписка Яндекс.Музыка',
                                 selected: 'off',
                                 number: 4,
                             },
                             {
                                 type: 'litres',
+                                color: 'blue',
                                 title: 'Подписка Литрес',
                                 selected: 'off',
                                 number: 5,
@@ -568,42 +580,13 @@ export default {
                 margin-bottom: 40px;
             }
 
-            .button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 99999px;
-                text-decoration: none;
-                box-sizing: border-box;
-                height: 80px;
-
-                @media (max-width: $sm_max) {
-                    height: 60px;
-                }
-
-                &[data-selected="off"] {
-                    background-color: #000000;
-                    border: 2px solid #ffffff;
-                }
-
+            .btn {
                 &:not(:last-of-type) {
                     margin: 0 20px 0 0;
 
                     @media (max-width: $sm_max) {
                         margin: 0 0 20px 0;
                     }
-                }
-
-                &_bike[data-selected="on"], &_yandex[data-selected="on"] {
-                    background: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);
-                }
-
-                &_applewatch[data-selected="on"], &_okko[data-selected="on"] {
-                    background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
-                }
-
-                &_playstation[data-selected="on"], &_litres[data-selected="on"] {
-                    background: linear-gradient(180deg, #00a2f6 0%, #c153ff 100%);
                 }
 
                 &_bike {
@@ -651,26 +634,6 @@ export default {
 
                     @media (max-width: $sm_max) {
                         width: 165px;
-                    }
-                }
-
-                &[data-selected="off"]:hover span, &[data-selected="off"]:focus span {
-                    transform: scale(1.05, 1.15);
-                }
-
-                span {
-                    padding-top: 3px;
-                    color: #ffffff;
-                    transition: transform 500ms ease;
-                    text-transform: uppercase;
-                    font-family: "Bebas Neue", sans-serif;
-                    font-style: normal;
-                    font-weight: 700;
-                    letter-spacing: 0.01em;
-                    font-size: 20px;
-
-                    @media (max-width: $sm_max) {
-                        font-size: 14px;
                     }
                 }
             }

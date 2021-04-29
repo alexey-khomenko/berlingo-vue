@@ -1,38 +1,66 @@
 <template>
-    <a href="#" class="button" :class="{
-        button_bordered: border,
-        button_red: color === 'red',
-        button_white: color === 'white',
-        button_black: color === 'black',
-    }">
-        <span>
-            <slot></slot>
-        </span>
+    <a href="#" class="button" :class="classes" v-if="type === 'a'">
+        <span><slot></slot></span>
     </a>
+
+    <router-link :to="to" class="button" :class="classes" v-else-if="type === 'link'">
+        <span><slot></slot></span>
+    </router-link>
+
+    <button type="button" class="button" :class="classes" v-else-if="type === 'button'">
+        <span><slot></slot></span>
+    </button>
+
+    <button type="submit" class="button" :class="classes" v-else-if="type === 'submit'">
+        <span><slot></slot></span>
+    </button>
 </template>
 
 <script>
 export default {
-    name: 'PageButtonLink',
+    name: 'PageButton',
     props: {
+        type: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                // todo
+                // a - tmp
+                return ['a', 'link', 'button', 'submit'].includes(value);
+            },
+        },
+        to: {
+            type: String,
+            default: '/',
+        },
         color: {
             type: String,
             required: true,
             validator: function (value) {
-                return ['red', 'white', 'black'].includes(value);
+                return ['red', 'green', 'blue', 'white', 'black'].includes(value);
             },
         },
         border: {
             type: Boolean,
             default: false,
         },
-
-        // todo router-link
-        // todo submit
-
         // todo
         // dataset - поведение - следить за кликом, передавать обёртке событие
         // width + margin - на обёртке
+        // кнопка с svg?
+    },
+    computed: {
+        classes() {
+            let classes = [];
+
+            if (this.border) {
+                classes.push('button_bordered');
+            }
+
+            classes.push(`button_${this.color}`);
+
+            return classes.join(' ');
+        },
     },
 };
 
@@ -55,7 +83,8 @@ export default {
         height: 60px;
     }
 
-    &:hover span, &:focus span {
+    div:not([data-selected="on"]) > &:hover span,
+    div:not([data-selected="on"]) > &:focus span {
         transform: scale(1.05, 1.15);
     }
 
@@ -85,6 +114,16 @@ export default {
     &_red {
         color: #ffffff;
         background-image: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
+    }
+
+    &_green {
+        color: #ffffff;
+        background-image: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);
+    }
+
+    &_blue {
+        color: #ffffff;
+        background-image: linear-gradient(180deg, #00a2f6 0%, #c153ff 100%);
     }
 
     &_white {
