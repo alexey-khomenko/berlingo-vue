@@ -15,16 +15,16 @@
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader.vue';
-import PageHeaderBack from '@/components/PageHeaderBack.vue';
-import PageHeaderMain from '@/components/PageHeaderMain.vue';
-import PageHeaderMobile from '@/components/PageHeaderMobile.vue';
-import WinnersTop from '@/components/WinnersTop.vue';
-import WinnersTopBack from '@/components/WinnersTopBack.vue';
-import WinnersTopMain from '@/components/WinnersTopMain.vue';
-import WinnersTabs from '@/components/WinnersTabs.vue';
-import PageFooter from '@/components/PageFooter.vue';
-import PageFooterMain from '@/components/PageFooterMain.vue';
+import PageHeader from '/src/components/PageHeader.vue';
+import PageHeaderBack from '/src/components/PageHeaderBack.vue';
+import PageHeaderMain from '/src/components/PageHeaderMain.vue';
+import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
+import WinnersTop from '/src/components/WinnersTop.vue';
+import WinnersTopBack from '/src/components/WinnersTopBack.vue';
+import WinnersTopMain from '/src/components/WinnersTopMain.vue';
+import WinnersTabs from '/src/components/WinnersTabs.vue';
+import PageFooter from '/src/components/PageFooter.vue';
+import PageFooterMain from '/src/components/PageFooterMain.vue';
 
 export default {
     name: 'Winners',

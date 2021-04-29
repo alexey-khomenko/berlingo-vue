@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import ModalButtonClose from '@/components/ModalButtonClose.vue';
+import ModalButtonClose from '/src/components/ModalButtonClose.vue';
 
 export default {
     name: 'ModalTestStage',

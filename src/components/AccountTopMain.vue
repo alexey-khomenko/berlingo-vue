@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import PageButtonLink from '@/components/PageButtonLink';
+import PageButtonLink from '/src/components/PageButtonLink';
 
 export default {
     name: 'AccountTopMain',

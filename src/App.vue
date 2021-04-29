@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import PageWrapper from '@/components/PageWrapper.vue';
-import PageShadow from '@/components/PageShadow.vue';
-import ModalAuth from '@/components/ModalAuth.vue';
-import ModalReceipt from '@/components/ModalReceipt.vue';
-import ModalTest from '@/components/ModalTest.vue';
+import PageWrapper from '/src/components/PageWrapper.vue';
+import PageShadow from '/src/components/PageShadow.vue';
+import ModalAuth from '/src/components/ModalAuth.vue';
+import ModalReceipt from '/src/components/ModalReceipt.vue';
+import ModalTest from '/src/components/ModalTest.vue';
 
 export default {
     name: 'App',
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/_variables.scss";
+@import "/src/assets/scss/_variables.scss";
 
 label, input, textarea, button, select, a, summary {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

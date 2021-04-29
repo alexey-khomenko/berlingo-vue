@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import ModalButtonClose from '@/components/ModalButtonClose.vue';
-import ModalButtonAgree from '@/components/ModalButtonAgree.vue';
+import ModalButtonClose from '/src/components/ModalButtonClose.vue';
+import ModalButtonAgree from '/src/components/ModalButtonAgree.vue';
 
 export default {
     name: 'ModalReceipt',

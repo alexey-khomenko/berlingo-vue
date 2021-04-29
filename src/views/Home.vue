@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader.vue';
-import PageHeaderBack from '@/components/PageHeaderBack.vue';
-import PageHeaderMain from '@/components/PageHeaderMain.vue';
-import PageHeaderMobile from '@/components/PageHeaderMobile.vue';
+import PageHeader from '/src/components/PageHeader.vue';
+import PageHeaderBack from '/src/components/PageHeaderBack.vue';
+import PageHeaderMain from '/src/components/PageHeaderMain.vue';
+import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
 
-import PageFooter from '@/components/PageFooter.vue';
-import PageFooterBack from '@/components/PageFooterBack.vue';
-import PageFooterMain from '@/components/PageFooterMain.vue';
+import PageFooter from '/src/components/PageFooter.vue';
+import PageFooterBack from '/src/components/PageFooterBack.vue';
+import PageFooterMain from '/src/components/PageFooterMain.vue';
 
 export default {
     name: 'Home',
