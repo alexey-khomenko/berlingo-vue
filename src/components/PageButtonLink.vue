@@ -27,9 +27,8 @@ export default {
             default: false,
         },
 
-        // todo props проверить везде
-
-        // todo link
+        // todo router-link
+        // todo submit
 
         // todo
         // dataset - поведение - следить за кликом, передавать обёртке событие

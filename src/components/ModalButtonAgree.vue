@@ -20,7 +20,10 @@
 export default {
     name: 'ModalButtonAgree',
     props: {
-        name: String,
+        name: {
+            type: String,
+            required: true,
+        },
     },
     // todo script submit
 };

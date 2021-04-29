@@ -34,7 +34,13 @@
 export default {
     name: 'PageFooterMain',
     props: {
-        page: String,
+        page: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return ['account', 'index', 'winners', 'pens'].includes(value);
+            },
+        },
     },
     data() {
         return {

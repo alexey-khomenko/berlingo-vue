@@ -69,7 +69,13 @@
 export default {
     name: 'PageHeaderMain',
     props: {
-        page: String,
+        page: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return ['account', 'index', 'winners', 'pens'].includes(value);
+            },
+        },
     },
     data() {
         return {

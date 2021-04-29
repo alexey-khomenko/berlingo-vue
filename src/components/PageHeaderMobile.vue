@@ -1,7 +1,6 @@
 <template>
     <div class="header__mobile" :class="`header__mobile_${page}`">
         <div class="content">
-
             <router-link to="/" class="content__logo">
                 <img alt="" class="image_lg" :class="page"
                      :src="require(`../assets/images/${page}-header-main-logo-lg.png`)"/>
@@ -73,7 +72,13 @@
 export default {
     name: 'PageHeaderMobile',
     props: {
-        page: String,
+        page: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return ['account', 'index', 'winners', 'pens'].includes(value);
+            },
+        },
     },
     data() {
         return {
@@ -81,6 +86,7 @@ export default {
         };
     },
 };
+// todo script visibility: hidden;
 </script>
 
 <style lang="scss">
@@ -99,8 +105,6 @@ export default {
     height: auto;
     background: linear-gradient(180deg, #00a2f6 0%, #c153ff 100%);
     transition: transform 700ms ease;
-
-    // todo script visibility: hidden;
     visibility: hidden;
 
     .header:not(.open) & {

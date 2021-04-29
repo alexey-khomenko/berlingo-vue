@@ -8,7 +8,13 @@
 export default {
     name: 'PageHeader',
     props: {
-        page: String,
+        page: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return ['account', 'index', 'winners', 'pens'].includes(value);
+            },
+        },
     },
 };
 </script>
