@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ModalButtonClose from '/src/components/ModalButtonClose.vue';
+import ModalButtonClose from '@/components/ModalButtonClose.vue';
 
 export default {
     name: 'ModalAuthLogin',

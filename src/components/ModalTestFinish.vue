@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import ModalButtonClose from '/src/components/ModalButtonClose.vue';
+import ModalButtonClose from '@/components/ModalButtonClose.vue';
 
 export default {
     name: 'ModalTestFinish',
@@ -432,51 +432,51 @@ export default {
             }
         }
     }
-}
 
-.buttons {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 100px 26px;
+    .buttons {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 100px 26px;
 
-    @media (max-width: $md_max) {
-        margin: 0 80px 40px;
-    }
-
-    @media (max-width: $sm_max) {
-        margin: 0 20px 436px;
-    }
-
-    .button {
-
-        &:not(:last-of-type) {
-            margin: 0 20px 0 0;
-
-            @media (max-width: $sm_max) {
-                margin: 0 0 20px 0;
-            }
+        @media (max-width: $md_max) {
+            margin: 0 80px 40px;
         }
 
-        &_shops {
-            color: #ffffff;
-            background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
-            width: 206px;
-
-            @media (max-width: $sm_max) {
-                width: 140px;
-            }
+        @media (max-width: $sm_max) {
+            margin: 0 20px 436px;
         }
 
-        &_prizes {
-            color: #000000;
-            background-color: #ffffff;
-            border: 2px solid #000000;
-            width: 237px;
+        .button {
 
-            @media (max-width: $sm_max) {
-                width: 162px;
+            &:not(:last-of-type) {
+                margin: 0 20px 0 0;
+
+                @media (max-width: $sm_max) {
+                    margin: 0 0 20px 0;
+                }
+            }
+
+            &_shops {
+                color: #ffffff;
+                background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
+                width: 206px;
+
+                @media (max-width: $sm_max) {
+                    width: 140px;
+                }
+            }
+
+            &_prizes {
+                color: #000000;
+                background-color: #ffffff;
+                border: 2px solid #000000;
+                width: 237px;
+
+                @media (max-width: $sm_max) {
+                    width: 162px;
+                }
             }
         }
     }

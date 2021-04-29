@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import ModalAuthLogin from '/src/components/ModalAuthLogin.vue';
-import ModalAuthRegister from '/src/components/ModalAuthRegister.vue';
-import ModalAuthSuccess from '/src/components/ModalAuthSuccess.vue';
+import ModalAuthLogin from '@/components/ModalAuthLogin.vue';
+import ModalAuthRegister from '@/components/ModalAuthRegister.vue';
+import ModalAuthSuccess from '@/components/ModalAuthSuccess.vue';
 
 export default {
     name: 'ModalLogin',
