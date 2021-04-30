@@ -11,8 +11,15 @@
     <AccountReceipts>
         <AccountReceiptsMain/>
     </AccountReceipts>
+    <AccountPrizes>
+        <AccountPrizesBack/>
+        <AccountPrizesMain/>
+    </AccountPrizes>
 
-<!--    todo prizes -->
+<!--    todo balls -->
+<!--    todo my -->
+<!--    todo marathon -->
+<!--    todo bottom -->
 
     <PageFooter page="account">
         <PageFooterBack page="account"/>
@@ -30,6 +37,10 @@ import AccountTopBack from '/src/components/AccountTopBack';
 import AccountTopMain from '/src/components/AccountTopMain';
 import AccountReceipts from '/src/components/AccountReceipts';
 import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
+// todo PagePrizes?
+import AccountPrizes from '/src/components/AccountPrizes';
+import AccountPrizesBack from '/src/components/AccountPrizesBack';
+import AccountPrizesMain from '/src/components/AccountPrizesMain';
 
 import PageFooter from '/src/components/PageFooter';
 import PageFooterBack from '/src/components/PageFooterBack';
@@ -47,6 +58,10 @@ export default {
         AccountTopMain,
         AccountReceipts,
         AccountReceiptsMain,
+
+        AccountPrizes,
+        AccountPrizesBack,
+        AccountPrizesMain,
 
         PageFooter,
         PageFooterBack,
