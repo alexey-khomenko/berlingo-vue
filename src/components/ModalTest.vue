@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import ModalTestStart from '/src/components/ModalTestStart.vue';
-import ModalTestStages from '/src/components/ModalTestStages.vue';
-import ModalTestFinish from '/src/components/ModalTestFinish.vue';
+import ModalTestStart from '/src/components/ModalTestStart';
+import ModalTestStages from '/src/components/ModalTestStages';
+import ModalTestFinish from '/src/components/ModalTestFinish';
 
 export default {
     name: 'ModalTest',

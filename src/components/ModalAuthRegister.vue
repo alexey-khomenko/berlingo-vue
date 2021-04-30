@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import ModalButtonClose from '/src/components/ModalButtonClose.vue';
-import ModalButtonAgree from '/src/components/ModalButtonAgree.vue';
+import ModalButtonClose from '/src/components/ModalButtonClose';
+import ModalButtonAgree from '/src/components/ModalButtonAgree';
 
 export default {
     name: 'ModalAuthRegister',

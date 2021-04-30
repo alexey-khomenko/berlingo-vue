@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import PageHeader from '/src/components/PageHeader.vue';
-import PageHeaderMain from '/src/components/PageHeaderMain.vue';
-import PageHeaderMobile from '/src/components/PageHeaderMobile.vue';
-import PensContent from '/src/components/PensContent.vue';
-import PensContentBack from '/src/components/PensContentBack.vue';
-import PensContentMain from '/src/components/PensContentMain.vue';
-import PageFooter from '/src/components/PageFooter.vue';
-import PageFooterMain from '/src/components/PageFooterMain.vue';
+import PageHeader from '/src/components/PageHeader';
+import PageHeaderMain from '/src/components/PageHeaderMain';
+import PageHeaderMobile from '/src/components/PageHeaderMobile';
+import PensContent from '/src/components/PensContent';
+import PensContentBack from '/src/components/PensContentBack';
+import PensContentMain from '/src/components/PensContentMain';
+import PageFooter from '/src/components/PageFooter';
+import PageFooterMain from '/src/components/PageFooterMain';
 
 export default {
     name: 'Pens',

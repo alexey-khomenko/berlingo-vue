@@ -15,9 +15,14 @@
         <PagePrizesBack page="account"/>
         <PagePrizesMain page="account"/>
     </PagePrizes>
+    <AccountBalls>
+        <AccountBallsBack/>
+        <AccountBallsMain/>
+    </AccountBalls>
+    <AccountMy>
+        <AccountMyMain/>
+    </AccountMy>
 
-    <!-- todo balls -->
-    <!-- todo my -->
     <!-- todo marathon -->
     <!-- todo bottom -->
 
@@ -40,6 +45,11 @@ import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
 import PagePrizes from '/src/components/PagePrizes';
 import PagePrizesBack from '/src/components/PagePrizesBack';
 import PagePrizesMain from '/src/components/PagePrizesMain';
+import AccountBalls from '/src/components/AccountBalls';
+import AccountBallsBack from '/src/components/AccountBallsBack';
+import AccountBallsMain from '/src/components/AccountBallsMain';
+import AccountMy from '/src/components/AccountMy';
+import AccountMyMain from '/src/components/AccountMyMain';
 
 import PageFooter from '/src/components/PageFooter';
 import PageFooterBack from '/src/components/PageFooterBack';
@@ -60,6 +70,11 @@ export default {
         PagePrizes,
         PagePrizesBack,
         PagePrizesMain,
+        AccountBalls,
+        AccountBallsBack,
+        AccountBallsMain,
+        AccountMy,
+        AccountMyMain,
 
         PageFooter,
         PageFooterBack,
