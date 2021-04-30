@@ -11,15 +11,15 @@
     <AccountReceipts>
         <AccountReceiptsMain/>
     </AccountReceipts>
-    <AccountPrizes>
-        <AccountPrizesBack/>
-        <AccountPrizesMain/>
-    </AccountPrizes>
+    <PagePrizes page="account">
+        <PagePrizesBack page="account"/>
+        <PagePrizesMain page="account"/>
+    </PagePrizes>
 
-<!--    todo balls -->
-<!--    todo my -->
-<!--    todo marathon -->
-<!--    todo bottom -->
+    <!-- todo balls -->
+    <!-- todo my -->
+    <!-- todo marathon -->
+    <!-- todo bottom -->
 
     <PageFooter page="account">
         <PageFooterBack page="account"/>
@@ -37,10 +37,9 @@ import AccountTopBack from '/src/components/AccountTopBack';
 import AccountTopMain from '/src/components/AccountTopMain';
 import AccountReceipts from '/src/components/AccountReceipts';
 import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
-// todo PagePrizes?
-import AccountPrizes from '/src/components/AccountPrizes';
-import AccountPrizesBack from '/src/components/AccountPrizesBack';
-import AccountPrizesMain from '/src/components/AccountPrizesMain';
+import PagePrizes from '/src/components/PagePrizes';
+import PagePrizesBack from '/src/components/PagePrizesBack';
+import PagePrizesMain from '/src/components/PagePrizesMain';
 
 import PageFooter from '/src/components/PageFooter';
 import PageFooterBack from '/src/components/PageFooterBack';
@@ -58,10 +57,9 @@ export default {
         AccountTopMain,
         AccountReceipts,
         AccountReceiptsMain,
-
-        AccountPrizes,
-        AccountPrizesBack,
-        AccountPrizesMain,
+        PagePrizes,
+        PagePrizesBack,
+        PagePrizesMain,
 
         PageFooter,
         PageFooterBack,
@@ -69,7 +67,3 @@ export default {
     },
 };
 </script>
-
-<style scoped lang="scss">
-
-</style>
