@@ -3,9 +3,9 @@
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
-                    <img alt="" class="image_lg" src="../assets/images/modal-test-6-lg.png">
-                    <img alt="" class="image_md" src="../assets/images/modal-test-6-md.png">
-                    <img alt="" class="image_sm" src="../assets/images/modal-test-6-sm.png">
+                    <img alt="" class="image_lg" src="../assets/images/modal-test-6-lg.png"/>
+                    <img alt="" class="image_md" src="../assets/images/modal-test-6-md.png"/>
+                    <img alt="" class="image_sm" src="../assets/images/modal-test-6-sm.png"/>
                 </div>
                 <div class="modal__body-2">
                     <ModalButtonClose/>
@@ -27,7 +27,7 @@
                             <template v-for="pen in result.pens" :key="pen.number">
                                 <div class="pen" :data-slider="pen.number" data-hidden="off">
                                     <a class="pen__link" :href="pen.link">
-                                        <img alt="" class="pen__image" :src="pen.image">
+                                        <img alt="" class="pen__image" :src="pen.image"/>
                                     </a>
                                     <div class="pen__texts">
                                         <div class="pen__title">{{ pen.title }}</div>

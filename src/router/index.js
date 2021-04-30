@@ -3,8 +3,8 @@ import {createRouter, createWebHistory} from 'vue-router';
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: () => import('../views/Home.vue'),
+        name: 'Index',
+        component: () => import('../views/Index'),
         meta: {
             title: 'Акция - Berlingo',
         },
@@ -12,7 +12,7 @@ const routes = [
     {
         path: '/account',
         name: 'Account',
-        component: () => import('../views/Account.vue'),
+        component: () => import('../views/Account'),
         meta: {
             title: 'Профиль - Berlingo',
         },
@@ -20,7 +20,7 @@ const routes = [
     {
         path: '/winners',
         name: 'Winners',
-        component: () => import('../views/Winners.vue'),
+        component: () => import('../views/Winners'),
         meta: {
             title: 'Победители - Berlingo',
         },
@@ -28,7 +28,7 @@ const routes = [
     {
         path: '/pens',
         name: 'Pens',
-        component: () => import('../views/Pens.vue'),
+        component: () => import('../views/Pens'),
         meta: {
             title: 'О ручках - Berlingo',
         },

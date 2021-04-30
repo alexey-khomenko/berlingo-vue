@@ -26,11 +26,24 @@
         <AccountMarathonBack/>
         <AccountMarathonMain/>
     </AccountMarathon>
-<!-- todo PageBottom. Main с двумя слотами под текст и кнопку -->
-    <AccountBottom>
-        <AccountBottomBack/>
-        <AccountBottomMain/>
-    </AccountBottom>
+    <PageBottom page="account">
+        <PageBottomBack page="account"/>
+        <PageBottomMain page="account">
+            <template #title>Пройди тест и определи свою идеальную ручку</template>
+            <div class="element element_button" data-modal-open="test_1">
+                <div class="element_button__md">
+                    <PageButton type="button" color="red">
+                        <span>Найди свою идеальную ручку</span>
+                    </PageButton>
+                </div>
+                <div class="element_button__sm">
+                    <PageButton type="button" color="red">
+                        <span>Смотреть</span>
+                    </PageButton>
+                </div>
+            </div>
+        </PageBottomMain>
+    </PageBottom>
     <PageFooter page="account">
         <PageFooterBack page="account"/>
         <PageFooterMain page="account"/>
@@ -58,12 +71,13 @@ import AccountMyMain from '/src/components/AccountMyMain';
 import AccountMarathon from '/src/components/AccountMarathon';
 import AccountMarathonBack from '/src/components/AccountMarathonBack';
 import AccountMarathonMain from '/src/components/AccountMarathonMain';
-import AccountBottom from '/src/components/AccountBottom';
-import AccountBottomBack from '/src/components/AccountBottomBack';
-import AccountBottomMain from '/src/components/AccountBottomMain';
+import PageBottom from '/src/components/PageBottom';
+import PageBottomBack from '/src/components/PageBottomBack';
+import PageBottomMain from '/src/components/PageBottomMain';
 import PageFooter from '/src/components/PageFooter';
 import PageFooterBack from '/src/components/PageFooterBack';
 import PageFooterMain from '/src/components/PageFooterMain';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'Account',
@@ -88,12 +102,13 @@ export default {
         AccountMarathon,
         AccountMarathonBack,
         AccountMarathonMain,
-        AccountBottom,
-        AccountBottomBack,
-        AccountBottomMain,
+        PageBottom,
+        PageBottomBack,
+        PageBottomMain,
         PageFooter,
         PageFooterBack,
         PageFooterMain,
+        PageButton,
     },
 };
 </script>

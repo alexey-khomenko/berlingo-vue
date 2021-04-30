@@ -13,10 +13,10 @@
                                    :name="`step_${stage}`" :value="number * 10">
                             <label :for="`i-${stage}_${number}`">
                                 <img alt="" :src="require(`../assets/images/modal-test-${stage + 1}-${number}.png`)"
-                                     data-selected="off">
+                                     data-selected="off"/>
                                 <img alt=""
                                      :src="require(`../assets/images/modal-test-${stage + 1}-${number}-selected.png`)"
-                                     data-selected="on">
+                                     data-selected="on"/>
                             </label>
                         </template>
                     </form>

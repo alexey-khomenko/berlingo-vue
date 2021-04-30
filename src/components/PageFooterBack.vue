@@ -1,8 +1,8 @@
 <template>
     <div class="back footer__back">
-        <img alt="" class="image_lg" :src="require(`../assets/images/${page}-footer-back-lg.png`)">
-        <img alt="" class="image_md" :src="require(`../assets/images/${page}-footer-back-md.png`)">
-        <img alt="" class="image_sm" :src="require(`../assets/images/${page}-footer-back-sm.png`)">
+        <img alt="" class="image_lg" :src="require(`../assets/images/${page}-footer-back-lg.png`)"/>
+        <img alt="" class="image_md" :src="require(`../assets/images/${page}-footer-back-md.png`)"/>
+        <img alt="" class="image_sm" :src="require(`../assets/images/${page}-footer-back-sm.png`)"/>
     </div>
 </template>
 

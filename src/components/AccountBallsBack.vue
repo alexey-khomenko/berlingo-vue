@@ -1,8 +1,8 @@
 <template>
     <div class="back account-balls__back">
-        <img alt="" class="image_lg" src="../assets/images/account-balls-back-lg.png">
-        <img alt="" class="image_md" src="../assets/images/account-balls-back-md.png">
-        <img alt="" class="image_sm" src="../assets/images/account-balls-back-sm.png">
+        <img alt="" class="image_lg" src="../assets/images/account-balls-back-lg.png"/>
+        <img alt="" class="image_md" src="../assets/images/account-balls-back-md.png"/>
+        <img alt="" class="image_sm" src="../assets/images/account-balls-back-sm.png"/>
     </div>
 </template>
 

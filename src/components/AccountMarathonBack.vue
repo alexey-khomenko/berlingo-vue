@@ -1,8 +1,8 @@
 <template>
     <div class="back account-marathon__back">
-        <img alt="" class="image_lg" src="../assets/images/account-marathon-back-lg.png">
-        <img alt="" class="image_md" src="../assets/images/account-marathon-back-md.png">
-        <img alt="" class="image_sm" src="../assets/images/account-marathon-back-sm.png">
+        <img alt="" class="image_lg" src="../assets/images/account-marathon-back-lg.png"/>
+        <img alt="" class="image_md" src="../assets/images/account-marathon-back-md.png"/>
+        <img alt="" class="image_sm" src="../assets/images/account-marathon-back-sm.png"/>
     </div>
 </template>
 

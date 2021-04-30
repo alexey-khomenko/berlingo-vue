@@ -1,27 +1,27 @@
 <template>
-    <section class="section account-bottom">
+    <section class="section index-top">
         <slot></slot>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'AccountBottom',
+    name: 'IndexTop',
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-.account-bottom {
-    height: 418px;
+.index-top {
+    height: 780px;
 
     @media (max-width: $md_max) {
-        height: 324px;
+        height: 580px;
     }
 
     @media (max-width: $sm_max) {
-        height: 407px;
+        height: 590px;
     }
 }
 </style>

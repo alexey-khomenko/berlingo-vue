@@ -1,26 +1,15 @@
 <template>
-    <div class="main main_rel main_account account-bottom__main">
+    <div class="main main_rel bottom__main" :class="`main_${page} bottom__main_${page}`">
 
         <div class="element element_text">
             Подписывайся и следи за результатами конкурса в наших социальных сетях!
         </div>
 
         <div class="element element_title">
-            Пройди тест и определи свою идеальную ручку
+            <slot name="title"></slot>
         </div>
 
-        <div class="element element_button" data-modal-open="test_1">
-            <div class="element_button__md">
-                <PageButton type="button" color="red">
-                    <span>Найди свою идеальную ручку</span>
-                </PageButton>
-            </div>
-            <div class="element_button__sm">
-                <PageButton type="button" color="red">
-                    <span>Смотреть</span>
-                </PageButton>
-            </div>
-        </div>
+        <slot></slot>
 
         <div class="element element_socials">
             <div class="link link_vk">
@@ -52,6 +41,15 @@ export default {
     components: {
         PageButton,
     },
+    props: {
+        page: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return ['account', 'index'].includes(value);
+            },
+        },
+    },
     data() {
         return {
             vk: '#',
@@ -64,7 +62,7 @@ export default {
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-.account-bottom__main {
+.bottom__main {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -135,7 +133,6 @@ export default {
         &_button {
             left: 0;
             top: 278px;
-            width: 368px;
 
             @media (max-width: $md_max) {
                 top: 204px;
@@ -143,7 +140,6 @@ export default {
 
             @media (max-width: $sm_max) {
                 top: 139px;
-                width: 126px;
             }
 
             &__md {
@@ -209,6 +205,22 @@ export default {
                     }
                 }
             }
+        }
+    }
+
+    &_account .element_button {
+        width: 368px;
+
+        @media (max-width: $sm_max) {
+            width: 126px;
+        }
+    }
+
+    &_index .element_button {
+        width: 185px;
+
+        @media (max-width: $sm_max) {
+            width: 126px;
         }
     }
 }

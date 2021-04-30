@@ -3,9 +3,9 @@
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
-                    <img alt="" class="image_lg" src="../assets/images/modal-test-1-lg.png">
-                    <img alt="" class="image_md" src="../assets/images/modal-test-1-md.png">
-                    <img alt="" class="image_sm" src="../assets/images/modal-test-1-sm.png">
+                    <img alt="" class="image_lg" src="../assets/images/modal-test-1-lg.png"/>
+                    <img alt="" class="image_md" src="../assets/images/modal-test-1-md.png"/>
+                    <img alt="" class="image_sm" src="../assets/images/modal-test-1-sm.png"/>
                 </div>
                 <div class="modal__body-2">
                     <ModalButtonClose/>
