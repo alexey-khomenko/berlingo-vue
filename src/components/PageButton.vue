@@ -1,18 +1,18 @@
 <template>
-    <a href="#" class="button" :class="classes" v-if="type === 'a'">
-        <span><slot></slot></span>
+    <a :href="to" class="button" :class="classes" v-if="type === 'a'">
+        <slot></slot>
     </a>
 
     <router-link :to="to" class="button" :class="classes" v-else-if="type === 'link'">
-        <span><slot></slot></span>
+        <slot></slot>
     </router-link>
 
     <button type="button" class="button" :class="classes" v-else-if="type === 'button'">
-        <span><slot></slot></span>
+        <slot></slot>
     </button>
 
     <button type="submit" class="button" :class="classes" v-else-if="type === 'submit'">
-        <span><slot></slot></span>
+        <slot></slot>
     </button>
 </template>
 
@@ -24,8 +24,6 @@ export default {
             type: String,
             required: true,
             validator: function (value) {
-                // todo
-                // a - tmp
                 return ['a', 'link', 'button', 'submit'].includes(value);
             },
         },
@@ -40,20 +38,18 @@ export default {
                 return ['red', 'green', 'blue', 'white', 'black'].includes(value);
             },
         },
-        border: {
+        bordered: {
             type: Boolean,
             default: false,
         },
         // todo
         // dataset - поведение - следить за кликом, передавать обёртке событие
-        // width + margin - на обёртке
-        // кнопка с svg?
     },
     computed: {
         classes() {
             let classes = [];
 
-            if (this.border) {
+            if (this.bordered) {
                 classes.push('button_bordered');
             }
 
@@ -76,7 +72,9 @@ export default {
     box-sizing: border-box;
     border-radius: 99999px;
     text-decoration: none;
+    cursor: pointer;
     padding: 0;
+    width: 100%;
     height: 80px;
 
     @media (max-width: $sm_max) {
@@ -103,8 +101,17 @@ export default {
         }
     }
 
+    div:not([data-selected="on"]) > &:hover svg,
+    div:not([data-selected="on"]) > &:focus svg {
+        transform: scale(1.2);
+    }
+
+    svg {
+        transition: transform 500ms ease;
+    }
+
     &:not(&_bordered) {
-        border-color: transparent;
+        border: none;
     }
 
     &_bordered {

@@ -6,7 +6,7 @@ const routes = [
         name: 'Home',
         component: () => import('../views/Home.vue'),
         meta: {
-            title: 'Акция - Berlingo'
+            title: 'Акция - Berlingo',
         },
     },
     {
@@ -14,7 +14,7 @@ const routes = [
         name: 'Account',
         component: () => import('../views/Account.vue'),
         meta: {
-            title: 'Профиль - Berlingo'
+            title: 'Профиль - Berlingo',
         },
     },
     {
@@ -22,7 +22,7 @@ const routes = [
         name: 'Winners',
         component: () => import('../views/Winners.vue'),
         meta: {
-            title: 'Победители - Berlingo'
+            title: 'Победители - Berlingo',
         },
     },
     {
@@ -30,7 +30,7 @@ const routes = [
         name: 'Pens',
         component: () => import('../views/Pens.vue'),
         meta: {
-            title: 'О ручках - Berlingo'
+            title: 'О ручках - Berlingo',
         },
     },
 ];
@@ -38,6 +38,10 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+    scrollBehavior() {
+        // todo scroll to top, after transition
+        document.querySelector('.wrapper-outer').scrollTo(0,0);
+    },
 });
 
 router.beforeEach((to, from, next) => {

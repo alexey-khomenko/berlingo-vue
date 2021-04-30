@@ -13,10 +13,10 @@
                          :data-tab-open="tab.number" :data-selected="tab.selected"
                          v-for="tab in group.tabs.head" :key="tab.number"
                     >
-                        <PageButton type="a" :border="tab.selected === 'off'"
+                        <PageButton type="button" :bordered="tab.selected === 'off'"
                                     :color="tab.selected === 'off' ? 'black' : tab.color"
                         >
-                            {{ tab.title }}
+                            <span>{{ tab.title }}</span>
                         </PageButton>
                     </div>
                 </div>

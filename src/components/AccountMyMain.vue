@@ -1,19 +1,19 @@
 <template>
     <div class="main main_rel main_account account-my__main">
-
         <div class="titles">
-            <div class="title">
+            <div class="titles__title">
                 Мои призы
             </div>
-            <PageButton type="link" to="/winners" color="red" border>
-                Победители акции
-            </PageButton>
+            <div class="titles__btn">
+                <PageButton type="link" to="/winners" color="red">
+                    <span>Победители акции</span>
+                </PageButton>
+            </div>
         </div>
-
-        <ul class="prizes">
+        <ul class="prizes" v-if="prizes.length">
             <li class="prize" v-for="(prize, idx) in prizes" :key="idx">
                 <div class="prize__image">
-                    <img alt="" :src="prize.image" />
+                    <img alt="" :src="prize.image"/>
                 </div>
                 <div class="prize__texts">
                     <div class="prize__title">
@@ -25,7 +25,6 @@
                 </div>
             </li>
         </ul>
-
     </div>
 </template>
 
@@ -110,7 +109,7 @@ export default {
         align-items: center;
         margin-bottom: 60px;
 
-        .title {
+        &__title {
             color: #ffffff;
             font-family: "PF Din Text Cond Pro", sans-serif;
             font-style: normal;
@@ -128,6 +127,14 @@ export default {
                 line-height: 29px;
                 margin-bottom: 30px;
                 flex-basis: 100%;
+            }
+        }
+
+        &__btn {
+            width: 252px;
+
+            @media (max-width: $sm_max) {
+                width: 172px;
             }
         }
     }

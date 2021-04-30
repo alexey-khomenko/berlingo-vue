@@ -22,10 +22,15 @@
     <AccountMy>
         <AccountMyMain/>
     </AccountMy>
-
-    <!-- todo marathon -->
-    <!-- todo bottom -->
-
+    <AccountMarathon>
+        <AccountMarathonBack/>
+        <AccountMarathonMain/>
+    </AccountMarathon>
+<!-- todo PageBottom. Main с двумя слотами под текст и кнопку -->
+    <AccountBottom>
+        <AccountBottomBack/>
+        <AccountBottomMain/>
+    </AccountBottom>
     <PageFooter page="account">
         <PageFooterBack page="account"/>
         <PageFooterMain page="account"/>
@@ -50,7 +55,12 @@ import AccountBallsBack from '/src/components/AccountBallsBack';
 import AccountBallsMain from '/src/components/AccountBallsMain';
 import AccountMy from '/src/components/AccountMy';
 import AccountMyMain from '/src/components/AccountMyMain';
-
+import AccountMarathon from '/src/components/AccountMarathon';
+import AccountMarathonBack from '/src/components/AccountMarathonBack';
+import AccountMarathonMain from '/src/components/AccountMarathonMain';
+import AccountBottom from '/src/components/AccountBottom';
+import AccountBottomBack from '/src/components/AccountBottomBack';
+import AccountBottomMain from '/src/components/AccountBottomMain';
 import PageFooter from '/src/components/PageFooter';
 import PageFooterBack from '/src/components/PageFooterBack';
 import PageFooterMain from '/src/components/PageFooterMain';
@@ -75,7 +85,12 @@ export default {
         AccountBallsMain,
         AccountMy,
         AccountMyMain,
-
+        AccountMarathon,
+        AccountMarathonBack,
+        AccountMarathonMain,
+        AccountBottom,
+        AccountBottomBack,
+        AccountBottomMain,
         PageFooter,
         PageFooterBack,
         PageFooterMain,
