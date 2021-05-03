@@ -4,21 +4,14 @@
         <PageHeaderMain page="index"/>
         <PageHeaderMobile page="index"/>
     </PageHeader>
-    <IndexTop>
-        <IndexTopBack/>
-        <IndexTopMain/>
-    </IndexTop>
-    <!--
-        IndexStages
-    -->
+    <IndexTop/>
+    <IndexStages/>
     <PagePrizes page="index">
         <PagePrizesBack page="index"/>
         <PagePrizesMain page="index"/>
     </PagePrizes>
-    <!--
-        IndexPrize
-        IndexShops
-    -->
+    <IndexPrize/>
+    <IndexShops/>
     <PageBottom page="index">
         <PageBottomBack page="index"/>
         <PageBottomMain page="index">
@@ -42,12 +35,12 @@ import PageHeaderBack from '/src/components/PageHeaderBack';
 import PageHeaderMain from '/src/components/PageHeaderMain';
 import PageHeaderMobile from '/src/components/PageHeaderMobile';
 import IndexTop from '/src/components/IndexTop';
-import IndexTopBack from '/src/components/IndexTopBack';
-import IndexTopMain from '/src/components/IndexTopMain';
-
+import IndexStages from '/src/components/IndexStages';
 import PagePrizes from '/src/components/PagePrizes';
 import PagePrizesBack from '/src/components/PagePrizesBack';
 import PagePrizesMain from '/src/components/PagePrizesMain';
+import IndexPrize from '/src/components/IndexPrize';
+import IndexShops from '/src/components/IndexShops';
 
 import PageBottom from '/src/components/PageBottom';
 import PageBottomBack from '/src/components/PageBottomBack';
@@ -65,13 +58,12 @@ export default {
         PageHeaderMain,
         PageHeaderMobile,
         IndexTop,
-        IndexTopBack,
-        IndexTopMain,
-
+        IndexStages,
         PagePrizes,
         PagePrizesBack,
         PagePrizesMain,
-
+        IndexPrize,
+        IndexShops,
         PageBottom,
         PageBottomBack,
         PageBottomMain,

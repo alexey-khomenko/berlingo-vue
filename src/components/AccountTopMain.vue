@@ -5,7 +5,7 @@
         </div>
         <div class="buttons">
             <div class="buttons__receipt" data-modal-open="receipt">
-                <PageButton type="a" color="white">
+                <PageButton type="button" color="white">
                     <span>Зарегистрируй чек и получи призы</span>
                 </PageButton>
             </div>

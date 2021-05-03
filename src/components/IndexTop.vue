@@ -1,12 +1,20 @@
 <template>
     <section class="section index-top">
-        <slot></slot>
+        <IndexTopBack/>
+        <IndexTopMain/>
     </section>
 </template>
 
 <script>
+import IndexTopBack from '/src/components/IndexTopBack';
+import IndexTopMain from '/src/components/IndexTopMain';
+
 export default {
     name: 'IndexTop',
+    components: {
+        IndexTopBack,
+        IndexTopMain,
+    },
 };
 </script>
 

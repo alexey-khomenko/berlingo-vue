@@ -1,6 +1,7 @@
 <template>
     <section class="section winners-tabs">
         <div class="main main_rel main_winners winners-tabs__main" v-for="(group, idx) in groups" :key="idx">
+            <PageTabs>
             <div class="title">
                 {{ group.title }}
             </div>
@@ -9,19 +10,18 @@
             </div>
             <div class="tabs">
                 <div class="tabs__head" v-if="group.tabs.head.length">
-                    <div :class="`btn btn_${tab.type}`"
-                         :data-tab-open="tab.number" :data-selected="tab.selected"
+                    <div :class="`btn btn_${tab.type}`" :data-tab-open="tab.number"
+                         :data-selected="group.selected === tab.number ? 'on' : 'off'"
                          v-for="tab in group.tabs.head" :key="tab.number"
                     >
-                        <PageButton type="button" :bordered="tab.selected === 'off'"
-                                    :color="tab.selected === 'off' ? 'black' : tab.color"
-                        >
+                        <PageButton type="button" :bordered="group.selected !== tab.number"
+                                    :color="group.selected === tab.number ? tab.color : 'black'">
                             <span>{{ tab.title }}</span>
                         </PageButton>
                     </div>
                 </div>
                 <div class="tabs__body"
-                     :data-tab-body="tab.number" :data-hidden="tab.hidden"
+                     :data-tab-body="tab.number" :data-hidden="group.selected === tab.number ? 'off' : 'on'"
                      v-for="tab in group.tabs.body" :key="tab.number"
                 >
                     <div class="tabs__image">
@@ -47,16 +47,19 @@
                     </div>
                 </div>
             </div>
+            </PageTabs>
         </div>
     </section>
 </template>
 
 <script>
+import PageTabs from '/src/components/PageTabs';
 import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'WinnersTabs',
     components: {
+        PageTabs,
         PageButton,
     },
     data() {
@@ -65,27 +68,25 @@ export default {
                 {
                     title: 'Главные призы',
                     subtitle: null,
+                    selected: 0,
                     tabs: {
                         head: [
                             {
                                 type: 'bike',
                                 color: 'green',
                                 title: 'Велосипед',
-                                selected: 'on',
                                 number: 0,
                             },
                             {
                                 type: 'playstation',
                                 color: 'blue',
                                 title: 'PlayStation 5',
-                                selected: 'off',
                                 number: 1,
                             },
                             {
                                 type: 'applewatch',
                                 color: 'red',
                                 title: 'Apple Watch',
-                                selected: 'off',
                                 number: 2,
                             },
                         ],
@@ -93,19 +94,16 @@ export default {
                             {
                                 image: 'bike',
                                 winners: [],
-                                hidden: 'off',
                                 number: 0,
                             },
                             {
                                 image: 'playstation',
                                 winners: [],
-                                hidden: 'on',
                                 number: 1,
                             },
                             {
                                 image: 'applewatch',
                                 winners: [],
-                                hidden: 'on',
                                 number: 2,
                             },
                         ],
@@ -114,27 +112,25 @@ export default {
                 {
                     title: 'Еженедельные призы',
                     subtitle: null,
+                    selected: 3,
                     tabs: {
                         head: [
                             {
                                 type: 'okko',
                                 color: 'red',
                                 title: 'Подписка Okko',
-                                selected: 'on',
                                 number: 3,
                             },
                             {
                                 type: 'yandex',
                                 color: 'green',
                                 title: 'Подписка Яндекс.Музыка',
-                                selected: 'off',
                                 number: 4,
                             },
                             {
                                 type: 'litres',
                                 color: 'blue',
                                 title: 'Подписка Литрес',
-                                selected: 'off',
                                 number: 5,
                             },
                         ],
@@ -223,7 +219,6 @@ export default {
                                         phone: '+7 (***) *** 64 56',
                                     },
                                 ],
-                                hidden: 'off',
                                 number: 3,
                             },
                             {
@@ -310,7 +305,6 @@ export default {
                                         phone: '+7 (***) *** 64 56',
                                     },
                                 ],
-                                hidden: 'on',
                                 number: 4,
                             },
                             {
@@ -397,7 +391,6 @@ export default {
                                         phone: '+7 (***) *** 64 56',
                                     },
                                 ],
-                                hidden: 'on',
                                 number: 5,
                             },
                         ],
@@ -406,6 +399,7 @@ export default {
                 {
                     title: 'Ежедневные призы',
                     subtitle: 'Бокс с канцелярией Berlingo',
+                    selected: 6,
                     tabs: {
                         head: [],
                         body: [
@@ -493,7 +487,6 @@ export default {
                                         phone: '+7 (***) *** 64 56',
                                     },
                                 ],
-                                hidden: 'off',
                                 number: 6,
                             },
                         ],
@@ -518,77 +511,9 @@ export default {
     @media (max-width: $sm_max) {
         margin-bottom: 60px;
     }
-
-    .title {
-        color: #ffffff;
-        font-family: "PF Din Text Cond Pro", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 48px;
-        line-height: 58px;
-        margin-bottom: 40px;
-
-        @media (max-width: $md_max) {
-            font-size: 36px;
-            line-height: 43px;
-        }
-
-        @media (max-width: $sm_max) {
-            font-size: 24px;
-            line-height: 29px;
-        }
-    }
-
-    .subtitle {
-        color: #ffffff;
-        font-family: "PF Din Text Cond Pro", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 29px;
-        margin-bottom: 80px;
-
-        @media (max-width: $md_max) {
-            font-size: 18px;
-            line-height: 22px;
-            margin-top: -20px;
-            margin-bottom: 60px;
-        }
-
-        @media (max-width: $sm_max) {
-            margin-bottom: 40px;
-        }
-    }
-
     .tabs {
-        display: block;
-
         &__head {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: flex-start;
-            align-items: center;
-            margin-bottom: 80px;
-
-            @media (max-width: $md_max) {
-                margin-bottom: 60px;
-            }
-
-            @media (max-width: $sm_max) {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 40px;
-            }
-
             .btn {
-                &:not(:last-of-type) {
-                    margin: 0 20px 0 0;
-
-                    @media (max-width: $sm_max) {
-                        margin: 0 0 20px 0;
-                    }
-                }
-
                 &_bike {
                     width: 196px;
 
@@ -684,23 +609,6 @@ export default {
             img {
                 height: 100%;
                 width: auto;
-            }
-        }
-
-        .list-wrapper {
-            overflow: hidden;
-            position: relative;
-
-            &::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                height: 100px;
-                background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
-                transform: scale(1, -1);
-                pointer-events: none;
             }
         }
 

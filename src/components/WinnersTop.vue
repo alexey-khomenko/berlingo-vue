@@ -1,12 +1,20 @@
 <template>
     <section class="section winners-top">
-        <slot></slot>
+        <WinnersTopBack/>
+        <WinnersTopMain/>
     </section>
 </template>
 
 <script>
+import WinnersTopBack from '/src/components/WinnersTopBack';
+import WinnersTopMain from '/src/components/WinnersTopMain';
+
 export default {
     name: 'WinnersTop',
+    components: {
+        WinnersTopBack,
+        WinnersTopMain,
+    },
 };
 </script>
 

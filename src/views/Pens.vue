@@ -3,10 +3,7 @@
         <PageHeaderMain page="pens"/>
         <PageHeaderMobile page="pens"/>
     </PageHeader>
-    <PensContent>
-        <PensContentBack/>
-        <PensContentMain/>
-    </PensContent>
+    <PensContent/>
     <PageFooter page="pens">
         <PageFooterMain page="pens"/>
     </PageFooter>
@@ -17,8 +14,6 @@ import PageHeader from '/src/components/PageHeader';
 import PageHeaderMain from '/src/components/PageHeaderMain';
 import PageHeaderMobile from '/src/components/PageHeaderMobile';
 import PensContent from '/src/components/PensContent';
-import PensContentBack from '/src/components/PensContentBack';
-import PensContentMain from '/src/components/PensContentMain';
 import PageFooter from '/src/components/PageFooter';
 import PageFooterMain from '/src/components/PageFooterMain';
 
@@ -29,8 +24,6 @@ export default {
         PageHeaderMain,
         PageHeaderMobile,
         PensContent,
-        PensContentBack,
-        PensContentMain,
         PageFooter,
         PageFooterMain,
     },

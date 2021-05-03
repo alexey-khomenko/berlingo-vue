@@ -1,6 +1,5 @@
 <template>
     <div class="main main_abs prizes__main" :class="`main_${page} prizes__main_${page}`">
-        <!-- todo -->
         <div class="content">
             <div class="card card_primary">
                 <div class="text title_primary">

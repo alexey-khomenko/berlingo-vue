@@ -1,12 +1,20 @@
 <template>
     <section class="section pens-content">
-        <slot></slot>
+        <PensContentBack/>
+        <PensContentMain/>
     </section>
 </template>
 
 <script>
+import PensContentBack from '/src/components/PensContentBack';
+import PensContentMain from '/src/components/PensContentMain';
+
 export default {
     name: 'PageContent',
+    components: {
+        PensContentBack,
+        PensContentMain,
+    },
 };
 </script>
 
