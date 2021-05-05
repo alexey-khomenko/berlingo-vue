@@ -4,7 +4,7 @@
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
-                    <ModalButtonClose/>
+                    <modal-button-close/>
                     <div class="title">Шаг {{ stage }}/4</div>
                     <div class="subtitle">Выбери знак, который тебе больше нравится</div>
                     <form class="form">

@@ -1,12 +1,20 @@
 <template>
     <section class="section account-top">
-        <slot></slot>
+        <account-top-back/>
+        <account-top-main/>
     </section>
 </template>
 
 <script>
+import AccountTopBack from '/src/components/AccountTopBack';
+import AccountTopMain from '/src/components/AccountTopMain';
+
 export default {
     name: 'AccountTop',
+    components: {
+        AccountTopBack,
+        AccountTopMain,
+    },
 };
 </script>
 

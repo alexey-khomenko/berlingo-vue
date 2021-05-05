@@ -8,15 +8,15 @@
         </div>
 
         <div class="btn btn_check" :data-modal-open="auth ? 'receipt' : 'register'">
-            <PageButton type="button" color="white">
+            <page-button type="button" color="white">
                 <span>Зарегистрируй чек и получи призы</span>
-            </PageButton>
+            </page-button>
         </div>
 
         <div class="btn btn_pen" data-modal-open="test_1">
-            <PageButton type="button" color="black" bordered>
+            <page-button type="button" color="black" bordered>
                 <span>Найди свою идеальную ручку</span>
-            </PageButton>
+            </page-button>
         </div>
 
     </div>

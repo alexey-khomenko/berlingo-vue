@@ -1,7 +1,7 @@
 <template>
     <section class="section index-top">
-        <IndexTopBack/>
-        <IndexTopMain/>
+        <index-top-back/>
+        <index-top-main/>
     </section>
 </template>
 

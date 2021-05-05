@@ -4,9 +4,9 @@
             Участвуй в марафоне с Павлом Волей
         </div>
         <div class="btn" data-modal-open="receipt">
-            <PageButton type="button" color="white">
+            <page-button type="button" color="white">
                 <span>Участвовать</span>
-            </PageButton>
+            </page-button>
         </div>
     </div>
 </template>

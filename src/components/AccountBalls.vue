@@ -1,12 +1,20 @@
 <template>
     <section class="section account-balls">
-        <slot></slot>
+        <account-balls-back/>
+        <account-balls-main/>
     </section>
 </template>
 
 <script>
+import AccountBallsBack from '/src/components/AccountBallsBack';
+import AccountBallsMain from '/src/components/AccountBallsMain';
+
 export default {
     name: 'AccountBalls',
+    components: {
+        AccountBallsBack,
+        AccountBallsMain,
+    },
 };
 </script>
 

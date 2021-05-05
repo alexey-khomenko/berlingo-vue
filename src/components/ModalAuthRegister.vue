@@ -3,7 +3,7 @@
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
-                    <ModalButtonClose/>
+                    <modal-button-close/>
 
                     <div class="titles">
                         <a href="#" data-modal-open="login">Авторизация</a>

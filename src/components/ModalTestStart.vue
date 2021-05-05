@@ -8,7 +8,7 @@
                     <img alt="" class="image_sm" src="../assets/images/modal-test-1-sm.png"/>
                 </div>
                 <div class="modal__body-2">
-                    <ModalButtonClose/>
+                    <modal-button-close/>
                     <div class="text">
                         Я подготовил для тебя необычный тест. Просто выбирай картинки, которые тебе нравятся, а
                         я подберу ручки, которые подчеркнут твою индивидуальность лучше всего! Погнали?

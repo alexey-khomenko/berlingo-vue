@@ -1,32 +1,32 @@
 <template>
-    <PageHeader page="index">
-        <PageHeaderBack page="index"/>
-        <PageHeaderMain page="index"/>
-        <PageHeaderMobile page="index"/>
-    </PageHeader>
-    <IndexTop/>
-    <IndexStages/>
-    <PagePrizes page="index">
-        <PagePrizesBack page="index"/>
-        <PagePrizesMain page="index"/>
-    </PagePrizes>
-    <IndexPrize/>
-    <IndexShops/>
-    <PageBottom page="index">
-        <PageBottomBack page="index"/>
-        <PageBottomMain page="index">
+    <page-header page="index">
+        <page-header-back page="index"/>
+        <page-header-main page="index"/>
+        <page-header-mobile page="index"/>
+    </page-header>
+    <index-top/>
+    <index-stages/>
+    <page-prizes page="index">
+        <page-prizes-back page="index"/>
+        <page-prizes-main page="index"/>
+    </page-prizes>
+    <index-prize/>
+    <index-shops/>
+    <page-bottom page="index">
+        <page-bottom-back page="index"/>
+        <page-bottom-main page="index">
             <template #title>Победители акции</template>
             <div class="element element_button">
-                <PageButton type="link" to="/winners" color="red">
+                <page-button type="link" to="/winners" color="red">
                     <span>Смотреть</span>
-                </PageButton>
+                </page-button>
             </div>
-        </PageBottomMain>
-    </PageBottom>
-    <PageFooter page="index">
-        <PageFooterBack page="index"/>
-        <PageFooterMain page="index"/>
-    </PageFooter>
+        </page-bottom-main>
+    </page-bottom>
+    <page-footer page="index">
+        <page-footer-back page="index"/>
+        <page-footer-main page="index"/>
+    </page-footer>
 </template>
 
 <script>
@@ -41,7 +41,6 @@ import PagePrizesBack from '/src/components/PagePrizesBack';
 import PagePrizesMain from '/src/components/PagePrizesMain';
 import IndexPrize from '/src/components/IndexPrize';
 import IndexShops from '/src/components/IndexShops';
-
 import PageBottom from '/src/components/PageBottom';
 import PageBottomBack from '/src/components/PageBottomBack';
 import PageBottomMain from '/src/components/PageBottomMain';

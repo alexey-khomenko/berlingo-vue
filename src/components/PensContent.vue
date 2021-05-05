@@ -1,7 +1,7 @@
 <template>
     <section class="section pens-content">
-        <PensContentBack/>
-        <PensContentMain/>
+        <pens-content-back/>
+        <pens-content-main/>
     </section>
 </template>
 

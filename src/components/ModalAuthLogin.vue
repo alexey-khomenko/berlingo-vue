@@ -3,7 +3,7 @@
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
-                    <ModalButtonClose/>
+                    <modal-button-close/>
                     <div class="titles">
                         <span class="title">Авторизация</span>
                         <span class="center">или</span>

@@ -8,7 +8,7 @@
                     <img alt="" class="image_sm" src="../assets/images/modal-test-6-sm.png"/>
                 </div>
                 <div class="modal__body-2">
-                    <ModalButtonClose/>
+                    <modal-button-close/>
 
                     <template v-for="result in results" :key="result.number">
                         <div class="title" :data-result="result.number" data-hidden="on">

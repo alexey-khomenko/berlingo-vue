@@ -5,9 +5,9 @@
                 Мои призы
             </div>
             <div class="titles__btn">
-                <PageButton type="link" to="/winners" color="red">
+                <page-button type="link" to="/winners" color="red">
                     <span>Победители акции</span>
-                </PageButton>
+                </page-button>
             </div>
         </div>
         <ul class="prizes" v-if="prizes.length">

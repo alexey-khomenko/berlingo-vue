@@ -1,53 +1,40 @@
 <template>
-    <PageHeader page="account">
-        <PageHeaderBack page="account"/>
-        <PageHeaderMain page="account"/>
-        <PageHeaderMobile page="account"/>
-    </PageHeader>
-    <AccountTop>
-        <AccountTopBack/>
-        <AccountTopMain/>
-    </AccountTop>
-    <AccountReceipts>
-        <AccountReceiptsMain/>
-    </AccountReceipts>
-    <PagePrizes page="account">
-        <PagePrizesBack page="account"/>
-        <PagePrizesMain page="account"/>
-    </PagePrizes>
-    <AccountBalls>
-        <AccountBallsBack/>
-        <AccountBallsMain/>
-    </AccountBalls>
-    <AccountMy>
-        <AccountMyMain/>
-    </AccountMy>
-    <AccountMarathon>
-        <AccountMarathonBack/>
-        <AccountMarathonMain/>
-    </AccountMarathon>
-    <PageBottom page="account">
-        <PageBottomBack page="account"/>
-        <PageBottomMain page="account">
+    <page-header page="account">
+        <page-header-back page="account"/>
+        <page-header-main page="account"/>
+        <page-header-mobile page="account"/>
+    </page-header>
+    <account-top/>
+    <account-receipts/>
+    <page-prizes page="account">
+        <page-prizes-back page="account"/>
+        <page-prizes-main page="account"/>
+    </page-prizes>
+    <account-balls/>
+    <account-my/>
+    <account-marathon/>
+    <page-bottom page="account">
+        <page-bottom-back page="account"/>
+        <page-bottom-main page="account">
             <template #title>Пройди тест и определи свою идеальную ручку</template>
             <div class="element element_button" data-modal-open="test_1">
                 <div class="element_button__md">
-                    <PageButton type="button" color="red">
+                    <page-button type="button" color="red">
                         <span>Найди свою идеальную ручку</span>
-                    </PageButton>
+                    </page-button>
                 </div>
                 <div class="element_button__sm">
-                    <PageButton type="button" color="red">
+                    <page-button type="button" color="red">
                         <span>Смотреть</span>
-                    </PageButton>
+                    </page-button>
                 </div>
             </div>
-        </PageBottomMain>
-    </PageBottom>
-    <PageFooter page="account">
-        <PageFooterBack page="account"/>
-        <PageFooterMain page="account"/>
-    </PageFooter>
+        </page-bottom-main>
+    </page-bottom>
+    <page-footer page="account">
+        <page-footer-back page="account"/>
+        <page-footer-main page="account"/>
+    </page-footer>
 </template>
 
 <script>
@@ -56,21 +43,13 @@ import PageHeaderBack from '/src/components/PageHeaderBack';
 import PageHeaderMain from '/src/components/PageHeaderMain';
 import PageHeaderMobile from '/src/components/PageHeaderMobile';
 import AccountTop from '/src/components/AccountTop';
-import AccountTopBack from '/src/components/AccountTopBack';
-import AccountTopMain from '/src/components/AccountTopMain';
 import AccountReceipts from '/src/components/AccountReceipts';
-import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
 import PagePrizes from '/src/components/PagePrizes';
 import PagePrizesBack from '/src/components/PagePrizesBack';
 import PagePrizesMain from '/src/components/PagePrizesMain';
 import AccountBalls from '/src/components/AccountBalls';
-import AccountBallsBack from '/src/components/AccountBallsBack';
-import AccountBallsMain from '/src/components/AccountBallsMain';
 import AccountMy from '/src/components/AccountMy';
-import AccountMyMain from '/src/components/AccountMyMain';
 import AccountMarathon from '/src/components/AccountMarathon';
-import AccountMarathonBack from '/src/components/AccountMarathonBack';
-import AccountMarathonMain from '/src/components/AccountMarathonMain';
 import PageBottom from '/src/components/PageBottom';
 import PageBottomBack from '/src/components/PageBottomBack';
 import PageBottomMain from '/src/components/PageBottomMain';
@@ -87,21 +66,13 @@ export default {
         PageHeaderMain,
         PageHeaderMobile,
         AccountTop,
-        AccountTopBack,
-        AccountTopMain,
         AccountReceipts,
-        AccountReceiptsMain,
         PagePrizes,
         PagePrizesBack,
         PagePrizesMain,
         AccountBalls,
-        AccountBallsBack,
-        AccountBallsMain,
         AccountMy,
-        AccountMyMain,
         AccountMarathon,
-        AccountMarathonBack,
-        AccountMarathonMain,
         PageBottom,
         PageBottomBack,
         PageBottomMain,

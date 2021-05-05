@@ -1,5 +1,5 @@
 <template>
-    <div class="header__mobile" :class="`header__mobile_${page}`">
+    <div class="header__mobile" :class="`header__mobile_${page}`" ref="root">
         <div class="content">
             <router-link to="/" class="content__logo">
                 <img alt="" class="image_lg" :class="page"
@@ -85,8 +85,12 @@ export default {
             auth: false,
         };
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.$refs.root.style.visibility = 'visible';
+        });
+    },
 };
-// todo script visibility: hidden;
 </script>
 
 <style lang="scss">

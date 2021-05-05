@@ -1,14 +1,14 @@
 <template>
-    <PageHeader page="winners">
-        <PageHeaderBack page="winners"/>
-        <PageHeaderMain page="winners"/>
-        <PageHeaderMobile page="winners"/>
-    </PageHeader>
-    <WinnersTop/>
-    <WinnersTabs/>
-    <PageFooter page="winners">
-        <PageFooterMain page="winners"/>
-    </PageFooter>
+    <page-header page="winners">
+        <page-header-back page="winners"/>
+        <page-header-main page="winners"/>
+        <page-header-mobile page="winners"/>
+    </page-header>
+    <winners-top/>
+    <winners-tabs/>
+    <page-footer page="winners">
+        <page-footer-main page="winners"/>
+    </page-footer>
 </template>
 
 <script>

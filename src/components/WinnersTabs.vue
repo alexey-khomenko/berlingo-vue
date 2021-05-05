@@ -1,53 +1,53 @@
 <template>
     <section class="section winners-tabs">
         <div class="main main_rel main_winners winners-tabs__main" v-for="(group, idx) in groups" :key="idx">
-            <PageTabs>
-            <div class="title">
-                {{ group.title }}
-            </div>
-            <div class="subtitle" v-if="group.subtitle">
-                {{ group.subtitle }}
-            </div>
-            <div class="tabs">
-                <div class="tabs__head" v-if="group.tabs.head.length">
-                    <div :class="`btn btn_${tab.type}`" :data-tab-open="tab.number"
-                         :data-selected="group.selected === tab.number ? 'on' : 'off'"
-                         v-for="tab in group.tabs.head" :key="tab.number"
+            <page-tabs>
+                <div class="title">
+                    {{ group.title }}
+                </div>
+                <div class="subtitle" v-if="group.subtitle">
+                    {{ group.subtitle }}
+                </div>
+                <div class="tabs">
+                    <div class="tabs__head" v-if="group.tabs.head.length">
+                        <div :class="`btn btn_${tab.type}`" :data-tab-open="tab.number"
+                             :data-selected="group.selected === tab.number ? 'on' : 'off'"
+                             v-for="tab in group.tabs.head" :key="tab.number"
+                        >
+                            <page-button type="button" :bordered="group.selected !== tab.number"
+                                        :color="group.selected === tab.number ? tab.color : 'black'">
+                                <span>{{ tab.title }}</span>
+                            </page-button>
+                        </div>
+                    </div>
+                    <div class="tabs__body"
+                         :data-tab-body="tab.number" :data-hidden="group.selected === tab.number ? 'off' : 'on'"
+                         v-for="tab in group.tabs.body" :key="tab.number"
                     >
-                        <PageButton type="button" :bordered="group.selected !== tab.number"
-                                    :color="group.selected === tab.number ? tab.color : 'black'">
-                            <span>{{ tab.title }}</span>
-                        </PageButton>
+                        <div class="tabs__image">
+                            <img alt="" :src="require(`../assets/images/account-my-${tab.image}.png`)"/>
+                        </div>
+                        <div class="list-wrapper" v-if="tab.winners.length">
+                            <ul class="tabs__list">
+                                <li class="winner" v-for="(winner, i) in tab.winners" :key="`${tab.number}-${i}`">
+                                    <span class="winner__date">
+                                        {{ winner.date }}
+                                    </span>
+                                    <span class="winner__nick">
+                                        {{ winner.nick }}
+                                    </span>
+                                    <span class="winner__phone">
+                                        {{ winner.phone }}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tabs__warning" v-else>
+                            Победители ещё не определны. Розыгрыш состоится 16.05.2021
+                        </div>
                     </div>
                 </div>
-                <div class="tabs__body"
-                     :data-tab-body="tab.number" :data-hidden="group.selected === tab.number ? 'off' : 'on'"
-                     v-for="tab in group.tabs.body" :key="tab.number"
-                >
-                    <div class="tabs__image">
-                        <img alt="" :src="require(`../assets/images/account-my-${tab.image}.png`)"/>
-                    </div>
-                    <div class="list-wrapper" v-if="tab.winners.length">
-                        <ul class="tabs__list">
-                            <li class="winner" v-for="(winner, i) in tab.winners" :key="`${tab.number}-${i}`">
-                                <span class="winner__date">
-                                    {{ winner.date }}
-                                </span>
-                                <span class="winner__nick">
-                                    {{ winner.nick }}
-                                </span>
-                                <span class="winner__phone">
-                                    {{ winner.phone }}
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tabs__warning" v-else>
-                        Победители ещё не определны. Розыгрыш состоится 16.05.2021
-                    </div>
-                </div>
-            </div>
-            </PageTabs>
+            </page-tabs>
         </div>
     </section>
 </template>
@@ -511,6 +511,7 @@ export default {
     @media (max-width: $sm_max) {
         margin-bottom: 60px;
     }
+
     .tabs {
         &__head {
             .btn {

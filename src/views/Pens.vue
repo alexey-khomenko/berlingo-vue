@@ -1,12 +1,12 @@
 <template>
-    <PageHeader page="pens">
-        <PageHeaderMain page="pens"/>
-        <PageHeaderMobile page="pens"/>
-    </PageHeader>
-    <PensContent/>
-    <PageFooter page="pens">
-        <PageFooterMain page="pens"/>
-    </PageFooter>
+    <page-header page="pens">
+        <page-header-main page="pens"/>
+        <page-header-mobile page="pens"/>
+    </page-header>
+    <pens-content/>
+    <page-footer page="pens">
+        <page-footer-main page="pens"/>
+    </page-footer>
 </template>
 
 <script>

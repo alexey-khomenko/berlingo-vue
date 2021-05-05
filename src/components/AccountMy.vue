@@ -1,12 +1,17 @@
 <template>
     <section class="section account-my">
-        <slot></slot>
+        <account-my-main/>
     </section>
 </template>
 
 <script>
+import AccountMyMain from '/src/components/AccountMyMain';
+
 export default {
     name: 'AccountMy',
+    components: {
+        AccountMyMain,
+    }
 };
 </script>
 

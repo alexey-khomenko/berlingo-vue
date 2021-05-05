@@ -1,7 +1,7 @@
 <template>
     <section class="section index-stages">
-        <IndexStagesBack/>
-        <IndexStagesMain/>
+        <index-stages-back/>
+        <index-stages-main/>
     </section>
 </template>
 

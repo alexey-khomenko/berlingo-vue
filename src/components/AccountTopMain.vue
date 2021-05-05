@@ -5,14 +5,14 @@
         </div>
         <div class="buttons">
             <div class="buttons__receipt" data-modal-open="receipt">
-                <PageButton type="button" color="white">
+                <page-button type="button" color="white">
                     <span>Зарегистрируй чек и получи призы</span>
-                </PageButton>
+                </page-button>
             </div>
             <div class="buttons__exit" data-auth-exit>
-                <PageButton type="button" color="black" bordered>
+                <page-button type="button" color="black" bordered>
                     <span>Выйти</span>
-                </PageButton>
+                </page-button>
             </div>
         </div>
     </div>

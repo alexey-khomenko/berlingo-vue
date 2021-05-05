@@ -1,12 +1,20 @@
 <template>
     <section class="section account-marathon">
-        <slot></slot>
+        <account-marathon-back/>
+        <account-marathon-main/>
     </section>
 </template>
 
 <script>
+import AccountMarathonBack from '/src/components/AccountMarathonBack';
+import AccountMarathonMain from '/src/components/AccountMarathonMain';
+
 export default {
     name: 'AccountMarathon',
+    components: {
+        AccountMarathonBack,
+        AccountMarathonMain,
+    },
 };
 </script>
 

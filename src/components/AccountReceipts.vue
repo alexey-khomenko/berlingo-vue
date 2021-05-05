@@ -1,12 +1,17 @@
 <template>
     <section class="section account-receipts">
-        <slot></slot>
+        <account-receipts-main/>
     </section>
 </template>
 
 <script>
+import AccountReceiptsMain from '/src/components/AccountReceiptsMain';
+
 export default {
     name: 'AccountReceipts',
+    components: {
+        AccountReceiptsMain,
+    },
 };
 </script>
 

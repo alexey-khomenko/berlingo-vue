@@ -1,7 +1,7 @@
 <template>
     <section class="section index-prize">
-        <IndexPrizeBack/>
-        <IndexPrizeMain/>
+        <index-prize-back/>
+        <index-prize-main/>
     </section>
 </template>
 

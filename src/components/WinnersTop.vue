@@ -1,7 +1,7 @@
 <template>
     <section class="section winners-top">
-        <WinnersTopBack/>
-        <WinnersTopMain/>
+        <winners-top-back/>
+        <winners-top-main/>
     </section>
 </template>
 

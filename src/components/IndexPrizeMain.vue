@@ -1,6 +1,5 @@
 <template>
     <div class="main main_rel main_index index-prize__main">
-
         <div class="title">
             Гарантированный приз
         </div>
@@ -9,11 +8,10 @@
             Павлом Волей
         </div>
         <div class="btn" :data-modal-open="auth ? 'receipt' : 'register'">
-            <PageButton type="button" color="white">
+            <page-button type="button" color="white">
                 <span>Зарегистрируй чек</span>
-            </PageButton>
+            </page-button>
         </div>
-
     </div>
 </template>
 

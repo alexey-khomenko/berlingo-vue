@@ -1,12 +1,12 @@
 <template>
-    <PageWrapper>
+    <page-wrapper>
         <router-view/>
-    </PageWrapper>
-    <PageShadow>
-        <ModalAuth/>
-        <ModalReceipt/>
-        <ModalTest/>
-    </PageShadow>
+    </page-wrapper>
+    <page-shadow>
+        <modal-auth/>
+        <modal-receipt/>
+        <modal-test/>
+    </page-shadow>
 </template>
 
 <script>
