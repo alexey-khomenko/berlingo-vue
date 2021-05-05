@@ -28,7 +28,7 @@
                                        placeholder="Введи свой e-mail *">
                             </label>
                             <label class="form__input">
-                                <input type="tel" name="register-phone" maxlength="200"
+                                <input type="tel" name="register-phone" maxlength="200" ref="tel"
                                        placeholder="Введи свой телефон *">
                             </label>
                         </div>
@@ -57,12 +57,19 @@
 <script>
 import ModalButtonClose from '/src/components/ModalButtonClose';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
+import Inputmask from 'inputmask';
 
 export default {
     name: 'ModalAuthRegister',
     components: {
         ModalButtonClose,
         ModalButtonAgree,
+    },
+    mounted() {
+        Inputmask('+7(999)999-99-99').mask(this.$refs.tel);
+    },
+    beforeUnmount() {
+        Inputmask.remove(this.$refs.tel);
     },
 };
 </script>

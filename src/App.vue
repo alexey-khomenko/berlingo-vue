@@ -24,7 +24,7 @@ export default {
         ModalAuth,
         ModalReceipt,
         ModalTest,
-    }
+    },
 };
 </script>
 

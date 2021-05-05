@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper-outer">
+    <div class="wrapper-outer" ref="wrap">
         <div class="wrapper-inner">
             <slot></slot>
         </div>
@@ -9,6 +9,12 @@
 <script>
 export default {
     name: 'PageWrapper',
+    mounted() {
+        setTimeout(() => {
+            // todo wrap.focus()
+            this.$refs.wrap.focus();
+        }, 10);
+    },
 };
 </script>
 
