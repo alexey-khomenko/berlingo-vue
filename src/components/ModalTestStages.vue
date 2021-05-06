@@ -10,7 +10,7 @@
                     <form class="form">
                         <template v-for="(number, idx) in [1,2,3,4]" :key="idx">
                             <input type="radio" :id="`i-${stage}_${number}`"
-                                   :name="`step_${stage}`" :value="number * 10">
+                                   :name="`step_${stage}`" :value="number * 10"/>
                             <label :for="`i-${stage}_${number}`">
                                 <img alt="" :src="require(`../assets/images/modal-test-${stage + 1}-${number}.png`)"
                                      data-selected="off"/>
@@ -20,7 +20,7 @@
                             </label>
                         </template>
                     </form>
-                    <!--                    todo button -->
+                    <!-- todo button -->
                     <a class="button" href="#" :data-modal-open="`test_${stage + 2}`" data-disabled="on">
                         <span>Дальше</span>
                     </a>

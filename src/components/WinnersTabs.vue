@@ -10,15 +10,15 @@
                 </div>
                 <div class="tabs">
                     <div class="tabs__head" v-if="group.tabs.head.length">
-                        <div :class="`btn btn_${tab.type}`" :data-tab-open="tab.number"
-                             :data-selected="group.selected === tab.number ? 'on' : 'off'"
-                             v-for="tab in group.tabs.head" :key="tab.number"
-                        >
-                            <page-button type="button" :bordered="group.selected !== tab.number"
-                                        :color="group.selected === tab.number ? tab.color : 'black'">
-                                <span>{{ tab.title }}</span>
-                            </page-button>
-                        </div>
+                        <page-button type="button"
+                                     :bordered="group.selected !== tab.number"
+                                     :color="group.selected === tab.number ? tab.color : 'black'"
+                                     :class="`btn btn_${tab.type}`"
+                                     :data-tab-open="tab.number"
+                                     :data-selected="group.selected === tab.number ? 'on' : 'off'"
+                                     v-for="tab in group.tabs.head" :key="tab.number">
+                            <span>{{ tab.title }}</span>
+                        </page-button>
                     </div>
                     <div class="tabs__body"
                          :data-tab-body="tab.number" :data-hidden="group.selected === tab.number ? 'off' : 'on'"

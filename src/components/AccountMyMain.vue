@@ -4,11 +4,9 @@
             <div class="titles__title">
                 Мои призы
             </div>
-            <div class="titles__btn">
-                <page-button type="link" to="/winners" color="red">
-                    <span>Победители акции</span>
-                </page-button>
-            </div>
+            <page-button type="link" to="/winners" color="red" class="titles__btn">
+                <span>Победители акции</span>
+            </page-button>
         </div>
         <ul class="prizes" v-if="prizes.length">
             <li class="prize" v-for="(prize, idx) in prizes" :key="idx">

@@ -3,11 +3,9 @@
         <div class="title">
             Участвуй в марафоне с Павлом Волей
         </div>
-        <div class="btn" data-modal-open="receipt">
-            <page-button type="button" color="white">
-                <span>Участвовать</span>
-            </page-button>
-        </div>
+        <page-button type="button" color="white" class="btn" data-modal-open="receipt">
+            <span>Участвовать</span>
+        </page-button>
     </div>
 </template>
 

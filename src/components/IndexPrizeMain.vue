@@ -7,11 +7,9 @@
             Каждый участник, зарегистрировавший чек, автоматически в личном кабинете получит подарок – марафон с
             Павлом Волей
         </div>
-        <div class="btn" :data-modal-open="auth ? 'receipt' : 'register'">
-            <page-button type="button" color="white">
-                <span>Зарегистрируй чек</span>
-            </page-button>
-        </div>
+        <page-button type="button" color="white" class="btn" :data-modal-open="auth ? 'receipt' : 'register'">
+            <span>Зарегистрируй чек</span>
+        </page-button>
     </div>
 </template>
 

@@ -4,16 +4,12 @@
             Привет, lubimov95!
         </div>
         <div class="buttons">
-            <div class="buttons__receipt" data-modal-open="receipt">
-                <page-button type="button" color="white">
-                    <span>Зарегистрируй чек и получи призы</span>
-                </page-button>
-            </div>
-            <div class="buttons__exit" data-auth-exit>
-                <page-button type="button" color="black" bordered>
-                    <span>Выйти</span>
-                </page-button>
-            </div>
+            <page-button type="button" color="white" class="buttons__receipt" data-modal-open="receipt">
+                <span>Зарегистрируй чек и получи призы</span>
+            </page-button>
+            <page-button type="button" color="black" bordered class="buttons__exit" data-auth-exit>
+                <span>Выйти</span>
+            </page-button>
         </div>
     </div>
 </template>

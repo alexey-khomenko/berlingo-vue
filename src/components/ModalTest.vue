@@ -1,7 +1,7 @@
 <template>
-    <ModalTestStart/>
-    <ModalTestStages/>
-    <ModalTestFinish/>
+    <modal-test-start/>
+    <modal-test-stages/>
+    <modal-test-finish/>
 </template>
 
 <script>

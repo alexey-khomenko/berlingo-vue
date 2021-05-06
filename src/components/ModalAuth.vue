@@ -1,7 +1,7 @@
 <template>
-    <ModalAuthLogin/>
-    <ModalAuthRegister/>
-    <ModalAuthSuccess/>
+    <modal-auth-login/>
+    <modal-auth-register/>
+    <modal-auth-success/>
 </template>
 
 <script>

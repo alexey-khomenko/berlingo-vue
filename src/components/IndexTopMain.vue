@@ -2,22 +2,20 @@
     <div class="main main_rel main_index index-top__main">
 
         <div class="text">
-            Участвуй в акции и получи призы
-            <br/>
-            от Berlingo и Павла Воли
+            Участвуй в акции и получи призы <br/> от Berlingo и Павла Воли
         </div>
 
-        <div class="btn btn_check" :data-modal-open="auth ? 'receipt' : 'register'">
-            <page-button type="button" color="white">
-                <span>Зарегистрируй чек и получи призы</span>
-            </page-button>
-        </div>
+        <page-button type="button" color="white"
+                     class="btn btn_check"
+                     :data-modal-open="auth ? 'receipt' : 'register'">
+            <span>Зарегистрируй чек и получи призы</span>
+        </page-button>
 
-        <div class="btn btn_pen" data-modal-open="test_1">
-            <page-button type="button" color="black" bordered>
-                <span>Найди свою идеальную ручку</span>
-            </page-button>
-        </div>
+        <page-button type="button" color="black" bordered
+                     class="btn btn_pen"
+                     data-modal-open="test_1">
+            <span>Найди свою идеальную ручку</span>
+        </page-button>
 
     </div>
 </template>

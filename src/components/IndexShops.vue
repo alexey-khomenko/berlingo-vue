@@ -7,24 +7,27 @@
                 </div>
                 <div class="tabs">
                     <div class="tabs__head">
-                        <div class="btn btn_retail" data-tab-open="0" :data-selected="selected === 0 ? 'on' : 'off'">
-                            <page-button type="button" :bordered="selected !== 0"
-                                        :color="selected === 0 ? 'green' : 'black'">
-                                <span>Розничные магазины</span>
-                            </page-button>
-                        </div>
-                        <div class="btn btn_internet" data-tab-open="1" :data-selected="selected === 1 ? 'on' : 'off'">
-                            <page-button type="button" :bordered="selected !== 1"
-                                        :color="selected === 1 ? 'blue' : 'black'">
-                                <span>Интернет-магазины</span>
-                            </page-button>
-                        </div>
-                        <div class="btn btn_federal" data-tab-open="2" :data-selected="selected === 2 ? 'on' : 'off'">
-                            <page-button type="button" :bordered="selected !== 2"
-                                        :color="selected === 2 ? 'red' : 'black'">
-                                <span>Федеральные сети</span>
-                            </page-button>
-                        </div>
+                        <page-button type="button" :bordered="selected !== 0"
+                                     :color="selected === 0 ? 'green' : 'black'"
+                                     class="btn btn_retail"
+                                     data-tab-open="0"
+                                     :data-selected="selected === 0 ? 'on' : 'off'">
+                            <span>Розничные магазины</span>
+                        </page-button>
+                        <page-button type="button" :bordered="selected !== 1"
+                                     :color="selected === 1 ? 'blue' : 'black'"
+                                     class="btn btn_internet"
+                                     data-tab-open="1"
+                                     :data-selected="selected === 1 ? 'on' : 'off'">
+                            <span>Интернет-магазины</span>
+                        </page-button>
+                        <page-button type="button" :bordered="selected !== 2"
+                                     :color="selected === 2 ? 'red' : 'black'"
+                                     class="btn btn_federal"
+                                     data-tab-open="2"
+                                     :data-selected="selected === 2 ? 'on' : 'off'">
+                            <span>Федеральные сети</span>
+                        </page-button>
                     </div>
                     <div class="tabs__body" data-tab-body="0" :data-hidden="selected === 0 ? 'off' : 'on'">
                         <form novalidate data-form-shops>

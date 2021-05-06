@@ -43,7 +43,7 @@
                         индивидуальность лучше всех!
                     </div>
                     <div class="buttons">
-                        <!--                    todo button -->
+                        <!-- todo button -->
                         <a class="button button_shops" href="#" data-anchor="shops"><span>Где купить?</span></a>
                         <a class="button button_prizes" href="#" data-anchor="prizes"><span>Выигать призы!</span></a>
                     </div>

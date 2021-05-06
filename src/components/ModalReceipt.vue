@@ -34,9 +34,9 @@
                             </div>
                         </div>
 
-                        <ModalButtonAgree name="receipt-agree"/>
+                        <modal-button-agree name="receipt-agree"/>
 
-                        <!--                    todo button -->
+                        <!-- todo button -->
                         <button class="button form__button" type="submit">
                             <span>Зарегистрировать чек</span>
                         </button>

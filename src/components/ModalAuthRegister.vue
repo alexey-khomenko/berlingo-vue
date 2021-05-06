@@ -35,17 +35,17 @@
                         <div class="form__inputs">
                             <label class="form__input">
                                 <input type="password" name="register-password" maxlength="200"
-                                       placeholder="Придумай пароль *">
+                                       placeholder="Придумай пароль *"/>
                             </label>
                             <label class="form__input form__input_select">
                                 <input type="text" name="register-city" maxlength="200"
-                                       placeholder="Выбери свой город *">
+                                       placeholder="Выбери свой город *"/>
                             </label>
                         </div>
 
-                        <ModalButtonAgree name="register-agree"/>
+                        <modal-button-agree name="register-agree"/>
 
-                        <!--                    todo button -->
+                        <!-- todo button -->
                         <button class="button" type="submit"><span>Зарегистрироваться</span></button>
                     </form>
                 </div>

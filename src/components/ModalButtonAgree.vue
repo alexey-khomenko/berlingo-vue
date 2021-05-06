@@ -1,5 +1,5 @@
 <template>
-    <input type="checkbox" :name="name" :id="name" data-hidden="on">
+    <input type="checkbox" :name="name" :id="name" data-hidden="on"/>
     <label class="form__checkbox" :for="name">
         <span class="form__check">
             <svg width="14" height="10" viewBox="0 0 14 10" xmlns="http://www.w3.org/2000/svg">
