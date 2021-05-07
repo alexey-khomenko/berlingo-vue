@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     name: 'PageHeaderMobile',
     props: {
@@ -82,8 +84,15 @@ export default {
     },
     data() {
         return {
-            auth: false,
+            // auth: false,
         };
+    },
+    computed: {
+        computed: {
+            ...mapGetters({
+                auth: 'getAuth',
+            }),
+        },
     },
     mounted() {
         this.$nextTick(() => {

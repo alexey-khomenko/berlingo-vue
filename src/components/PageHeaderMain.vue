@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     name: 'PageHeaderMain',
     props: {
@@ -79,13 +81,22 @@ export default {
     },
     data() {
         return {
-            auth: false,
+            // auth: false,
         };
+    },
+    computed: {
+        computed: {
+            ...mapGetters({
+                auth: 'getAuth',
+            }),
+        },
     },
 };
 </script>
 
 <style lang="scss">
+@import "../assets/scss/_variables.scss";
+
 .header__main {
     top: 50%;
     left: 50%;

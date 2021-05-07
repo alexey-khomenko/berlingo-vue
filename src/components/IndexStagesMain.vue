@@ -21,12 +21,21 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     name: 'IndexStagesMain',
     data() {
         return {
-            auth: false,
+            // auth: false,
         };
+    },
+    computed: {
+        computed: {
+            ...mapGetters({
+                auth: 'getAuth',
+            }),
+        },
     },
 };
 </script>

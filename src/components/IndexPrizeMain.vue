@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import PageButton from '/src/components/PageButton';
 
 export default {
@@ -23,8 +24,13 @@ export default {
     },
     data() {
         return {
-            auth: false,
+            // auth: false,
         };
+    },
+    computed: {
+        ...mapGetters({
+            auth: 'getAuth',
+        }),
     },
 };
 </script>

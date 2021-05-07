@@ -22,11 +22,13 @@
                         <div class="form__inputs">
                             <label class="form__input">
                                 <input type="text" name="login-email" maxlength="200"
-                                       placeholder="Введи свой e-mail *"/>
+                                       placeholder="Введи свой e-mail *"
+                                       v-model="loginEmail"/>
                             </label>
                             <label class="form__input">
                                 <input type="password" name="login-password" maxlength="200"
-                                       placeholder="Введи пароль *"/>
+                                       placeholder="Введи пароль *"
+                                       v-model="loginPassword"/>
                             </label>
                         </div>
                         <!-- todo button -->
@@ -39,12 +41,31 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 
 export default {
     name: 'ModalAuthLogin',
     components: {
         ModalButtonClose,
+    },
+    data() {
+        return {
+            loginEmail: '',
+            loginPassword: '',
+        };
+    },
+    methods: {
+        ...mapActions([
+            'login',
+        ]),
+    },
+    // todo
+    mounted() {
+        this.login({
+            loginEmail: this.loginEmail,
+            loginPassword: this.loginPassword
+        });
     },
 };
 </script>

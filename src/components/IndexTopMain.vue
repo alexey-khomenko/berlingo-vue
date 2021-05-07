@@ -22,6 +22,7 @@
 
 <script>
 import PageButton from '/src/components/PageButton';
+import {mapGetters} from 'vuex';
 
 export default {
     name: 'IndexTopMain',
@@ -30,8 +31,15 @@ export default {
     },
     data() {
         return {
-            auth: false,
+            // auth: false,
         };
+    },
+    computed: {
+        computed: {
+            ...mapGetters({
+                auth: 'getAuth',
+            }),
+        },
     },
 };
 </script>
