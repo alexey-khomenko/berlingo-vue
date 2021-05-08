@@ -1,8 +1,8 @@
 <template>
-    <page-header page="account">
+    <page-header page="account" :class="{open: menuOpen}">
         <page-header-back page="account"/>
-        <page-header-main page="account"/>
-        <page-header-mobile page="account"/>
+        <page-header-main page="account" @menu-open="menuOpen = true"/>
+        <page-header-mobile page="account" @menu-close="menuOpen = false"/>
     </page-header>
     <account-top/>
     <account-receipts/>
@@ -80,6 +80,11 @@ export default {
         PageFooterBack,
         PageFooterMain,
         PageButton,
+    },
+    data() {
+        return {
+            menuOpen: false,
+        };
     },
 };
 </script>

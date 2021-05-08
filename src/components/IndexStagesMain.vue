@@ -31,11 +31,9 @@ export default {
         };
     },
     computed: {
-        computed: {
-            ...mapGetters({
-                auth: 'getAuth',
-            }),
-        },
+        ...mapGetters({
+            auth: 'getAuth',
+        }),
     },
 };
 </script>

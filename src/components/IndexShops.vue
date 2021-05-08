@@ -11,21 +11,24 @@
                                      :color="selected === 0 ? 'green' : 'black'"
                                      class="btn btn_retail"
                                      data-tab-open="0"
-                                     :data-selected="selected === 0 ? 'on' : 'off'">
+                                     :data-selected="selected === 0 ? 'on' : 'off'"
+                                     @click="selected = 0">
                             <span>Розничные магазины</span>
                         </page-button>
                         <page-button type="button" :bordered="selected !== 1"
                                      :color="selected === 1 ? 'blue' : 'black'"
                                      class="btn btn_internet"
                                      data-tab-open="1"
-                                     :data-selected="selected === 1 ? 'on' : 'off'">
+                                     :data-selected="selected === 1 ? 'on' : 'off'"
+                                     @click="selected = 1">
                             <span>Интернет-магазины</span>
                         </page-button>
                         <page-button type="button" :bordered="selected !== 2"
                                      :color="selected === 2 ? 'red' : 'black'"
                                      class="btn btn_federal"
                                      data-tab-open="2"
-                                     :data-selected="selected === 2 ? 'on' : 'off'">
+                                     :data-selected="selected === 2 ? 'on' : 'off'"
+                                     @click="selected = 2">
                             <span>Федеральные сети</span>
                         </page-button>
                     </div>

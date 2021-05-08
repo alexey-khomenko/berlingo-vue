@@ -20,7 +20,9 @@ export default createStore({
         },
     },
     getters: {
-        getAuth: state => state.auth,
+        getAuth: (state) => {
+            return state.auth;
+        },
     },
     modules: {},
 });

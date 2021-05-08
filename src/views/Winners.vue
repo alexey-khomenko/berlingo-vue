@@ -1,8 +1,8 @@
 <template>
-    <page-header page="winners">
+    <page-header page="winners" :class="{open: menuOpen}">
         <page-header-back page="winners"/>
-        <page-header-main page="winners"/>
-        <page-header-mobile page="winners"/>
+        <page-header-main page="winners" @menu-open="menuOpen = true"/>
+        <page-header-mobile page="winners" @menu-close="menuOpen = false"/>
     </page-header>
     <winners-top/>
     <winners-tabs/>
@@ -32,6 +32,11 @@ export default {
         WinnersTabs,
         PageFooter,
         PageFooterMain,
+    },
+    data() {
+        return {
+            menuOpen: false,
+        };
     },
 };
 </script>

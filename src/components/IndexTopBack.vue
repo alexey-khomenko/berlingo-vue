@@ -30,6 +30,24 @@ export default {
             ],
         };
     },
+    mounted() {
+        const that = this;
+        let oldNumber = 0;
+        const max = this.slides.length - 1;
+
+        setTimeout(function tick() {
+            let newNumber = oldNumber < max ? oldNumber + 1 : 0;
+
+            for (let slide of that.slides) {
+                if (slide.number === oldNumber) slide.hidden = 'on';
+                if (slide.number === newNumber) slide.hidden = 'off';
+            }
+
+            oldNumber = newNumber;
+
+            setTimeout(tick, 3200);
+        }, 3200);
+    },
 };
 </script>
 

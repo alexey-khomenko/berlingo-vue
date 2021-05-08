@@ -1,7 +1,7 @@
 <template>
-    <page-header page="pens">
-        <page-header-main page="pens"/>
-        <page-header-mobile page="pens"/>
+    <page-header page="pens" :class="{open: menuOpen}">
+        <page-header-main page="pens" @menu-open="menuOpen = true"/>
+        <page-header-mobile page="pens" @menu-close="menuOpen = false"/>
     </page-header>
     <pens-content/>
     <page-footer page="pens">
@@ -26,6 +26,11 @@ export default {
         PensContent,
         PageFooter,
         PageFooterMain,
+    },
+    data() {
+        return {
+            menuOpen: false,
+        };
     },
 };
 </script>

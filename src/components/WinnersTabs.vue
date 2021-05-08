@@ -16,7 +16,8 @@
                                      :class="`btn btn_${tab.type}`"
                                      :data-tab-open="tab.number"
                                      :data-selected="group.selected === tab.number ? 'on' : 'off'"
-                                     v-for="tab in group.tabs.head" :key="tab.number">
+                                     v-for="tab in group.tabs.head" :key="tab.number"
+                                     @click="group.selected = tab.number">
                             <span>{{ tab.title }}</span>
                         </page-button>
                     </div>

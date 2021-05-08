@@ -35,11 +35,11 @@ label, input, textarea, button, select, a, summary {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-a:focus, button:focus, input:focus {
+a:focus, button:focus, input:focus, *:focus {
     outline: none !important;
 }
 
-button::-moz-focus-inner {
+button::-moz-focus-inner, *::-moz-focus-inner {
     outline: none !important;
     border: 0 !important;
 }

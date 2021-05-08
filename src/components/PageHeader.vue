@@ -37,9 +37,10 @@ export default {
         background-color: #ffffff;
     }
 
-    a {
+    a, span {
         text-decoration: none;
         color: #ffffff;
+        cursor: pointer;
     }
 
     .content {
@@ -66,7 +67,7 @@ export default {
             justify-content: space-between;
             align-items: center;
 
-            a:not(:last-of-type) {
+            & > *:not(:last-of-type) {
                 margin-right: 40px;
             }
 

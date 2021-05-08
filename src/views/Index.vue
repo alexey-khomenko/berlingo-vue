@@ -1,8 +1,8 @@
 <template>
-    <page-header page="index">
+    <page-header page="index" :class="{open: menuOpen}">
         <page-header-back page="index"/>
-        <page-header-main page="index"/>
-        <page-header-mobile page="index"/>
+        <page-header-main page="index" @menu-open="menuOpen = true"/>
+        <page-header-mobile page="index" @menu-close="menuOpen = false"/>
     </page-header>
     <index-top/>
     <index-stages/>
@@ -16,11 +16,9 @@
         <page-bottom-back page="index"/>
         <page-bottom-main page="index">
             <template #title>Победители акции</template>
-            <div class="element element_button">
-                <page-button type="link" to="/winners" color="red">
-                    <span>Смотреть</span>
-                </page-button>
-            </div>
+            <page-button type="link" to="/winners" color="red" class="element element_button">
+                <span>Смотреть</span>
+            </page-button>
         </page-bottom-main>
     </page-bottom>
     <page-footer page="index">
@@ -70,6 +68,16 @@ export default {
         PageFooterBack,
         PageFooterMain,
         PageButton,
+    },
+    data() {
+        return {
+            menuOpen: false,
+        };
+    },
+    watch: {
+      menuOpen() {
+          console.log(this.menuOpen);
+      }
     },
 };
 </script>
