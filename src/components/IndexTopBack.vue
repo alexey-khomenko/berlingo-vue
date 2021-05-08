@@ -35,7 +35,7 @@ export default {
         let oldNumber = 0;
         const max = this.slides.length - 1;
 
-        setTimeout(function tick() {
+        let timerId = setTimeout(function tick() {
             let newNumber = oldNumber < max ? oldNumber + 1 : 0;
 
             for (let slide of that.slides) {
@@ -45,9 +45,11 @@ export default {
 
             oldNumber = newNumber;
 
-            setTimeout(tick, 3200);
+            timerId = setTimeout(tick, 3200);
         }, 3200);
     },
+
+    // todo !!! clear timerId
 };
 </script>
 
