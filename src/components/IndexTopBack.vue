@@ -1,11 +1,11 @@
 <template>
-    <div class="back index-top__back"
-         :data-slider="slide.number" :data-hidden="slide.hidden"
-         v-for="slide in slides" :key="slide.number"
+    <div class="back index-top__back" data-slider
+         :data-hidden="selected === idx ? 'off' : 'on'"
+         v-for="(slide, idx) in slides" :key="idx"
     >
-        <img alt="" class="image_lg" :src="require(`../assets/images/index-top-back-${slide.number + 1}-lg.png`)"/>
-        <img alt="" class="image_md" :src="require(`../assets/images/index-top-back-${slide.number + 1}-md.png`)"/>
-        <img alt="" class="image_sm" :src="require(`../assets/images/index-top-back-${slide.number + 1}-sm.png`)"/>
+        <img alt="" class="image_lg" :src="require(`../assets/images/${slide}-lg.png`)"/>
+        <img alt="" class="image_md" :src="require(`../assets/images/${slide}-md.png`)"/>
+        <img alt="" class="image_sm" :src="require(`../assets/images/${slide}-sm.png`)"/>
     </div>
 </template>
 
@@ -14,42 +14,27 @@ export default {
     name: 'IndexTopBack',
     data() {
         return {
+            selected: 0,
             slides: [
-                {
-                    number: 0,
-                    hidden: 'off',
-                },
-                {
-                    number: 1,
-                    hidden: 'on',
-                },
-                {
-                    number: 2,
-                    hidden: 'on',
-                },
+                'index-top-back-1',
+                'index-top-back-2',
+                'index-top-back-3',
             ],
+            timerId: null,
         };
     },
     mounted() {
         const that = this;
-        let oldNumber = 0;
-        const max = this.slides.length - 1;
 
-        let timerId = setTimeout(function tick() {
-            let newNumber = oldNumber < max ? oldNumber + 1 : 0;
+        this.timerId = setTimeout(function tick() {
+            that.selected = that.selected < (that.slides.length - 1) ? that.selected + 1 : 0;
 
-            for (let slide of that.slides) {
-                if (slide.number === oldNumber) slide.hidden = 'on';
-                if (slide.number === newNumber) slide.hidden = 'off';
-            }
-
-            oldNumber = newNumber;
-
-            timerId = setTimeout(tick, 3200);
+            this.timerId = setTimeout(tick, 3200);
         }, 3200);
     },
-
-    // todo !!! clear timerId
+    beforeUnmount() {
+        clearTimeout(this.timerId);
+    },
 };
 </script>
 
