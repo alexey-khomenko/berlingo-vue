@@ -33,26 +33,23 @@
                         </page-button>
                     </div>
                     <div class="tabs__body" data-tab-body="0" :data-hidden="selected === 0 ? 'off' : 'on'">
-                        <form novalidate data-form-shops>
+                        <form novalidate @submit.prevent="">
                             <input type="text" autocomplete="off" aria-label="Город" placeholder="Введите ваш город"
-                                   name="search"/>
+                                   name="search" v-model="searchCity"
+                                   @focusin="showCitiesList" @focusout="blurSearch"/>
                             <svg width="26" height="14" viewBox="0 0 26 14" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.6185 1.00841e-06L0 1.75933L13 14L13.884 13.111L26 1.75933L24.3793 0L13 10.661L1.6185 1.00841e-06Z"
                                       fill="currentColor"></path>
                             </svg>
                         </form>
                         <div class="list-wrapper">
-                            <ul class="cities" data-hidden="on">
-                                <li data-city v-for="(city, idx) in cities" :key="idx">
-                                    <span>{{ city }}</span>
+                            <ul class="cities" v-show="showCities">
+                                <li data-city v-for="(city, idx) in filteredCities" :key="idx">
+                                    <span @click="selectCity(city)">{{ city }}</span>
                                 </li>
                             </ul>
-                            <ul class="retails" data-hidden="on">
-                                <!-- todo script -->
-                                <!-- обойтись без оригинала, условиями -->
-                            </ul>
-                            <ul class="retail-origin" data-hidden="on">
-                                <li>
+                            <ul class="retails" v-if="tempRetailsResult.length">
+                                <li v-for="(retail, idx) in tempRetailsResult" :key="idx">
                                     <div class="retails__lg">
                                         <div class="retails__icon">
                                             <svg width="18" height="20" viewBox="0 0 18 20"
@@ -63,14 +60,14 @@
                                                       fill="currentColor"></path>
                                             </svg>
                                         </div>
-                                        <div class="retails__title"></div>
-                                        <div class="retails__address"></div>
-                                        <a href="#" class="retails__link" target="_blank">
+                                        <div class="retails__title"><span>{{ retail.title }}</span></div>
+                                        <div class="retails__address"><span>{{ retail.address }}</span></div>
+                                        <a :href="retail.link" class="retails__link" target="_blank">
                                             <span>Посмотреть на карте</span>
                                         </a>
                                     </div>
                                     <div class="retails__sm">
-                                        <a href="#" target="_blank">
+                                        <a :href="retail.link" target="_blank">
                                             <svg width="18" height="20" viewBox="0 0 18 20"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
@@ -87,17 +84,17 @@
                     <div class="tabs__body" data-tab-body="1" :data-hidden="selected === 1 ? 'off' : 'on'">
                         <ul class="grid grid_primary">
                             <li v-for="(primary, idx) in primaries" :key="idx">
-                                <a href="#" target="_blank">
+                                <a :href="primary.link" target="_blank">
                                     <img alt="" class="image image_large"
-                                         :src="require(`../assets/images/0_content-index-shops-large-${primary}.png`)"/>
+                                         :src="require(`../assets/images/${primary.photo}`)"/>
                                 </a>
                             </li>
                         </ul>
                         <ul class="grid grid_secondary">
                             <li v-for="(secondary, idx) in secondaries" :key="idx">
-                                <a href="#">
+                                <a :href="secondary.link" target="_blank">
                                     <img alt="" class="image image_small"
-                                         :src="require(`../assets/images/0_content-index-shops-small-${secondary}.png`)"/>
+                                         :src="require(`../assets/images/${secondary.photo}`)"/>
                                 </a>
                             </li>
                         </ul>
@@ -106,7 +103,7 @@
                         <ul class="grid grid_federal">
                             <li v-for="(federal, idx) in federals" :key="idx">
                                 <img alt="" class="image image_small"
-                                     :src="require(`../assets/images/0_content-index-shops-small-${federal}.png`)"/>
+                                     :src="require(`../assets/images/${federal}`)"/>
                             </li>
                         </ul>
                     </div>
@@ -129,6 +126,8 @@ export default {
     data() {
         return {
             selected: 0,
+            searchCity: '',
+            showCities: false,
             cities: [
                 'Абаза',
                 'Абакан',
@@ -151,38 +150,197 @@ export default {
                 'Александровск-Сахалинский',
                 'Алексеевка',
             ],
+            tempRetailsResult: [],
             primaries: [
-                '1',
-                '2',
-                '3',
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-large-1.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-large-2.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-large-3.png',
+                },
             ],
             secondaries: [
-                '1',
-                '2',
-                '3',
-                '1',
-                '2',
-                '3',
-                '1',
-                '2',
-                '3',
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-1.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-2.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-3.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-1.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-2.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-3.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-1.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-2.png',
+                },
+                {
+                    link: '#',
+                    photo: '0_content-index-shops-small-3.png',
+                },
             ],
             federals: [
-                '4',
-                '5',
-                '6',
-                '4',
-                '5',
-                '6',
-                '4',
-                '5',
-                '6',
-                '4',
-                '5',
-                '6',
-                '4',
+                '0_content-index-shops-small-4.png',
+                '0_content-index-shops-small-5.png',
+                '0_content-index-shops-small-6.png',
+                '0_content-index-shops-small-4.png',
+                '0_content-index-shops-small-5.png',
+                '0_content-index-shops-small-6.png',
+                '0_content-index-shops-small-4.png',
+                '0_content-index-shops-small-5.png',
+                '0_content-index-shops-small-6.png',
+                '0_content-index-shops-small-4.png',
+                '0_content-index-shops-small-5.png',
+                '0_content-index-shops-small-6.png',
+                '0_content-index-shops-small-4.png',
             ],
         };
+    },
+    computed: {
+        filteredCities() {
+            return this.cities.filter(city => city.toLowerCase().includes(this.searchCity.trim().toLowerCase()));
+        },
+    },
+    watch: {
+
+    },
+    methods: {
+        blurSearch() {
+            setTimeout(() => {
+                if (this.searchCity.trim().length === 0) {
+                    this.showCities = false;
+                }
+            }, 100);
+        },
+        showCitiesList() {
+            this.tempRetailsResult = [];
+            this.showCities = true;
+        },
+        selectCity(city) {
+            this.searchCity = city;
+            this.showCities = false;
+
+            // todo api
+
+            this.$nextTick(() => {
+                this.tempRetailsResult = [
+                    {
+                        title: 'Гипермаркет «Анвар»',
+                        address: 'г. Актобе, ул. Нокина, д. 35',
+                        link: '#',
+                    },
+                    {
+                        title: '«Мега Анвар»',
+                        address: 'г. Актобе, ул. Маметова, д. 4',
+                        link: '#',
+                    },
+                    {
+                        title: '«Школьник»',
+                        address: 'г. Алексин, ул. Мира, д. 18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Книги»',
+                        address: 'г. Алексин, ул. Мира, д. 18/11',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                    {
+                        title: 'Гипермаркет «Анвар»',
+                        address: 'г. Актобе, ул. Нокина, д. 35',
+                        link: '#',
+                    },
+                    {
+                        title: '«Мега Анвар»',
+                        address: 'г. Актобе, ул. Маметова, д. 4',
+                        link: '#',
+                    },
+                    {
+                        title: '«Школьник»',
+                        address: 'г. Алексин, ул. Мира, д. 18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Книги»',
+                        address: 'г. Алексин, ул. Мира, д. 18/11',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                    {
+                        title: 'Гипермаркет «Анвар»',
+                        address: 'г. Актобе, ул. Нокина, д. 35',
+                        link: '#',
+                    },
+                    {
+                        title: '«Мега Анвар»',
+                        address: 'г. Актобе, ул. Маметова, д. 4',
+                        link: '#',
+                    },
+                    {
+                        title: '«Школьник»',
+                        address: 'г. Алексин, ул. Мира, д. 18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Книги»',
+                        address: 'г. Алексин, ул. Мира, д. 18/11',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                    {
+                        title: '«Арт-Изо»',
+                        address: 'г. Архангельск, пер. Троицкий, д.18',
+                        link: '#',
+                    },
+                ];
+            });
+        },
     },
 };
 </script>
