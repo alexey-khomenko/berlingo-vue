@@ -17,11 +17,6 @@ export default {
     components: {
         PageButton,
     },
-    data() {
-        return {
-            balls: 260,
-        };
-    },
 };
 </script>
 

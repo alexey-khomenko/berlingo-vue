@@ -48,8 +48,9 @@
                                     <span @click="selectCity(city)">{{ city }}</span>
                                 </li>
                             </ul>
-                            <ul class="retails" v-if="tempRetailsResult.length">
-                                <li v-for="(retail, idx) in tempRetailsResult" :key="idx">
+                            <!-- todo animation -->
+                            <ul class="retails" v-if="retails.length">
+                                <li v-for="(retail, idx) in retails" :key="idx">
                                     <div class="retails__lg">
                                         <div class="retails__icon">
                                             <svg width="18" height="20" viewBox="0 0 18 20"
@@ -114,6 +115,8 @@
 </template>
 
 <script>
+import {loadRetails, loadCities, loadPrimaries, loadSecondaries, loadFederals} from '/src/api/index-shops';
+
 import PageTabs from '/src/components/PageTabs';
 import PageButton from '/src/components/PageButton';
 
@@ -128,105 +131,17 @@ export default {
             selected: 0,
             searchCity: '',
             showCities: false,
-            cities: [
-                'Абаза',
-                'Абакан',
-                'Абдулино',
-                'Абинск',
-                'Агидель',
-                'Агрыз',
-                'Адыгейск',
-                'Азнакаево',
-                'Азов',
-                'Ак-Довурак',
-                'Аксай',
-                'Алагир',
-                'Алапаевск',
-                'Алатырь',
-                'Алдан',
-                'Алейск',
-                'Александров',
-                'Александровск',
-                'Александровск-Сахалинский',
-                'Алексеевка',
-            ],
-            tempRetailsResult: [],
-            primaries: [
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-large-1.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-large-2.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-large-3.png',
-                },
-            ],
-            secondaries: [
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-1.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-2.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-3.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-1.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-2.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-3.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-1.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-2.png',
-                },
-                {
-                    link: '#',
-                    photo: '0_content-index-shops-small-3.png',
-                },
-            ],
-            federals: [
-                '0_content-index-shops-small-4.png',
-                '0_content-index-shops-small-5.png',
-                '0_content-index-shops-small-6.png',
-                '0_content-index-shops-small-4.png',
-                '0_content-index-shops-small-5.png',
-                '0_content-index-shops-small-6.png',
-                '0_content-index-shops-small-4.png',
-                '0_content-index-shops-small-5.png',
-                '0_content-index-shops-small-6.png',
-                '0_content-index-shops-small-4.png',
-                '0_content-index-shops-small-5.png',
-                '0_content-index-shops-small-6.png',
-                '0_content-index-shops-small-4.png',
-            ],
+            cities: [],
+            retails: [],
+            primaries: [],
+            secondaries: [],
+            federals: [],
         };
     },
     computed: {
         filteredCities() {
             return this.cities.filter(city => city.toLowerCase().includes(this.searchCity.trim().toLowerCase()));
         },
-    },
-    watch: {
-
     },
     methods: {
         blurSearch() {
@@ -237,110 +152,20 @@ export default {
             }, 100);
         },
         showCitiesList() {
-            this.tempRetailsResult = [];
+            this.retails = [];
             this.showCities = true;
         },
-        selectCity(city) {
+        async selectCity(city) {
             this.searchCity = city;
+            this.retails = await loadRetails(city);
             this.showCities = false;
-
-            // todo api
-
-            this.$nextTick(() => {
-                this.tempRetailsResult = [
-                    {
-                        title: 'Гипермаркет «Анвар»',
-                        address: 'г. Актобе, ул. Нокина, д. 35',
-                        link: '#',
-                    },
-                    {
-                        title: '«Мега Анвар»',
-                        address: 'г. Актобе, ул. Маметова, д. 4',
-                        link: '#',
-                    },
-                    {
-                        title: '«Школьник»',
-                        address: 'г. Алексин, ул. Мира, д. 18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Книги»',
-                        address: 'г. Алексин, ул. Мира, д. 18/11',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                    {
-                        title: 'Гипермаркет «Анвар»',
-                        address: 'г. Актобе, ул. Нокина, д. 35',
-                        link: '#',
-                    },
-                    {
-                        title: '«Мега Анвар»',
-                        address: 'г. Актобе, ул. Маметова, д. 4',
-                        link: '#',
-                    },
-                    {
-                        title: '«Школьник»',
-                        address: 'г. Алексин, ул. Мира, д. 18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Книги»',
-                        address: 'г. Алексин, ул. Мира, д. 18/11',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                    {
-                        title: 'Гипермаркет «Анвар»',
-                        address: 'г. Актобе, ул. Нокина, д. 35',
-                        link: '#',
-                    },
-                    {
-                        title: '«Мега Анвар»',
-                        address: 'г. Актобе, ул. Маметова, д. 4',
-                        link: '#',
-                    },
-                    {
-                        title: '«Школьник»',
-                        address: 'г. Алексин, ул. Мира, д. 18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Книги»',
-                        address: 'г. Алексин, ул. Мира, д. 18/11',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                    {
-                        title: '«Арт-Изо»',
-                        address: 'г. Архангельск, пер. Троицкий, д.18',
-                        link: '#',
-                    },
-                ];
-            });
         },
+    },
+    async created() {
+        this.cities = await loadCities();
+        this.primaries = await loadPrimaries();
+        this.secondaries = await loadSecondaries();
+        this.federals = await loadFederals();
     },
 };
 </script>

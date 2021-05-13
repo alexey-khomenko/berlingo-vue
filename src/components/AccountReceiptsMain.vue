@@ -1,9 +1,9 @@
 <template>
-    <div class="main main_rel main_account account-receipts__main">
+    <div class="main main_rel main_account account-receipts__main" v-if="receipts.length">
         <div class="title">
             Мои чеки
         </div>
-        <ul class="receipts" v-if="receipts.length">
+        <ul class="receipts">
             <li class="receipt" v-for="(receipt, idx) in receipts" :key="idx">
                 <span class="receipt__status" :data-status="receipt.type">
                     {{ receipt.status }}
@@ -21,55 +21,17 @@
 </template>
 
 <script>
+import {loadReceipts} from '/src/api/account-receipts-main';
+
 export default {
     name: 'AccountReceiptsMain',
     data() {
         return {
-            receipts: [
-                {
-                    type: 'accepted',
-                    status: 'Принят',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Москва',
-                    date: '30.04.2021',
-                },
-                {
-                    type: 'accepted',
-                    status: 'Принят',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Санкт-Петербург',
-                    date: '31.04.2021',
-                },
-                {
-                    type: 'error',
-                    status: 'Не соответствует правилам акции',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Санкт-Петербург',
-                    date: '31.04.2021',
-                },
-                {
-                    type: 'processing',
-                    status: 'На модерации',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Москва',
-                    date: '01.05.2021',
-                },
-                {
-                    type: 'processing',
-                    status: 'На модерации',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Москва',
-                    date: '01.05.2021',
-                },
-                {
-                    type: 'processing',
-                    status: 'На модерации',
-                    image: require('../assets/images/0_content-account-receipt.png'),
-                    city: 'Москва',
-                    date: '01.05.2021',
-                },
-            ],
+            receipts: [],
         };
+    },
+    async created() {
+        this.receipts = await loadReceipts();
     },
 };
 </script>

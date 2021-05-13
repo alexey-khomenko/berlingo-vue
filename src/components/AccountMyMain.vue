@@ -18,7 +18,7 @@
                         {{ prize.title }}
                     </div>
                     <div class="prize__text">
-                        {{ prize.text }}
+                        {{ text }}
                     </div>
                 </div>
             </li>
@@ -36,48 +36,36 @@ export default {
     },
     data() {
         return {
+            text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
+                'получении приза.',
             prizes: [
                 {
                     image: require('../assets/images/account-my-applewatch.png'),
                     title: 'Apple Watch',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-bike.png'),
                     title: 'Велосипед',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-box.png'),
                     title: 'Бокс с канцелярией Berlingo',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-litres.png'),
                     title: 'Подписка на ЛитРес',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-okko.png'),
                     title: 'Подписка на Okko',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-playstation.png'),
                     title: 'PlayStation 5',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
                 {
                     image: require('../assets/images/account-my-yandex.png'),
                     title: 'Подписка на Яндекс.Музыку',
-                    text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                        'получении приза.',
                 },
             ],
         };

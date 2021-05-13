@@ -13,7 +13,7 @@ export default {
         setTimeout(() => {
             // todo wrap.focus()
             this.$refs.wrap.focus();
-        }, 10);
+        }, 100);
     },
 };
 </script>

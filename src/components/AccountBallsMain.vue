@@ -18,13 +18,18 @@
 </template>
 
 <script>
+import {loadBalls} from '/src/api/account-balls-main';
+
 export default {
     name: 'AccountBallsMain',
     data() {
         return {
-            balls: 260,
+            balls: 0,
         };
     },
+    async created() {
+        this.balls = await loadBalls();
+    }
 };
 </script>
 

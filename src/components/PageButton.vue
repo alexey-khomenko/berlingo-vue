@@ -42,8 +42,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        // todo
-        // dataset - поведение - следить за кликом, передавать обёртке событие
     },
     computed: {
         classes() {
