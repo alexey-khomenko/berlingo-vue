@@ -67,7 +67,7 @@ export default {
             justify-content: space-between;
             align-items: center;
 
-            & > *:not(:last-of-type) {
+            & > *:not(:last-child) {
                 margin-right: 40px;
             }
 

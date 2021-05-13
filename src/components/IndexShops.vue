@@ -1,6 +1,6 @@
 <template>
     <section class="section index-shops">
-        <div class="main main_rel main_index index-shops__main">
+        <div class="main main_rel main_index index-shops__main hash-shops">
             <page-tabs>
                 <div class="title">
                     Где купить?
@@ -10,7 +10,6 @@
                         <page-button type="button" :bordered="selected !== 0"
                                      :color="selected === 0 ? 'green' : 'black'"
                                      class="btn btn_retail"
-                                     data-tab-open="0"
                                      :data-selected="selected === 0 ? 'on' : 'off'"
                                      @click="selected = 0">
                             <span>Розничные магазины</span>
@@ -18,7 +17,6 @@
                         <page-button type="button" :bordered="selected !== 1"
                                      :color="selected === 1 ? 'blue' : 'black'"
                                      class="btn btn_internet"
-                                     data-tab-open="1"
                                      :data-selected="selected === 1 ? 'on' : 'off'"
                                      @click="selected = 1">
                             <span>Интернет-магазины</span>
@@ -26,13 +24,12 @@
                         <page-button type="button" :bordered="selected !== 2"
                                      :color="selected === 2 ? 'red' : 'black'"
                                      class="btn btn_federal"
-                                     data-tab-open="2"
                                      :data-selected="selected === 2 ? 'on' : 'off'"
                                      @click="selected = 2">
                             <span>Федеральные сети</span>
                         </page-button>
                     </div>
-                    <div class="tabs__body" data-tab-body="0" :data-hidden="selected === 0 ? 'off' : 'on'">
+                    <div class="tabs__body" :data-hidden="selected === 0 ? 'off' : 'on'">
                         <form novalidate @submit.prevent="">
                             <input type="text" autocomplete="off" aria-label="Город" placeholder="Введите ваш город"
                                    name="search" v-model="searchCity"
@@ -44,7 +41,7 @@
                         </form>
                         <div class="list-wrapper">
                             <ul class="cities" v-show="showCities">
-                                <li data-city v-for="(city, idx) in filteredCities" :key="idx">
+                                <li v-for="(city, idx) in filteredCities" :key="idx">
                                     <span @click="selectCity(city)">{{ city }}</span>
                                 </li>
                             </ul>
@@ -82,7 +79,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="tabs__body" data-tab-body="1" :data-hidden="selected === 1 ? 'off' : 'on'">
+                    <div class="tabs__body" :data-hidden="selected === 1 ? 'off' : 'on'">
                         <ul class="grid grid_primary">
                             <li v-for="(primary, idx) in primaries" :key="idx">
                                 <a :href="primary.link" target="_blank">
@@ -100,7 +97,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="tabs__body" data-tab-body="2" :data-hidden="selected === 2 ? 'off' : 'on'">
+                    <div class="tabs__body" :data-hidden="selected === 2 ? 'off' : 'on'">
                         <ul class="grid grid_federal">
                             <li v-for="(federal, idx) in federals" :key="idx">
                                 <img alt="" class="image image_small"

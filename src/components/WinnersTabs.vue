@@ -14,7 +14,6 @@
                                      :bordered="group.selected !== tab.number"
                                      :color="group.selected === tab.number ? tab.color : 'black'"
                                      :class="`btn btn_${tab.type}`"
-                                     :data-tab-open="tab.number"
                                      :data-selected="group.selected === tab.number ? 'on' : 'off'"
                                      v-for="tab in group.tabs.head" :key="tab.number"
                                      @click="group.selected = tab.number">
@@ -22,7 +21,7 @@
                         </page-button>
                     </div>
                     <div class="tabs__body"
-                         :data-tab-body="tab.number" :data-hidden="group.selected === tab.number ? 'off' : 'on'"
+                         :data-hidden="group.selected === tab.number ? 'off' : 'on'"
                          v-for="tab in group.tabs.body" :key="tab.number"
                     >
                         <div class="tabs__image">

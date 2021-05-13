@@ -15,12 +15,12 @@
                 <a href="#" class="text" download>
                     Правила акции
                 </a>
-                <a href="#" class="text" data-anchor="shops">
+                <span tabindex="0" class="text" @click="goToAnchor('shops')">
                     Где купить?
-                </a>
-                <a href="#" class="text" data-anchor="prizes">
+                </span>
+                <span tabindex="0" class="text" @click="goToAnchor('prizes')">
                     Призы
-                </a>
+                </span>
                 <router-link to="/pens" class="text">
                     О ручках
                 </router-link>
@@ -92,6 +92,12 @@ export default {
         ...mapGetters({
             auth: 'getAuth',
         }),
+    },
+    methods: {
+        goToAnchor(to) {
+            // todo close menu
+            this.$router.push({ name: 'Index', hash: '#' + to })
+        }
     },
 };
 </script>

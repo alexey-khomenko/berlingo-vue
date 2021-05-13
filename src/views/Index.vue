@@ -74,10 +74,5 @@ export default {
             menuOpen: false,
         };
     },
-    watch: {
-      menuOpen() {
-          console.log(this.menuOpen);
-      }
-    },
 };
 </script>

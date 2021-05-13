@@ -1,5 +1,5 @@
 <template>
-    <div class="main main_abs prizes__main" :class="`main_${page} prizes__main_${page}`">
+    <div class="main main_abs prizes__main hash-prizes" :class="`main_${page} prizes__main_${page}`">
         <div class="content">
             <div class="card card_primary">
                 <div class="text title_primary">
