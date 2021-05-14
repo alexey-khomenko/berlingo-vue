@@ -33,51 +33,56 @@
                         <form novalidate @submit.prevent="">
                             <input type="text" autocomplete="off" aria-label="Город" placeholder="Введите ваш город"
                                    name="search" v-model="searchCity"
-                                   @focusin="showCitiesList" @focusout="blurSearch"/>
+                                   @focusin="focusSearch" @focusout="blurSearch"/>
                             <svg width="26" height="14" viewBox="0 0 26 14" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.6185 1.00841e-06L0 1.75933L13 14L13.884 13.111L26 1.75933L24.3793 0L13 10.661L1.6185 1.00841e-06Z"
                                       fill="currentColor"></path>
                             </svg>
                         </form>
-                        <div class="list-wrapper">
-                            <ul class="cities" v-show="showCities">
-                                <li v-for="(city, idx) in filteredCities" :key="idx">
-                                    <span @click="selectCity(city)">{{ city }}</span>
-                                </li>
-                            </ul>
-                            <!-- todo animation -->
-                            <ul class="retails" v-if="retails.length">
-                                <li v-for="(retail, idx) in retails" :key="idx">
-                                    <div class="retails__lg">
-                                        <div class="retails__icon">
-                                            <svg width="18" height="20" viewBox="0 0 18 20"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
-                                                      fill="currentColor"></path>
-                                                <path d="M8.99998 3.87305C6.56198 3.87305 4.57898 5.81505 4.57898 8.20105C4.57898 10.588 6.56198 12.531 8.99998 12.531C11.437 12.531 13.421 10.589 13.421 8.20205C13.421 5.81505 11.437 3.87305 8.99998 3.87305ZM8.99998 11.04C7.40398 11.04 6.10498 9.76705 6.10498 8.20205C6.10498 6.63705 7.40398 5.36305 8.99998 5.36305C10.596 5.36305 11.894 6.63605 11.894 8.20105C11.894 9.76605 10.596 11.04 8.99998 11.04Z"
-                                                      fill="currentColor"></path>
-                                            </svg>
+                        <transition name="fade">
+                            <div class="list-wrapper" v-show="showCities">
+                                <ul class="cities">
+                                    <li v-for="(city, idx) in filteredCities" :key="idx">
+                                        <span @click="selectCity(city)">{{ city }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </transition>
+                        <transition name="fade" @after-leave="showCities = true">
+                            <div class="list-wrapper" v-if="retails.length">
+                                <ul class="retails">
+                                    <li v-for="(retail, idx) in retails" :key="idx">
+                                        <div class="retails__lg">
+                                            <div class="retails__icon">
+                                                <svg width="18" height="20" viewBox="0 0 18 20"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
+                                                          fill="currentColor"></path>
+                                                    <path d="M8.99998 3.87305C6.56198 3.87305 4.57898 5.81505 4.57898 8.20105C4.57898 10.588 6.56198 12.531 8.99998 12.531C11.437 12.531 13.421 10.589 13.421 8.20205C13.421 5.81505 11.437 3.87305 8.99998 3.87305ZM8.99998 11.04C7.40398 11.04 6.10498 9.76705 6.10498 8.20205C6.10498 6.63705 7.40398 5.36305 8.99998 5.36305C10.596 5.36305 11.894 6.63605 11.894 8.20105C11.894 9.76605 10.596 11.04 8.99998 11.04Z"
+                                                          fill="currentColor"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="retails__title"><span>{{ retail.title }}</span></div>
+                                            <div class="retails__address"><span>{{ retail.address }}</span></div>
+                                            <a :href="retail.link" class="retails__link" target="_blank">
+                                                <span>Посмотреть на карте</span>
+                                            </a>
                                         </div>
-                                        <div class="retails__title"><span>{{ retail.title }}</span></div>
-                                        <div class="retails__address"><span>{{ retail.address }}</span></div>
-                                        <a :href="retail.link" class="retails__link" target="_blank">
-                                            <span>Посмотреть на карте</span>
-                                        </a>
-                                    </div>
-                                    <div class="retails__sm">
-                                        <a :href="retail.link" target="_blank">
-                                            <svg width="18" height="20" viewBox="0 0 18 20"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
-                                                      fill="currentColor"></path>
-                                                <path d="M8.99998 3.87305C6.56198 3.87305 4.57898 5.81505 4.57898 8.20105C4.57898 10.588 6.56198 12.531 8.99998 12.531C11.437 12.531 13.421 10.589 13.421 8.20205C13.421 5.81505 11.437 3.87305 8.99998 3.87305ZM8.99998 11.04C7.40398 11.04 6.10498 9.76705 6.10498 8.20205C6.10498 6.63705 7.40398 5.36305 8.99998 5.36305C10.596 5.36305 11.894 6.63605 11.894 8.20105C11.894 9.76605 10.596 11.04 8.99998 11.04Z"
-                                                      fill="currentColor"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                        <div class="retails__sm">
+                                            <a :href="retail.link" target="_blank">
+                                                <svg width="18" height="20" viewBox="0 0 18 20"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
+                                                          fill="currentColor"></path>
+                                                    <path d="M8.99998 3.87305C6.56198 3.87305 4.57898 5.81505 4.57898 8.20105C4.57898 10.588 6.56198 12.531 8.99998 12.531C11.437 12.531 13.421 10.589 13.421 8.20205C13.421 5.81505 11.437 3.87305 8.99998 3.87305ZM8.99998 11.04C7.40398 11.04 6.10498 9.76705 6.10498 8.20205C6.10498 6.63705 7.40398 5.36305 8.99998 5.36305C10.596 5.36305 11.894 6.63605 11.894 8.20105C11.894 9.76605 10.596 11.04 8.99998 11.04Z"
+                                                          fill="currentColor"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </transition>
                     </div>
                     <div class="tabs__body" :data-hidden="selected === 1 ? 'off' : 'on'">
                         <ul class="grid grid_primary">
@@ -143,19 +148,25 @@ export default {
     methods: {
         blurSearch() {
             setTimeout(() => {
-                if (this.searchCity.trim().length === 0) {
-                    this.showCities = false;
-                }
+                if (this.searchCity.trim().length > 0) return;
+
+                this.showCities = false;
             }, 100);
         },
-        showCitiesList() {
-            this.retails = [];
-            this.showCities = true;
+        focusSearch() {
+            if (this.retails.length) {
+                this.retails = [];
+            }
+            else {
+                this.showCities = true;
+            }
         },
-        async selectCity(city) {
+        selectCity(city) {
             this.searchCity = city;
-            this.retails = await loadRetails(city);
             this.showCities = false;
+            setTimeout(async () => {
+                this.retails = await loadRetails(city);
+            }, 500);
         },
     },
     async created() {
@@ -265,7 +276,7 @@ export default {
                 overflow-x: hidden;
                 overflow-y: auto;
                 padding: 0;
-                margin: 20px 0 0;
+                margin: 0;
                 max-height: 400px;
 
                 @media (max-width: $sm_max) {
@@ -293,6 +304,14 @@ export default {
                         @media (max-width: $sm_max) {
                             background-color: transparent;
                         }
+                    }
+
+                    &:first-child {
+                        margin-top: 20px;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 20px;
                     }
                 }
             }
@@ -323,14 +342,6 @@ export default {
         }
 
         .retails li {
-
-            &:last-child {
-                margin-bottom: 10px;
-
-                @media (max-width: $sm_max) {
-                    margin-bottom: 20px;
-                }
-            }
 
             .retails__lg {
                 display: flex;
@@ -567,4 +578,13 @@ export default {
         }
     }
 }
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+
 </style>
