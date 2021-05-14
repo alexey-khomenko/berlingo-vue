@@ -25,6 +25,16 @@ export default {
 .header {
     height: 60px;
 
+    a, span, button {
+        text-decoration: none;
+        color: #ffffff;
+        cursor: pointer;
+        border-radius: 0;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
     &::after {
         content: "";
         display: block;
@@ -35,12 +45,6 @@ export default {
         bottom: 0;
         height: 1px;
         background-color: #ffffff;
-    }
-
-    a, span {
-        text-decoration: none;
-        color: #ffffff;
-        cursor: pointer;
     }
 
     .content {

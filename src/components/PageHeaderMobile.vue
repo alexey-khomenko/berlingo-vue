@@ -11,9 +11,9 @@
             </router-link>
 
             <nav class="content__right">
-                <span tabindex="0" class="text" :data-modal-open="auth ? 'receipt' : 'register'">
+                <button type="button" class="text" :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
-                </span>
+                </button>
 
                 <router-link to="/account" class="link link_user" v-show="auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
@@ -24,23 +24,22 @@
                     </svg>
                 </router-link>
 
-                <span tabindex="0" class="link link_user" data-modal-open="login" v-show="!auth">
+                <button type="button" class="link link_user" data-modal-open="login" v-show="!auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
                         <path d="M16.9999 16.2605C16.9999 12.9443 14.0102 10.2513 10.3284 10.2513H6.6715C2.98979 10.2513 0 12.9443 0 16.2605V17.2802C0 17.2879 0.000945503 17.2953 0.0012236 17.303C0.000889883 17.313 0 17.3229 0 17.333C0 18.8059 3.80557 20 8.5 20C13.1944 20 17 18.806 17 17.333C17 17.3229 16.9992 17.313 16.9988 17.303C16.9991 17.2954 17 17.2879 17 17.2802L16.9999 16.2605Z"
                               fill="currentColor"></path>
                     </svg>
-                </span>
+                </button>
 
-                <span tabindex="0" class="link link_menu"
-                      @click="$emit('menu-close')" @keydown.enter="$emit('menu-close')">
+                <button type="button" class="link link_menu" @click="$emit('menu-close')">
                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
                               d="M7.77829 6.36385L14.1421 0L15.5563 1.41421L9.1925 7.77806L15.7784 14.364L14.3642 15.7782L7.77829 9.19227L1.41421 15.5563L0 14.1421L6.36408 7.77806L0.222063 1.63605L1.63628 0.221832L7.77829 6.36385Z"
                         ></path>
                     </svg>
-                </span>
+                </button>
             </nav>
         </div>
         <div class="bottom">
@@ -48,14 +47,14 @@
                 <a href="#" class="text" download>
                     Правила акции
                 </a>
-                <span tabindex="0" class="text"
-                      @click="goToAnchor('shops')" @keydown.enter="goToAnchor('shops')">
+                <button type="button" class="text"
+                      @click="goToAnchor('shops')">
                     Где купить?
-                </span>
-                <span tabindex="0" class="text"
-                      @click="goToAnchor('prizes')" @keydown.enter="goToAnchor('prizes')">
+                </button>
+                <button type="button" class="text"
+                      @click="goToAnchor('prizes')">
                     Призы
-                </span>
+                </button>
                 <router-link to="/pens" class="text">
                     О ручках
                 </router-link>
@@ -63,9 +62,9 @@
                     Победители
                 </router-link>
 
-                <span tabindex="0" class="text text_sm" :data-modal-open="auth ? 'receipt' : 'register'">
+                <button type="button" class="text text_sm" :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
-                </span>
+                </button>
             </nav>
         </div>
     </div>
