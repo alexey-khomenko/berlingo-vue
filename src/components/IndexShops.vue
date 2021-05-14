@@ -1,6 +1,6 @@
 <template>
     <section class="section index-shops">
-        <div class="main main_rel main_index index-shops__main hash-shops">
+        <div class="main main_rel main_index index-shops__main" data-anchor="#shops">
             <page-tabs>
                 <div class="title">
                     Где купить?

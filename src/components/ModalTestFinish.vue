@@ -171,6 +171,16 @@ export default {
             ],
         };
     },
+    methods: {
+        goToAnchor(to) {
+            // todo close modal
+            // this.$emit('menu-close');
+
+            setTimeout(()=>{
+                this.$router.push({name: 'Index', hash: '#' + to});
+            }, 760);
+        },
+    },
 };
 </script>
 

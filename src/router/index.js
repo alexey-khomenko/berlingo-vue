@@ -39,26 +39,28 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
     scrollBehavior(to) {
+        let y = 0;
         const wrapper = document.querySelector('.wrapper-outer');
 
         if (to.hash) {
-            // return {
-            //     selector: to.hash,
-            //     offset: {x: 0, y: 10},
-            // };
-            const el = document.querySelector(`.hash-${to.hash.substr(1)}`);
-            const y = el.getBoundingClientRect().top + pageYOffset - 5;
+            const el = document.querySelector(`[data-anchor="${to.hash}"`);
 
-            wrapper.scrollTo(0, y);
+            if (el) {
+                y = el.getBoundingClientRect().top + pageYOffset - 5;
+            }
         }
-        else {
-            // return {
-            //     selector: '.wrapper-outer',
-            //     offset: {x: 0, y: 0},
-            // };
-            // todo scroll to top, after transition
-            document.querySelector('.wrapper-outer').scrollTo(0, 0);
-        }
+
+        wrapper.scrollTo(0, y);
+
+        // todo scroll
+        // return {
+        //     selector: to.hash,
+        //     offset: {x: 0, y: 10},
+        // };
+        // return {
+        //     selector: '.wrapper-outer',
+        //     offset: {x: 0, y: 0},
+        // };
     },
 });
 

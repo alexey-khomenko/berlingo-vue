@@ -48,12 +48,14 @@
                 <a href="#" class="text" download>
                     Правила акции
                 </a>
-                <a href="#" class="text" data-anchor="shops">
+                <span tabindex="0" class="text"
+                      @click="goToAnchor('shops')" @keydown.enter="goToAnchor('shops')">
                     Где купить?
-                </a>
-                <a href="#" class="text" data-anchor="prizes">
+                </span>
+                <span tabindex="0" class="text"
+                      @click="goToAnchor('prizes')" @keydown.enter="goToAnchor('prizes')">
                     Призы
-                </a>
+                </span>
                 <router-link to="/pens" class="text">
                     О ручках
                 </router-link>
@@ -85,13 +87,22 @@ export default {
     },
     data() {
         return {
-//
+            //
         };
     },
     computed: {
         ...mapGetters({
             auth: 'getAuth',
         }),
+    },
+    methods: {
+        goToAnchor(to) {
+            this.$emit('menu-close');
+
+            setTimeout(()=>{
+                this.$router.push({name: 'Index', hash: '#' + to});
+            }, 760);
+        },
     },
     mounted() {
         this.$nextTick(() => {

@@ -15,10 +15,13 @@
                 <a href="#" class="text" download>
                     Правила акции
                 </a>
-                <span tabindex="0" class="text" @click="goToAnchor('shops')">
+<!-- todo <span tabindex="0" @keydown.enter=""> to <button> -->
+                <span tabindex="0" class="text"
+                      @click="goToAnchor('shops')" @keydown.enter="goToAnchor('shops')">
                     Где купить?
                 </span>
-                <span tabindex="0" class="text" @click="goToAnchor('prizes')">
+                <span tabindex="0" class="text"
+                      @click="goToAnchor('prizes')" @keydown.enter="goToAnchor('prizes')">
                     Призы
                 </span>
                 <router-link to="/pens" class="text">
@@ -85,7 +88,7 @@ export default {
     },
     data() {
         return {
-            // auth: false,
+            //
         };
     },
     computed: {
@@ -95,7 +98,6 @@ export default {
     },
     methods: {
         goToAnchor(to) {
-            // todo close menu
             this.$router.push({ name: 'Index', hash: '#' + to })
         }
     },
