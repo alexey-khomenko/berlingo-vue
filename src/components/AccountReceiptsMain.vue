@@ -5,7 +5,7 @@
         </div>
         <ul class="receipts">
             <li class="receipt" v-for="(receipt, idx) in receipts" :key="idx">
-                <span class="receipt__status" :data-status="receipt.type">
+                <span class="receipt__status" :class="`receipt__status_${receipt.type}`">
                     {{ receipt.status }}
                 </span>
                 <img alt="" :src="receipt.image" class="receipt__image"/>
@@ -125,15 +125,15 @@ export default {
                     max-width: 100%;
                 }
 
-                &[data-status="accepted"] {
+                &_accepted {
                     background: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);
                 }
 
-                &[data-status="error"] {
+                &_error {
                     background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
                 }
 
-                &[data-status="processing"] {
+                &_processing {
                     background: linear-gradient(180deg, #00a2f6 0%, #c153ff 100%);
                 }
             }

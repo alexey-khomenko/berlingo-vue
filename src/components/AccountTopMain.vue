@@ -7,7 +7,7 @@
             <page-button type="button" color="white" class="buttons__receipt" data-modal-open="receipt">
                 <span>Зарегистрируй чек и получи призы</span>
             </page-button>
-            <page-button type="button" color="black" bordered class="buttons__exit" data-auth-exit>
+            <page-button type="button" color="black" bordered class="buttons__exit" @click="logout">
                 <span>Выйти</span>
             </page-button>
         </div>
@@ -16,12 +16,18 @@
 
 <script>
 import PageButton from '/src/components/PageButton';
+import {mapActions} from 'vuex';
 
 export default {
     name: 'AccountTopMain',
     components: {
         PageButton,
-    }
+    },
+    methods: {
+        ...mapActions([
+            'logout',
+        ]),
+    },
 };
 </script>
 

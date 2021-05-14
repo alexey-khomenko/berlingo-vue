@@ -1,5 +1,6 @@
 <template>
     <section class="section index-shops">
+        <!-- todo data-anchor нужен -->
         <div class="main main_rel main_index index-shops__main" data-anchor="#shops">
             <page-tabs>
                 <div class="title">

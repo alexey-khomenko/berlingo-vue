@@ -60,7 +60,7 @@ export default {
             'login',
         ]),
     },
-    // todo
+    // todo login
     mounted() {
         this.login({
             loginEmail: this.loginEmail,
