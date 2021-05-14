@@ -50,17 +50,7 @@ const router = createRouter({
             }
         }
 
-        wrapper.scrollTo(0, y);
-
-        // todo scroll
-        // return {
-        //     selector: to.hash,
-        //     offset: {x: 0, y: 10},
-        // };
-        // return {
-        //     selector: '.wrapper-outer',
-        //     offset: {x: 0, y: 0},
-        // };
+        wrapper.scrollTo({top: y, behavior: 'smooth'});
     },
 });
 
