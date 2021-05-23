@@ -2,7 +2,7 @@
     <div class="main main_abs header__main" :class="`main_${page}`">
         <div class="content">
 
-            <router-link to="/" class="content__logo">
+            <router-link to="/" class="content__logo" @click="focusPage()">
                 <img alt="" class="image_lg" :class="page"
                      :src="require(`../assets/images/${page}-header-main-logo-lg.png`)"/>
                 <img alt="" class="image_md" :class="page"
@@ -12,7 +12,7 @@
             </router-link>
 
             <nav class="content__left">
-                <a href="#" class="text" download>
+                <a href="#" class="text" download @click="focusPage()">
                     Правила акции
                 </a>
                 <button type="button" class="text" @click="goToAnchor('shops')">
@@ -21,20 +21,21 @@
                 <button type="button" class="text" @click="goToAnchor('prizes')">
                     Призы
                 </button>
-                <router-link to="/pens" class="text">
+                <router-link to="/pens" class="text" @click="focusPage()">
                     О ручках
                 </router-link>
-                <router-link to="/winners" class="text">
+                <router-link to="/winners" class="text" @click="focusPage()">
                     Победители
                 </router-link>
             </nav>
 
             <nav class="content__right">
-                <button type="button" class="text" :data-modal-open="auth ? 'receipt' : 'register'">
+                <button type="button" class="text" @click="focusPage()"
+                        :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
                 </button>
 
-                <router-link to="/account" class="link link_user" v-show="auth">
+                <router-link to="/account" class="link link_user" @click="focusPage()" v-show="auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
@@ -43,7 +44,8 @@
                     </svg>
                 </router-link>
 
-                <button type="button" class="link link_user" data-modal-open="login" v-show="!auth">
+                <button type="button" class="link link_user" @click="focusPage()" v-show="!auth"
+                        data-modal-open="login">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
@@ -52,7 +54,7 @@
                     </svg>
                 </button>
 
-                <button type="button" class="link link_menu" @click="$emit('menu-open')">
+                <button type="button" class="link link_menu" @click="openMenu()">
                     <svg width="16" height="14" viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
                         <rect width="16" height="2" fill="currentColor"></rect>
                         <rect width="16" height="2" fill="currentColor" y="6"></rect>
@@ -93,7 +95,16 @@ export default {
         }),
     },
     methods: {
+        focusPage() {
+            this.$emit('focus-page');
+        },
+        openMenu() {
+            this.$emit('focus-page');
+            this.$emit('menu-open');
+        },
         goToAnchor(to) {
+            this.$emit('focus-page');
+
             this.$router.push({ name: 'Index', hash: '#' + to })
         }
     },

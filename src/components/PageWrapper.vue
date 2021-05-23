@@ -15,6 +15,13 @@ export default {
             this.$refs.wrap.focus();
         }, 100);
     },
+    /*
+    ловим события. по каждому событию сбрасываем счётчик, начинаем новый.
+
+    setTimeout(() => {
+                document.querySelector('.wrapper-outer').focus();
+            }, 700);
+     */
 };
 </script>
 
