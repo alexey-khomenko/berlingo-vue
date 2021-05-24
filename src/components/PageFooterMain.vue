@@ -18,10 +18,10 @@
             </div>
 
             <div class="content__right">
-                <a href="#" download="download" @click="elBlur($event)">
+                <a href="#" download="download" @click="blurElem($event)">
                     Правила акции
                 </a>
-                <a href="#" download="download" @click="elBlur($event)">
+                <a href="#" download="download" @click="blurElem($event)">
                     Политика обработки персональных данных
                 </a>
             </div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import {blurElemMixin} from '/src/mixins/blurElem';
+
 export default {
     name: 'PageFooterMain',
     props: {
@@ -42,14 +44,7 @@ export default {
             },
         },
     },
-    methods: {
-        elBlur(e) {
-            setTimeout(() => {
-                e.target.closest('a')?.blur();
-                e.target.closest('button')?.blur();
-            }, 700);
-        },
-    },
+    mixins: [blurElemMixin],
 };
 </script>
 

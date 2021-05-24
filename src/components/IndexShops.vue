@@ -65,12 +65,12 @@
                                             </div>
                                             <div class="retails__title"><span>{{ retail.title }}</span></div>
                                             <div class="retails__address"><span>{{ retail.address }}</span></div>
-                                            <a :href="retail.link" target="_blank" @click="elBlur($event)" class="retails__link">
+                                            <a :href="retail.link" target="_blank" @click="blurElem($event)" class="retails__link">
                                                 <span>Посмотреть на карте</span>
                                             </a>
                                         </div>
                                         <div class="retails__sm">
-                                            <a :href="retail.link" target="_blank" @click="elBlur($event)">
+                                            <a :href="retail.link" target="_blank" @click="blurElem($event)">
                                                 <svg width="18" height="20" viewBox="0 0 18 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M10.962 18.864C13.421 16.828 18 13.038 18 8.468C18 6.207 17.065 4.081 15.366 2.483C13.667 0.881 11.405 0 9 0C6.595 0 4.333 0.881 2.634 2.482C0.935 4.081 0 6.207 0 8.467C0 13.038 4.578 16.827 7.038 18.863L7.094 18.91C7.41 19.171 7.685 19.399 7.906 19.595C8.203 19.856 8.592 20 9 20C9.408 20 9.796 19.856 10.095 19.596C10.312 19.404 10.584 19.179 10.897 18.918L10.962 18.864ZM10.056 17.911C9.708 18.199 9.408 18.449 9.157 18.668C9.113 18.706 9.057 18.726 9 18.726C8.944 18.726 8.887 18.706 8.842 18.668C8.593 18.45 8.293 18.2 7.943 17.911C5.644 16.007 1.364 12.464 1.364 8.468C1.364 4.501 4.789 1.274 8.999 1.274C13.209 1.274 16.634 4.501 16.634 8.467C16.634 12.465 12.355 16.007 10.056 17.911Z"
@@ -118,6 +118,7 @@
 </template>
 
 <script>
+import {blurElemMixin} from '/src/mixins/blurElem';
 import {loadRetails, loadCities, loadPrimaries, loadSecondaries, loadFederals} from '/src/api/index-shops';
 
 import PageTabs from '/src/components/PageTabs';
@@ -129,6 +130,7 @@ export default {
         PageTabs,
         PageButton,
     },
+    mixins: [blurElemMixin],
     data() {
         return {
             selected: 0,
@@ -147,12 +149,6 @@ export default {
         },
     },
     methods: {
-        elBlur(e) {
-            setTimeout(() => {
-                e.target.closest('a')?.blur();
-                e.target.closest('button')?.blur();
-            }, 700);
-        },
         blurSearch() {
             setTimeout(() => {
                 if (this.searchCity.trim().length > 0) return;

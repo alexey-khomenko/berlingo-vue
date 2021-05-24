@@ -12,7 +12,7 @@
             </router-link>
 
             <nav class="content__left">
-                <a href="#" class="text" download @click="elBlur($event)">
+                <a href="#" class="text" download @click="blurElem($event)">
                     Правила акции
                 </a>
                 <button type="button" class="text" @click="goToAnchor($event, 'shops')">
@@ -21,21 +21,21 @@
                 <button type="button" class="text" @click="goToAnchor($event, 'prizes')">
                     Призы
                 </button>
-                <router-link to="/pens" class="text" @click="elBlur($event)">
+                <router-link to="/pens" class="text" @click="blurElem($event)">
                     О ручках
                 </router-link>
-                <router-link to="/winners" class="text" @click="elBlur($event)">
+                <router-link to="/winners" class="text" @click="blurElem($event)">
                     Победители
                 </router-link>
             </nav>
 
             <nav class="content__right">
-                <button type="button" class="text" @click="elBlur($event)"
+                <button type="button" class="text" @click="blurElem($event)"
                         :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
                 </button>
 
-                <router-link to="/account" class="link link_user" @click="elBlur($event)" v-show="auth">
+                <router-link to="/account" class="link link_user" @click="blurElem($event)" v-show="auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
@@ -44,7 +44,7 @@
                     </svg>
                 </router-link>
 
-                <button type="button" class="link link_user" @click="elBlur($event)" v-show="!auth"
+                <button type="button" class="link link_user" @click="blurElem($event)" v-show="!auth"
                         data-modal-open="login">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
@@ -69,6 +69,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import {blurElemMixin} from '/src/mixins/blurElem';
 
 export default {
     name: 'PageHeaderMain',
@@ -84,6 +85,7 @@ export default {
     emits: {
         'menu-open': null,
     },
+    mixins: [blurElemMixin],
     data() {
         return {
             //
@@ -95,18 +97,12 @@ export default {
         }),
     },
     methods: {
-        elBlur(e) {
-            setTimeout(() => {
-                e.target.closest('a')?.blur();
-                e.target.closest('button')?.blur();
-            }, 700);
-        },
         openMenu(e) {
-            this.elBlur(e);
+            this.blurElem(e);
             this.$emit('menu-open');
         },
         goToAnchor(e, to) {
-            this.elBlur(e);
+            this.blurElem(e);
 
             this.$router.push({ name: 'Index', hash: '#' + to })
         }

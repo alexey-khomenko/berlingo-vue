@@ -6,7 +6,7 @@
         </div>
 
         <div class="text text_two">
-            <button type="button" @click="elBlur($event)" :data-modal-open="auth ? 'receipt' : 'register'">
+            <button type="button" @click="blurElem($event)" :data-modal-open="auth ? 'receipt' : 'register'">
                 Регистрируй
             </button>
             чек <br/> на сайте
@@ -25,6 +25,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import {blurElemMixin} from '/src/mixins/blurElem';
 
 export default {
     name: 'IndexStagesMain',
@@ -33,18 +34,11 @@ export default {
             // auth: false,
         };
     },
+    mixins: [blurElemMixin],
     computed: {
         ...mapGetters({
             auth: 'getAuth',
         }),
-    },
-    methods: {
-        elBlur(e) {
-            setTimeout(() => {
-                e.target.closest('a')?.blur();
-                e.target.closest('button')?.blur();
-            }, 700);
-        },
     },
 };
 </script>
