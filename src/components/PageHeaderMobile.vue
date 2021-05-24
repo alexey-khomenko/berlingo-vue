@@ -62,7 +62,6 @@
                 <router-link to="/winners" class="text" @click="elBlur($event)">
                     Победители
                 </router-link>
-
                 <button type="button" class="text text_sm" @click="elBlur($event)"
                         :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
@@ -102,7 +101,8 @@ export default {
     methods: {
         elBlur(e) {
             setTimeout(() => {
-                e.target.blur();
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
             }, 700);
         },
         closeMenu(e) {

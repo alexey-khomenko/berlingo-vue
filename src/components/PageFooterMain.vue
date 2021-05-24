@@ -18,10 +18,10 @@
             </div>
 
             <div class="content__right">
-                <a href="#" download="download">
+                <a href="#" download="download" @click="elBlur($event)">
                     Правила акции
                 </a>
-                <a href="#" download="download">
+                <a href="#" download="download" @click="elBlur($event)">
                     Политика обработки персональных данных
                 </a>
             </div>
@@ -40,6 +40,14 @@ export default {
             validator: function (value) {
                 return ['account', 'index', 'winners', 'pens'].includes(value);
             },
+        },
+    },
+    methods: {
+        elBlur(e) {
+            setTimeout(() => {
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
+            }, 700);
         },
     },
 };

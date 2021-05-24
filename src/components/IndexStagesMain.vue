@@ -6,7 +6,10 @@
         </div>
 
         <div class="text text_two">
-            <span :data-modal-open="auth ? 'receipt' : 'register'">Регистрируй</span> чек <br/> на сайте
+            <button type="button" @click="elBlur($event)" :data-modal-open="auth ? 'receipt' : 'register'">
+                Регистрируй
+            </button>
+            чек <br/> на сайте
         </div>
 
         <div class="text text_three">
@@ -34,6 +37,14 @@ export default {
         ...mapGetters({
             auth: 'getAuth',
         }),
+    },
+    methods: {
+        elBlur(e) {
+            setTimeout(() => {
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
+            }, 700);
+        },
     },
 };
 </script>
@@ -132,12 +143,27 @@ export default {
             }
         }
 
-        span {
-            display: inline-block;
+        button {
+            display: inline;
             text-decoration: underline;
-            color: #ffffff;
             cursor: pointer;
             transition: transform 500ms ease;
+            border: none;
+            padding: 0;
+            background-color: transparent;
+            color: #ffffff;
+            font-family: "PF Din Text Cond Pro", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 28px;
+
+            @media (max-width: $md_max) {
+                font-size: 22px;
+            }
+
+            @media (max-width: $sm_max) {
+                font-size: 18px;
+            }
 
             &:hover, &:focus {
                 transform: scale(1.05, 1.15);

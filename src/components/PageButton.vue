@@ -1,17 +1,17 @@
 <template>
-    <a :href="to" class="button" :class="classes" v-if="type === 'a'">
+    <a :href="to" class="button" :class="classes" @click="elBlur($event)" v-if="type === 'a'">
         <slot></slot>
     </a>
 
-    <router-link :to="to" class="button" :class="classes" v-else-if="type === 'link'">
+    <router-link :to="to" class="button" :class="classes" @click="elBlur($event)" v-else-if="type === 'link'">
         <slot></slot>
     </router-link>
 
-    <button type="button" class="button" :class="classes" v-else-if="type === 'button'">
+    <button type="button" class="button" :class="classes" @click="elBlur($event)" v-else-if="type === 'button'">
         <slot></slot>
     </button>
 
-    <button type="submit" class="button" :class="classes" v-else-if="type === 'submit'">
+    <button type="submit" class="button" :class="classes" @click="elBlur($event)" v-else-if="type === 'submit'">
         <slot></slot>
     </button>
 </template>
@@ -54,6 +54,15 @@ export default {
             classes.push(`button_${this.color}`);
 
             return classes.join(' ');
+        },
+    },
+    methods: {
+        // todo mixin?
+        elBlur(e) {
+            setTimeout(() => {
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
+            }, 700);
         },
     },
 };

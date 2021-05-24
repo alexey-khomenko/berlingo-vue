@@ -97,7 +97,8 @@ export default {
     methods: {
         elBlur(e) {
             setTimeout(() => {
-                e.target.blur();
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
             }, 700);
         },
         openMenu(e) {
