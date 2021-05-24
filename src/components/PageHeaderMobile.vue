@@ -1,7 +1,8 @@
 <template>
     <div class="header__mobile" :class="`header__mobile_${page}`" ref="root">
         <div class="content">
-            <router-link to="/" class="content__logo" @click="focusPage()">
+
+            <router-link to="/" class="content__logo">
                 <img alt="" class="image_lg" :class="page"
                      :src="require(`../assets/images/${page}-header-main-logo-lg.png`)"/>
                 <img alt="" class="image_md" :class="page"
@@ -11,12 +12,12 @@
             </router-link>
 
             <nav class="content__right">
-                <button type="button" class="text" @click="focusPage()"
+                <button type="button" class="text" @click="elBlur($event)"
                         :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
                 </button>
 
-                <router-link to="/account" class="link link_user" @click="focusPage()" v-show="auth">
+                <router-link to="/account" class="link link_user" @click="elBlur($event)" v-show="auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
@@ -25,7 +26,7 @@
                     </svg>
                 </router-link>
 
-                <button type="button" class="link link_user" @click="focusPage()" v-show="!auth"
+                <button type="button" class="link link_user" @click="elBlur($event)" v-show="!auth"
                         data-modal-open="login">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
@@ -35,7 +36,7 @@
                     </svg>
                 </button>
 
-                <button type="button" class="link link_menu" @click="closeMenu()">
+                <button type="button" class="link link_menu" @click="closeMenu($event)">
                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
                               d="M7.77829 6.36385L14.1421 0L15.5563 1.41421L9.1925 7.77806L15.7784 14.364L14.3642 15.7782L7.77829 9.19227L1.41421 15.5563L0 14.1421L6.36408 7.77806L0.222063 1.63605L1.63628 0.221832L7.77829 6.36385Z"
@@ -46,23 +47,23 @@
         </div>
         <div class="bottom">
             <nav>
-                <a href="#" class="text" download @click="focusPage()">
+                <a href="#" class="text" download @click="elBlur($event)">
                     Правила акции
                 </a>
-                <button type="button" class="text" @click="goToAnchor('shops')">
+                <button type="button" class="text" @click="goToAnchor($event, 'shops')">
                     Где купить?
                 </button>
-                <button type="button" class="text" @click="goToAnchor('prizes')">
+                <button type="button" class="text" @click="goToAnchor($event, 'prizes')">
                     Призы
                 </button>
-                <router-link to="/pens" class="text" @click="focusPage()">
+                <router-link to="/pens" class="text" @click="elBlur($event)">
                     О ручках
                 </router-link>
-                <router-link to="/winners" class="text" @click="focusPage()">
+                <router-link to="/winners" class="text" @click="elBlur($event)">
                     Победители
                 </router-link>
 
-                <button type="button" class="text text_sm" @click="focusPage()"
+                <button type="button" class="text text_sm" @click="elBlur($event)"
                         :data-modal-open="auth ? 'receipt' : 'register'">
                     Зарегистрировать чек
                 </button>
@@ -85,6 +86,9 @@ export default {
             },
         },
     },
+    emits: {
+        'menu-close': null,
+    },
     data() {
         return {
             //
@@ -96,16 +100,17 @@ export default {
         }),
     },
     methods: {
-        focusPage() {
-            this.$emit('focus-page');
+        elBlur(e) {
+            setTimeout(() => {
+                e.target.blur();
+            }, 700);
         },
-        closeMenu() {
-            this.$emit('focus-page');
+        closeMenu(e) {
+            this.elBlur(e);
             this.$emit('menu-close');
         },
-        goToAnchor(to) {
-            this.$emit('focus-page');
-            this.$emit('menu-close');
+        goToAnchor(e, to) {
+            this.closeMenu(e);
 
             setTimeout(() => {
                 this.$router.push({name: 'Index', hash: '#' + to});

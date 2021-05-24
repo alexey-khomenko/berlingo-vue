@@ -12,16 +12,10 @@ export default {
     mounted() {
         setTimeout(() => {
             // todo wrap.focus()
+            // mutation Observer на появление скролла
             this.$refs.wrap.focus();
-        }, 100);
+        }, 1000);
     },
-    /*
-    ловим события. по каждому событию сбрасываем счётчик, начинаем новый.
-
-    setTimeout(() => {
-                document.querySelector('.wrapper-outer').focus();
-            }, 700);
-     */
 };
 </script>
 
