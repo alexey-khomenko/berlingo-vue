@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_auth" data-modal-name="success" data-modal-important="off">
+    <section class="modal modal_auth" :class="{open}">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
@@ -22,18 +22,27 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalAuthSuccess',
     components: {
         ModalButtonClose,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
+    },
+    data() {
+        return {
+            name: 'success',
+            important: false,
+        };
     },
 };
 </script>

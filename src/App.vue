@@ -3,9 +3,9 @@
         <router-view/>
     </page-wrapper>
     <page-shadow>
-        <modal-auth/>
+        <modal-auth @modal-important="modalImportantHandler"/>
         <modal-receipt @modal-important="modalImportantHandler"/>
-        <modal-test/>
+        <modal-test @modal-important="modalImportantHandler"/>
     </page-shadow>
 </template>
 
@@ -80,6 +80,11 @@ img {
 
 svg {
     display: block;
+}
+
+button {
+    cursor: pointer;
+    padding: 0;
 }
 
 [data-hidden="on"]:not([data-slider]) {

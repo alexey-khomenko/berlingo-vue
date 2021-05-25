@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_auth" data-modal-name="login" data-modal-important="off">
+    <section class="modal modal_auth" :class="{open}">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
@@ -18,7 +18,7 @@
                             <a href="#" @click="openModal('register')">Зарегистрируйся</a>
                         </div>
                     </div>
-                    <form class="form">
+                    <form class="form" @submit.prevent="">
                         <div class="form__inputs">
                             <label class="form__input">
                                 <input type="text" name="login-email" maxlength="200"
@@ -41,22 +41,27 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import {mapActions} from 'vuex';
 import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalAuthLogin',
     components: {
         ModalButtonClose,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
     },
     data() {
         return {
+            name: 'login',
+            important: false,
             loginEmail: '',
             loginPassword: '',
         };

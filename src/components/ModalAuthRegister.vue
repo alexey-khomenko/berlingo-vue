@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_auth" data-modal-name="register" data-modal-important="off">
+    <section class="modal modal_auth" :class="{open}">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
 
-                    <form class="form">
+                    <form class="form" @submit.prevent="">
                         <div class="form__inputs">
                             <label class="form__input">
                                 <input type="text" name="register-email" maxlength="200"
@@ -55,10 +55,11 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 import Inputmask from 'inputmask';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalAuthRegister',
@@ -66,10 +67,18 @@ export default {
         ModalButtonClose,
         ModalButtonAgree,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
+    },
+    data() {
+        return {
+            name: 'register',
+            important: false,
+        };
     },
     mounted() {
         Inputmask('+7(999)999-99-99').mask(this.$refs.tel);

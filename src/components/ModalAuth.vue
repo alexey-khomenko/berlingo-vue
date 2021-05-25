@@ -1,10 +1,11 @@
 <template>
-    <modal-auth-login/>
-    <modal-auth-register/>
-    <modal-auth-success/>
+    <modal-auth-login @modal-important="modalImportantHandler"/>
+    <modal-auth-register @modal-important="modalImportantHandler"/>
+    <modal-auth-success @modal-important="modalImportantHandler"/>
 </template>
 
 <script>
+import {emitsModalMixin} from '/src/mixins/miscModal';
 import ModalAuthLogin from '/src/components/ModalAuthLogin';
 import ModalAuthRegister from '/src/components/ModalAuthRegister';
 import ModalAuthSuccess from '/src/components/ModalAuthSuccess';
@@ -15,6 +16,12 @@ export default {
         ModalAuthLogin,
         ModalAuthRegister,
         ModalAuthSuccess,
+    },
+    mixins: [emitsModalMixin],
+    methods: {
+        modalImportantHandler(val) {
+            this.$emit('modal-important', val);
+        },
     },
 };
 </script>
@@ -321,103 +328,6 @@ export default {
 
                 &:focus::placeholder {
                     opacity: 0;
-                }
-            }
-
-            &_select {
-                position: relative;
-                height: 60px;
-
-                @media (max-width: $sm_max) {
-                    height: auto;
-                }
-
-                svg {
-                    position: absolute;
-                    right: 40px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    pointer-events: none;
-                    color: #000000;
-
-                    @media (max-width: $md_max) {
-                        right: 20px;
-                    }
-                }
-
-                .cities {
-                    display: block;
-                    background-color: #ffffff;
-                    overflow-x: hidden;
-                    overflow-y: auto;
-                    padding: 0;
-                    left: 0;
-                    right: 0;
-                    top: 100%;
-                    position: absolute;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-                    border-radius: 25px;
-                    max-height: 198px;
-                    margin: 2px 0 0;
-
-                    @media (max-width: $sm_max) {
-                        position: relative;
-                        box-shadow: 0 0 1px rgba(0, 0, 0, 1);
-                        border-radius: 0;
-                        min-height: 200px;
-                        margin-top: 6px;
-                    }
-
-                    li {
-                        margin: 0;
-                        padding: 0 40px;
-                        border-radius: 99999px;
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        min-height: 50px;
-
-                        @media (max-width: $sm_max) {
-                            padding: 0 20px;
-                        }
-
-                        &:hover {
-                            background-color: #4f4f4f;
-
-                            @media (max-width: $sm_max) {
-                                background-color: transparent;
-                            }
-                        }
-
-                        &:hover span {
-                            color: #ffffff;
-
-                            @media (max-width: $sm_max) {
-                                color: #000000;
-                            }
-                        }
-
-                        span {
-                            cursor: pointer;
-                            padding-top: 3px;
-                            color: #000000;
-                            font-family: "PF Din Text Cond Pro", sans-serif;
-                            transition: transform 500ms ease;
-                            text-transform: uppercase;
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 16px;
-
-                            @media (max-width: $sm_max) {
-                                font-size: 14px;
-                                line-height: 17px;
-                            }
-
-                            &:hover, &:focus {
-                                transform: scale(1.05, 1.15);
-                            }
-                        }
-                    }
                 }
             }
         }

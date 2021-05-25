@@ -10,7 +10,7 @@
                         После регистрации чека, он поступит на модерирование. Статус модерации чека ты сможешь
                         отследить в личном кабинете
                     </div>
-                    <form class="form">
+                    <form class="form" @submit.prevent="">
                         <div class="form__inputs">
                             <label class="form__input">
                                 <input type="text" name="receipt-shop" maxlength="200"
@@ -48,9 +48,10 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalReceipt',
@@ -58,31 +59,18 @@ export default {
         ModalButtonClose,
         ModalButtonAgree,
     },
-    emits: {
-        'modal-important': value => typeof value === 'boolean',
-    },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
+        const openModal = inject('openModal');
         const openedModal = inject('openedModal');
 
-        return {
-            openedModal,
-        };
+        return {openModal, openedModal};
     },
     data() {
         return {
             name: 'receipt',
             important: false,
         };
-    },
-    computed: {
-        open() {
-            return this.openedModal === this.name;
-        },
-    },
-    watch: {
-        open(val) {
-            if (val) this.$emit('modal-important', this.important);
-        },
     },
 };
 </script>
@@ -326,6 +314,7 @@ export default {
             }
         }
 
+        // todo button
         &__button {
             margin: 0;
             cursor: pointer;

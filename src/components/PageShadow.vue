@@ -7,18 +7,16 @@
 </template>
 
 <script>
+import {setupModalMixin} from '/src/mixins/miscModal';
 import {inject} from 'vue';
 
 export default {
-    name: 'PageShadow',
+    mixins: [setupModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
 
-        return {
-            openedModal,
-            openModal,
-        };
+        return {openModal, openedModal};
     },
     data() {
         return {
