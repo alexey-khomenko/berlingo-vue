@@ -37,7 +37,9 @@ export default {
 
             if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
+
             openedModal.value = modals.includes(name) ? name : null;
+
         };
 
         provide('openedModal', openedModal);
