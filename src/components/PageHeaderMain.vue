@@ -12,7 +12,7 @@
             </router-link>
 
             <nav class="content__left">
-                <a href="#" class="text" download @click="blurElem($event)">
+                <a href="#" download="download" class="text" @click="blurElem($event)">
                     Правила акции
                 </a>
                 <button type="button" class="text" @click="goToAnchor($event, 'shops')">

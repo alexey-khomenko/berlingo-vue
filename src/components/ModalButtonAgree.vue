@@ -9,9 +9,9 @@
         </span>
         <span>
             Я согласен с
-            <a href="#" download>политикой обработки персональных данных</a>
+            <a href="#" download="download">политикой обработки персональных данных</a>
             и
-            <a href="#" download>условиями акции</a>
+            <a href="#" download="download">условиями акции</a>
         </span>
     </label>
 </template>
