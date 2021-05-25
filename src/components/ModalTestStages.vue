@@ -21,7 +21,7 @@
                         </template>
                     </form>
                     <!-- todo button -->
-                    <a class="button" href="#" :data-modal-open="`test_${stage + 2}`" data-disabled="on">
+                    <a class="button" href="#" @click="openModal(`test_${stage + 2}`)" data-disabled="on">
                         <span>Дальше</span>
                     </a>
                 </div>
@@ -31,12 +31,18 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 
 export default {
     name: 'ModalTestStage',
     components: {
         ModalButtonClose,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     data() {
         return {
@@ -184,7 +190,7 @@ export default {
         }
     }
 
-    // todo
+    // todo button
     .button {
         margin: 0 100px 54px;
         background: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);

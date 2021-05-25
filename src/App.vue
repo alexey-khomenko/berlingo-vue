@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import {provide, ref} from 'vue';
+
 import PageWrapper from '/src/components/PageWrapper.vue';
 import PageShadow from '/src/components/PageShadow.vue';
 import ModalAuth from '/src/components/ModalAuth.vue';
@@ -24,6 +26,28 @@ export default {
         ModalAuth,
         ModalReceipt,
         ModalTest,
+    },
+    setup() {
+        const openedModal = ref(null);
+        const openModal = (name) => {
+            const modals = [
+                null, 'login', 'register', 'success', 'receipt', 'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
+            ];
+
+            try {
+                if (!modals.includes(name)) {
+                    throw new SyntaxError(`modal "${name}" not found`);
+                }
+
+                openedModal.value = name;
+            } catch (e) {
+                console.error(e.message);
+                openedModal.value = null;
+            }
+        };
+
+        provide('openedModal', openedModal);
+        provide('openModal', openModal);
     },
 };
 </script>

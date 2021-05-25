@@ -16,7 +16,7 @@
                                 <input type="text" name="receipt-shop" maxlength="200"
                                        placeholder="Укажи магазин покупки">
                             </label>
-                            <!--                    todo button -->
+                            <!-- todo button -->
                             <label class="button form__file" data-text="только JPG, JPEG, PNG до 20Мб"
                                    data-hidden="off">
                                 <input type="file" name="receipt-file">

@@ -6,7 +6,7 @@
                     <modal-button-close/>
 
                     <div class="titles">
-                        <a href="#" data-modal-open="login">Авторизация</a>
+                        <a href="#" @click="openModal('login')">Авторизация</a>
                         <span class="center">или</span>
                         <span class="title">регистрация</span>
                     </div>
@@ -16,7 +16,7 @@
                         </div>
                         <div class="subtitles__right">
                             Уже зарегистрирован?
-                            <a href="#" data-modal-open="login">Войди</a>
+                            <a href="#" @click="openModal('login')">Войди</a>
                             в личный кабинет
                         </div>
                     </div>
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 import Inputmask from 'inputmask';
@@ -64,6 +65,11 @@ export default {
     components: {
         ModalButtonClose,
         ModalButtonAgree,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     mounted() {
         Inputmask('+7(999)999-99-99').mask(this.$refs.tel);

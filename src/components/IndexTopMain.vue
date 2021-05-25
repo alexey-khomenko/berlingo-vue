@@ -5,15 +5,13 @@
             Участвуй в акции и получи призы <br/> от Berlingo и Павла Воли
         </div>
 
-        <page-button type="button" color="white"
-                     class="btn btn_check"
-                     :data-modal-open="auth ? 'receipt' : 'register'">
+        <page-button type="button" color="white" class="btn btn_check"
+                     @click="openModal(auth ? 'receipt' : 'register')">
             <span>Зарегистрируй чек и получи призы</span>
         </page-button>
 
-        <page-button type="button" color="black" bordered
-                     class="btn btn_pen"
-                     data-modal-open="test_1">
+        <page-button type="button" color="black" bordered class="btn btn_pen"
+                     @click="openModal('test_1')">
             <span>Найди свою идеальную ручку</span>
         </page-button>
 
@@ -21,6 +19,7 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import {mapGetters} from 'vuex';
 import PageButton from '/src/components/PageButton';
 
@@ -29,10 +28,10 @@ export default {
     components: {
         PageButton,
     },
-    data() {
-        return {
-            // auth: false,
-        };
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     computed: {
         ...mapGetters({

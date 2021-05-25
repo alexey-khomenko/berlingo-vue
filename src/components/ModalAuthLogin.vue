@@ -7,7 +7,7 @@
                     <div class="titles">
                         <span class="title">Авторизация</span>
                         <span class="center">или</span>
-                        <a href="#" data-modal-open="register">регистрация</a>
+                        <a href="#" @click="openModal('register')">регистрация</a>
                     </div>
                     <div class="subtitles">
                         <div class="subtitles__left">
@@ -15,7 +15,7 @@
                         </div>
                         <div class="subtitles__right">
                             Ещё нет личного кабинета?
-                            <a href="#" data-modal-open="register">Зарегистрируйся</a>
+                            <a href="#" @click="openModal('register')">Зарегистрируйся</a>
                         </div>
                     </div>
                     <form class="form">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import {mapActions} from 'vuex';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 
@@ -48,6 +49,11 @@ export default {
     name: 'ModalAuthLogin',
     components: {
         ModalButtonClose,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     data() {
         return {

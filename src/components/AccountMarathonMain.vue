@@ -3,19 +3,25 @@
         <div class="title">
             Участвуй в марафоне с Павлом Волей
         </div>
-        <page-button type="button" color="white" class="btn" data-modal-open="receipt">
+        <page-button type="button" color="white" class="btn" @click="openModal('receipt')">
             <span>Участвовать</span>
         </page-button>
     </div>
 </template>
 
 <script>
+import {inject} from 'vue';
 import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'AccountMarathonMain',
     components: {
         PageButton,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
 };
 </script>

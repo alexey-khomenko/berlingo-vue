@@ -7,13 +7,34 @@
 </template>
 
 <script>
+import {inject} from 'vue';
+
 export default {
     name: 'PageShadow',
+    setup() {
+        const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
+
+        return {
+            openedModal,
+            openModal,
+        };
+    },
+    watch: {
+        openedModal(val, old) {
+            console.log(old, '=>', val);
+
+            setTimeout(() => {
+                this.openModal(null);
+            }, 2500);
+        },
+    },
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
+
 .shadow {
     display: flex;
     flex-flow: row nowrap;
@@ -102,7 +123,7 @@ export default {
                 }
             }
 
-            // todo
+            // todo button
             .button {
                 position: relative;
                 display: flex;

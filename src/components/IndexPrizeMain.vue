@@ -7,13 +7,14 @@
             Каждый участник, зарегистрировавший чек, автоматически в личном кабинете получит подарок – марафон с
             Павлом Волей
         </div>
-        <page-button type="button" color="white" class="btn" :data-modal-open="auth ? 'receipt' : 'register'">
+        <page-button type="button" color="white" class="btn" @click="openModal(auth ? 'receipt' : 'register')">
             <span>Зарегистрируй чек</span>
         </page-button>
     </div>
 </template>
 
 <script>
+import {inject} from 'vue';
 import {mapGetters} from 'vuex';
 import PageButton from '/src/components/PageButton';
 
@@ -21,6 +22,11 @@ export default {
     name: 'IndexPrizeMain',
     components: {
         PageButton,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     data() {
         return {

@@ -4,7 +4,7 @@
             Привет, lubimov95!
         </div>
         <div class="buttons">
-            <page-button type="button" color="white" class="buttons__receipt" data-modal-open="receipt">
+            <page-button type="button" color="white" class="buttons__receipt" @click="openModal('receipt')">
                 <span>Зарегистрируй чек и получи призы</span>
             </page-button>
             <page-button type="button" color="black" bordered class="buttons__exit" @click="logout">
@@ -15,13 +15,19 @@
 </template>
 
 <script>
-import PageButton from '/src/components/PageButton';
+import {inject} from 'vue';
 import {mapActions} from 'vuex';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'AccountTopMain',
     components: {
         PageButton,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     methods: {
         ...mapActions([

@@ -17,14 +17,14 @@
         <page-bottom-back page="account"/>
         <page-bottom-main page="account">
             <template #title>Пройди тест и определи свою идеальную ручку</template>
-            <div class="element element_button" data-modal-open="test_1">
+            <div class="element element_button">
                 <div class="element_button__md">
-                    <page-button type="button" color="red">
+                    <page-button type="button" color="red" @click="openModal('test_1');">
                         <span>Найди свою идеальную ручку</span>
                     </page-button>
                 </div>
                 <div class="element_button__sm">
-                    <page-button type="button" color="red">
+                    <page-button type="button" color="red" @click="openModal('test_1');">
                         <span>Смотреть</span>
                     </page-button>
                 </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import PageHeader from '/src/components/PageHeader';
 import PageHeaderBack from '/src/components/PageHeaderBack';
 import PageHeaderMain from '/src/components/PageHeaderMain';
@@ -80,6 +81,11 @@ export default {
         PageFooterBack,
         PageFooterMain,
         PageButton,
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
     },
     data() {
         return {

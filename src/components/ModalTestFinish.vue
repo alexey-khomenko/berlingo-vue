@@ -459,7 +459,7 @@ export default {
             margin: 0 20px 436px;
         }
 
-        // todo
+        // todo button
         .button {
 
             &:not(:last-of-type) {
