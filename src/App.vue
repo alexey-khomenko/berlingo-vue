@@ -4,7 +4,7 @@
     </page-wrapper>
     <page-shadow>
         <modal-auth/>
-        <modal-receipt/>
+        <modal-receipt @modal-important="modalImportantHandler"/>
         <modal-test/>
     </page-shadow>
 </template>
@@ -31,23 +31,28 @@ export default {
         const openedModal = ref(null);
         const openModal = (name) => {
             const modals = [
-                null, 'login', 'register', 'success', 'receipt', 'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
+                null, 'login', 'register', 'success', 'receipt',
+                'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
             ];
 
-            try {
-                if (!modals.includes(name)) {
-                    throw new SyntaxError(`modal "${name}" not found`);
-                }
+            if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
-                openedModal.value = name;
-            } catch (e) {
-                console.error(e.message);
-                openedModal.value = null;
-            }
+            openedModal.value = modals.includes(name) ? name : null;
         };
 
         provide('openedModal', openedModal);
         provide('openModal', openModal);
+    },
+    data() {
+        return {
+            modalImportant: false,
+        };
+    },
+    methods: {
+        modalImportantHandler(val) {
+            // todo modalImportant
+            this.modalImportant = val;
+        },
     },
 };
 </script>

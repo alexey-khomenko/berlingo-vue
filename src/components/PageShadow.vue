@@ -1,6 +1,6 @@
 <template>
-    <div class="shadow">
-        <div class="modal-wrapper">
+    <div class="shadow" :class="{open}">
+        <div class="modal-wrapper" :class="{open}">
             <slot></slot>
         </div>
     </div>
@@ -20,13 +20,21 @@ export default {
             openModal,
         };
     },
+    data() {
+        return {
+            open: false,
+        };
+    },
     watch: {
         openedModal(val, old) {
+            // todo скорость закрытия модали
+            this.open = val !== null;
+
             console.log(old, '=>', val);
 
-            setTimeout(() => {
-                this.openModal(null);
-            }, 2500);
+            // setTimeout(() => {
+            //     this.openModal(null);
+            // }, 5000);
         },
     },
 };

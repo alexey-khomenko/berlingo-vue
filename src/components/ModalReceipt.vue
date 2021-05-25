@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_receipt" data-modal-name="receipt" data-modal-important="off">
+    <section class="modal modal_receipt" :class="{open}">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import {inject} from 'vue';
 import ModalButtonClose from '/src/components/ModalButtonClose';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 
@@ -56,6 +57,32 @@ export default {
     components: {
         ModalButtonClose,
         ModalButtonAgree,
+    },
+    emits: {
+        'modal-important': value => typeof value === 'boolean',
+    },
+    setup() {
+        const openedModal = inject('openedModal');
+
+        return {
+            openedModal,
+        };
+    },
+    data() {
+        return {
+            name: 'receipt',
+            important: false,
+        };
+    },
+    computed: {
+        open() {
+            return this.openedModal === this.name;
+        },
+    },
+    watch: {
+        open(val) {
+            if (val) this.$emit('modal-important', this.important);
+        },
     },
 };
 </script>
