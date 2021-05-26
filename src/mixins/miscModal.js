@@ -24,7 +24,14 @@ export const openModalMixin = {
     },
     watch: {
         open(val) {
-            if (val) this.$emit('modal-important', this.important);
+            if (val) {
+                setTimeout(() => {
+                    // todo перепроверить
+                    this.$refs.root.click();
+                    this.$refs.root.focus();
+                }, 10);
+                this.$emit('modal-important', this.important);
+            }
         },
     },
 }

@@ -41,32 +41,34 @@ export default {
 
             name = modals.includes(name) ? name : null;
 
-            console.log(openedModal.value, '=>', name);
-
+            // todo menu close, menuIsOpen
 
             if (!openedModal.value?.length && name?.length) {
+                // null => new
+                openedModal.value = name;
                 openedShadow.value = true;
                 openedWrapper.value = true;
-
-                console.log('1');
             }
             else if (openedModal.value?.length && !name?.length) {
-                openedShadow.value = false;
+                // old => null
                 openedWrapper.value = false;
 
-                console.log('2');
+                setTimeout(() => {
+                    openedShadow.value = false;
+                    openedModal.value = name;
+
+                    // todo focus wrapper
+                }, 600);
             }
             else if (openedModal.value?.length && name?.length) {
+                // old => new
+                openedWrapper.value = false;
 
-
-
-                console.log('3');
+                setTimeout(() => {
+                    openedModal.value = name;
+                    openedWrapper.value = true;
+                }, 500);
             }
-
-
-            setTimeout(() => {
-                openedModal.value = name;
-            }, 10);
         };
 
         provide('openedModal', openedModal);
@@ -74,24 +76,6 @@ export default {
 
         return {openedShadow, openedWrapper};
     },
-    // watch: {
-    //     openedModal(val, old) {
-    //         // todo remove to App
-    //
-    //         if (!old.length && val.length) {
-    //             this.openShadow = true;
-    //         }
-    //         else if (old.length && !val.length) {
-    //             this.openWrapper = false;
-    //
-    //             setTimeout(() => {
-    //                 this.openShadow = false;
-    //             }, 600);
-    //         }
-    //
-    //         this.openWrapper = val !== null;
-    //     },
-    // },
     data() {
         return {
             modalImportant: false,

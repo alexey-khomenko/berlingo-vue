@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_auth" :class="{open}">
+    <section class="modal modal_auth" :class="{open}" ref="root">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
