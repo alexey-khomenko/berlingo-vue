@@ -2,10 +2,10 @@
     <page-wrapper>
         <router-view/>
     </page-wrapper>
-    <page-shadow>
+    <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper">
         <modal-auth @modal-important="modalImportantHandler"/>
         <modal-receipt @modal-important="modalImportantHandler"/>
-        <modal-test @modal-important="modalImportantHandler"/>
+        <modal-test /><!-- @modal-important="modalImportantHandler" -->
     </page-shadow>
 </template>
 
@@ -28,6 +28,8 @@ export default {
         ModalTest,
     },
     setup() {
+        const openedShadow = ref(false);
+        const openedWrapper = ref(false);
         const openedModal = ref(null);
         const openModal = (name) => {
             const modals = [
@@ -37,14 +39,59 @@ export default {
 
             if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
+            name = modals.includes(name) ? name : null;
 
-            openedModal.value = modals.includes(name) ? name : null;
+            console.log(openedModal.value, '=>', name);
 
+
+            if (!openedModal.value?.length && name?.length) {
+                openedShadow.value = true;
+                openedWrapper.value = true;
+
+                console.log('1');
+            }
+            else if (openedModal.value?.length && !name?.length) {
+                openedShadow.value = false;
+                openedWrapper.value = false;
+
+                console.log('2');
+            }
+            else if (openedModal.value?.length && name?.length) {
+
+
+
+                console.log('3');
+            }
+
+
+            setTimeout(() => {
+                openedModal.value = name;
+            }, 10);
         };
 
         provide('openedModal', openedModal);
         provide('openModal', openModal);
+
+        return {openedShadow, openedWrapper};
     },
+    // watch: {
+    //     openedModal(val, old) {
+    //         // todo remove to App
+    //
+    //         if (!old.length && val.length) {
+    //             this.openShadow = true;
+    //         }
+    //         else if (old.length && !val.length) {
+    //             this.openWrapper = false;
+    //
+    //             setTimeout(() => {
+    //                 this.openShadow = false;
+    //             }, 600);
+    //         }
+    //
+    //         this.openWrapper = val !== null;
+    //     },
+    // },
     data() {
         return {
             modalImportant: false,

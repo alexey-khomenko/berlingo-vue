@@ -1,53 +1,23 @@
 <template>
-    <div class="shadow" :class="{openShadow}">
-        <div class="modal-wrapper" :class="{openWrapper}">
+    <div class="shadow" :class="{open: openedShadow}">
+        <div class="modal-wrapper" :class="{open: openedWrapper}">
             <slot></slot>
         </div>
     </div>
 </template>
 
 <script>
-import {setupModalMixin} from '/src/mixins/miscModal';
-import {inject} from 'vue';
-
 export default {
-    // todo remove setup()
-    mixins: [setupModalMixin],
-    setup() {
-        const openModal = inject('openModal');
-        const openedModal = inject('openedModal');
-
-        return {openModal, openedModal};
-    },
-    data() {
-        // todo props bool
-        return {
-            openShadow: false,
-            openWrapper: false,
-        };
-    },
-    watch: {
-        openedModal(val, old) {
-            // todo remove to App
-
-            if (!old.length && val.length) {
-                this.openShadow = true;
-            }
-            else if (old.length && !val.length) {
-                this.openWrapper = false;
-
-                setTimeout(() => {
-                    this.openShadow = false;
-                }, 600);
-            }
-
-            this.openWrapper = val !== null;
-
-            console.log(old, '=>', val);
-
-            // setTimeout(() => {
-            //     this.openModal(null);
-            // }, 5000);
+    props: {
+        openedShadow: {
+            type: Boolean,
+            default: false,
+            required: true,
+        },
+        openedWrapper: {
+            type: Boolean,
+            default: false,
+            required: true,
         },
     },
 };
