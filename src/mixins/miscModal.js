@@ -7,7 +7,7 @@ export const emitsModalMixin = {
 };
 
 export const setupModalMixin = {
-    // todo setup()
+    // todo setup() in mixin
     // setup() {
     //     const openModal = inject('openModal');
     //     const openedModal = inject('openedModal');

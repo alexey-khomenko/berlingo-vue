@@ -11,6 +11,7 @@ import {setupModalMixin} from '/src/mixins/miscModal';
 import {inject} from 'vue';
 
 export default {
+    // todo remove setup()
     mixins: [setupModalMixin],
     setup() {
         const openModal = inject('openModal');
@@ -19,6 +20,7 @@ export default {
         return {openModal, openedModal};
     },
     data() {
+        // todo props bool
         return {
             openShadow: false,
             openWrapper: false,
@@ -26,6 +28,8 @@ export default {
     },
     watch: {
         openedModal(val, old) {
+            // todo remove to App
+
             if (!old.length && val.length) {
                 this.openShadow = true;
             }
@@ -37,9 +41,6 @@ export default {
                 }, 600);
             }
 
-
-
-            // todo скорость закрытия модали
             this.openWrapper = val !== null;
 
             console.log(old, '=>', val);
