@@ -29,7 +29,7 @@ export const openModalMixin = {
                     // todo перепроверить
                     this.$refs.root.click();
                     this.$refs.root.focus();
-                }, 10);
+                }, 100);
                 this.$emit('modal-important', this.important);
             }
         },
