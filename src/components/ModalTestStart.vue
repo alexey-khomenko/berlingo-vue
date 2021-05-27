@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_test modal_start" :class="{open}" ref="root">
+    <section class="modal modal_test modal_start" :class="{open}" ref="root" @click.stop>
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
@@ -35,6 +35,15 @@ export default {
     components: {
         ModalButtonClose,
     },
+    props: {
+        number: {
+            type: Number,
+            required: true,
+            validator: function (value) {
+                return value > 0;
+            },
+        },
+    },
     mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
@@ -44,9 +53,13 @@ export default {
     },
     data() {
         return {
-            name: 'test_1',
             important: false,
         };
+    },
+    computed: {
+        name() {
+            return `test_${this.number}`;
+        }
     },
 };
 </script>

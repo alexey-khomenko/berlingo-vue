@@ -1,6 +1,6 @@
 <template>
-    <div class="shadow" :class="{open: openedShadow}" @click="modalClose">
-        <div class="modal-wrapper" :class="{open: openedWrapper}">
+    <div class="shadow" :class="{open: openedShadow}">
+        <div class="modal-wrapper" :class="{open: openedWrapper}" @click="modalClose">
             <slot></slot>
         </div>
     </div>
@@ -34,6 +34,7 @@ export default {
     },
     methods: {
         modalClose() {
+            console.log('shadow');
             if (!this.modalImportant) this.openModal(null);
         },
     },

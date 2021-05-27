@@ -1,21 +1,20 @@
 <template>
-    <section class="modal modal_test modal_stage" :data-modal-name="`test_${stage + 1}`"
-             v-for="(stage) in stages" :key="stage">
+    <section class="modal modal_test modal_stage" :class="{open}" ref="root" @click.stop>
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">
                     <modal-button-close/>
-                    <div class="title">Шаг {{ stage }}/4</div>
+                    <div class="title">Шаг {{ step }}/4</div>
                     <div class="subtitle">Выбери знак, который тебе больше нравится</div>
                     <form class="form">
-                        <template v-for="(number, idx) in [1,2,3,4]" :key="idx">
-                            <input type="radio" :id="`i-${stage}_${number}`"
-                                   :name="`step_${stage}`" :value="number * 10"/>
-                            <label :for="`i-${stage}_${number}`">
-                                <img alt="" :src="require(`../assets/images/modal-test-${stage + 1}-${number}.png`)"
+                        <template v-for="(n, idx) in [1,2,3,4]" :key="idx">
+                            <input type="radio" :id="`i-${step}_${n}`"
+                                   :name="`step_${step}`" :value="n * 10"/>
+                            <label :for="`i-${step}_${n}`">
+                                <img alt="" :src="require(`../assets/images/modal-test-${number}-${n}.png`)"
                                      data-selected="off"/>
                                 <img alt=""
-                                     :src="require(`../assets/images/modal-test-${stage + 1}-${number}-selected.png`)"
+                                     :src="require(`../assets/images/modal-test-${number}-${n}-selected.png`)"
                                      data-selected="on"/>
                             </label>
                         </template>
@@ -23,7 +22,7 @@
                     <!-- todo button -->
                     <!-- todo disabled для следующих этапов -->
                     <!-- todo href="#" -->
-                    <a class="button" href="#" @click="openModal(`test_${stage + 2}`)" data-disabled="on">
+                    <a class="button" href="#" @click="openModal(`test_${number + 1}`)" data-disabled="on">
                         <span>Дальше</span>
                     </a>
                 </div>
@@ -42,6 +41,15 @@ export default {
     components: {
         ModalButtonClose,
     },
+    props: {
+        number: {
+            type: Number,
+            required: true,
+            validator: function (value) {
+                return value > 0;
+            },
+        },
+    },
     mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
@@ -51,16 +59,16 @@ export default {
     },
     data() {
         return {
-            stage: 1,
             important: true,
-            // todo name. one level up?
-            stages: [1, 2, 3, 4],
         };
     },
     computed: {
-        name () {
-            return `test_${this.stage + 1}`;
+        name() {
+            return `test_${this.number}`;
         },
+        step() {
+            return this.number - 1;
+        }
     },
 };
 </script>

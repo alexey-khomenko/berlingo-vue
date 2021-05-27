@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_receipt" :class="{open}" ref="root">
+    <section class="modal modal_receipt" :class="{open}" ref="root" @click.stop>
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="modal__body-2">

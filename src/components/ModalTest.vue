@@ -1,7 +1,10 @@
 <template>
-    <modal-test-start @modal-important="modalImportantHandler"/>
-    <modal-test-stages @modal-important="modalImportantHandler"/>
-    <modal-test-finish @modal-important="modalImportantHandler"/>
+    <modal-test-start :number="1" @modal-important="modalImportantHandler"/>
+    <modal-test-stages :number="2" @modal-important="modalImportantHandler"/>
+    <modal-test-stages :number="3" @modal-important="modalImportantHandler"/>
+    <modal-test-stages :number="4" @modal-important="modalImportantHandler"/>
+    <modal-test-stages :number="5" @modal-important="modalImportantHandler"/>
+    <modal-test-finish :number="6" @modal-important="modalImportantHandler"/>
 </template>
 
 <script>

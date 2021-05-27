@@ -3,9 +3,9 @@
         <router-view/>
     </page-wrapper>
     <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper" :modal-important="modalImportant">
-        <modal-auth @modal-important="modalImportantHandler" @click.stop/>
-        <modal-receipt @modal-important="modalImportantHandler" @click.stop/>
-        <modal-test @click.stop/><!-- @modal-important="modalImportantHandler" -->
+        <modal-auth @modal-important="modalImportantHandler"/>
+        <modal-receipt @modal-important="modalImportantHandler"/>
+        <modal-test @modal-important="modalImportantHandler"/>
     </page-shadow>
 </template>
 
@@ -35,6 +35,8 @@ export default {
         const openModal = (name) => {
             name = checkModalName(name);
 
+            console.log(openedModal.value, '=>', name);
+
             if (!openedModal.value?.length && name?.length) {
                 openModalInner(name);
             }
@@ -55,7 +57,7 @@ export default {
             if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
             return modals.includes(name) ? name : null;
-        }
+        };
 
         const openModalInner = (name) => {
             openedModal.value = name;
