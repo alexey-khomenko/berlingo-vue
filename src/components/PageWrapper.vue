@@ -9,12 +9,19 @@
 <script>
 export default {
     name: 'PageWrapper',
-    mounted() {
-        setTimeout(() => {
-            // todo wrap.focus()
-            // mutation Observer на появление скролла
-            this.$refs.wrap.focus();
-        }, 1000);
+    props: {
+        focusWrap: {
+            type: Boolean,
+            default: false,
+            required: true,
+        },
+    },
+    watch: {
+        focusWrap() {
+            setTimeout(() => {
+                this.$refs.wrap.focus();
+            }, 100);
+        }
     },
 };
 </script>

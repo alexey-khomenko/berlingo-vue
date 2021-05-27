@@ -26,8 +26,6 @@ export const openModalMixin = {
         open(val) {
             if (val) {
                 setTimeout(() => {
-                    // todo перепроверить
-                    this.$refs.root.click();
                     this.$refs.root.focus();
                 }, 100);
                 this.$emit('modal-important', this.important);

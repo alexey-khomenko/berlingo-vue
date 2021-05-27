@@ -1,5 +1,5 @@
 <template>
-    <page-wrapper>
+    <page-wrapper :focus-wrap="focusWrap">
         <router-view/>
     </page-wrapper>
     <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper">
@@ -28,10 +28,14 @@ export default {
         ModalTest,
     },
     setup() {
+        const focusWrap = ref(false);
         const openedShadow = ref(false);
         const openedWrapper = ref(false);
         const openedModal = ref(null);
         const openModal = (name) => {
+
+            // todo разбить на функции
+
             const modals = [
                 null, 'login', 'register', 'success', 'receipt',
                 'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
@@ -40,8 +44,6 @@ export default {
             if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
             name = modals.includes(name) ? name : null;
-
-            // todo menu close, menuIsOpen
 
             if (!openedModal.value?.length && name?.length) {
                 // null => new
@@ -57,7 +59,7 @@ export default {
                     openedShadow.value = false;
                     openedModal.value = name;
 
-                    // todo focus wrapper
+                    focusWrap.value = !focusWrap.value;
                 }, 600);
             }
             else if (openedModal.value?.length && name?.length) {
@@ -74,7 +76,7 @@ export default {
         provide('openedModal', openedModal);
         provide('openModal', openModal);
 
-        return {openedShadow, openedWrapper};
+        return {focusWrap, openedShadow, openedWrapper};
     },
     data() {
         return {
@@ -86,6 +88,13 @@ export default {
             // todo modalImportant
             this.modalImportant = val;
         },
+    },
+    mounted() {
+        setTimeout(() => {
+            // todo wrap.focus()
+            // mutation Observer на появление скролла
+            this.focusWrap = !this.focusWrap;
+        }, 900);
     },
 };
 </script>
