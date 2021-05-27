@@ -11,7 +11,7 @@ import ModalAuthRegister from '/src/components/ModalAuthRegister';
 import ModalAuthSuccess from '/src/components/ModalAuthSuccess';
 
 export default {
-    name: 'ModalLogin',
+    name: 'ModalAuth',
     components: {
         ModalAuthLogin,
         ModalAuthRegister,
