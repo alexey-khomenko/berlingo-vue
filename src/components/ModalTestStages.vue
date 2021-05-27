@@ -22,6 +22,7 @@
                     </form>
                     <!-- todo button -->
                     <!-- todo disabled для следующих этапов -->
+                    <!-- todo href="#" -->
                     <a class="button" href="#" @click="openModal(`test_${stage + 2}`)" data-disabled="on">
                         <span>Дальше</span>
                     </a>

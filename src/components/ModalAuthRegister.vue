@@ -6,6 +6,7 @@
                     <modal-button-close/>
 
                     <div class="titles">
+                        <!-- todo href="#" -->
                         <a href="#" @click="openModal('login')">Авторизация</a>
                         <span class="center">или</span>
                         <span class="title">регистрация</span>
@@ -16,6 +17,7 @@
                         </div>
                         <div class="subtitles__right">
                             Уже зарегистрирован?
+                            <!-- todo href="#" -->
                             <a href="#" @click="openModal('login')">Войди</a>
                             в личный кабинет
                         </div>

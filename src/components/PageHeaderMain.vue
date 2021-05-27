@@ -30,7 +30,7 @@
             </nav>
 
             <nav class="content__right">
-                <button type="button" class="text" @click="blurElem($event); openModal(auth ? 'receipt' : 'register');">
+                <button type="button" class="text" @click="openModalHeader($event, auth ? 'receipt' : 'register');">
                     Зарегистрировать чек
                 </button>
 
@@ -43,7 +43,7 @@
                     </svg>
                 </router-link>
 
-                <button type="button" class="link link_user" @click="blurElem($event); openModal('login');"
+                <button type="button" class="link link_user" @click="openModalHeader($event, 'login');"
                         v-show="!auth">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
@@ -103,9 +103,12 @@ export default {
         },
         goToAnchor(e, to) {
             this.blurElem(e);
-
-            this.$router.push({ name: 'Index', hash: '#' + to })
-        }
+            this.$router.push({name: 'Index', hash: '#' + to});
+        },
+        openModalHeader(e, target) {
+            this.blurElem(e);
+            this.openModal(target);
+        },
     },
 };
 </script>

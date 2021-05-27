@@ -5,6 +5,7 @@
                 <div class="modal__body-2">
                     <modal-button-close/>
                     <div class="titles">
+                        <!-- todo href="#" -->
                         <a href="#" @click="openModal('login')">Авторизация</a>
                         <span class="center">или</span>
                         <span class="title">регистрация</span>
@@ -14,6 +15,7 @@
                         отправленном тебе на e-mail.
                     </div>
                     <!-- todo button -->
+                    <!-- todo href="#" -->
                     <a class="button" href="#" @click="openModal(null)"><span>Хорошо</span></a>
                 </div>
             </div>

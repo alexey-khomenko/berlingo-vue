@@ -7,6 +7,7 @@
                     <div class="titles">
                         <span class="title">Авторизация</span>
                         <span class="center">или</span>
+                        <!-- todo href="#" -->
                         <a href="#" @click="openModal('register')">регистрация</a>
                     </div>
                     <div class="subtitles">
@@ -15,6 +16,7 @@
                         </div>
                         <div class="subtitles__right">
                             Ещё нет личного кабинета?
+                            <!-- todo href="#" -->
                             <a href="#" @click="openModal('register')">Зарегистрируйся</a>
                         </div>
                     </div>

@@ -17,6 +17,7 @@
                         Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
                     </div>
                     <!-- todo button -->
+                    <!-- todo href="#" -->
                     <a class="button" href="#" @click="openModal('test_2')"><span>Начать тест</span></a>
                 </div>
             </div>
