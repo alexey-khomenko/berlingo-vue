@@ -33,9 +33,20 @@ export default {
         const openedWrapper = ref(false);
         const openedModal = ref(null);
         const openModal = (name) => {
+            name = checkModalName(name);
 
-            // todo разбить на функции
+            if (!openedModal.value?.length && name?.length) {
+                openModalInner(name);
+            }
+            else if (openedModal.value?.length && !name?.length) {
+                closeModalInner(name);
+            }
+            else if (openedModal.value?.length && name?.length) {
+                toggleModalInner(name);
+            }
+        };
 
+        const checkModalName = (name) => {
             const modals = [
                 null, 'login', 'register', 'success', 'receipt',
                 'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
@@ -43,34 +54,33 @@ export default {
 
             if (!modals.includes(name)) console.error(`modal "${name}" not found`);
 
-            name = modals.includes(name) ? name : null;
+            return modals.includes(name) ? name : null;
+        }
 
-            if (!openedModal.value?.length && name?.length) {
-                // null => new
+        const openModalInner = (name) => {
+            openedModal.value = name;
+            openedShadow.value = true;
+            openedWrapper.value = true;
+        };
+
+        const closeModalInner = (name) => {
+            openedWrapper.value = false;
+
+            setTimeout(() => {
+                openedShadow.value = false;
                 openedModal.value = name;
-                openedShadow.value = true;
+
+                focusWrap.value = !focusWrap.value;
+            }, 600);
+        };
+
+        const toggleModalInner = (name) => {
+            openedWrapper.value = false;
+
+            setTimeout(() => {
+                openedModal.value = name;
                 openedWrapper.value = true;
-            }
-            else if (openedModal.value?.length && !name?.length) {
-                // old => null
-                openedWrapper.value = false;
-
-                setTimeout(() => {
-                    openedShadow.value = false;
-                    openedModal.value = name;
-
-                    focusWrap.value = !focusWrap.value;
-                }, 600);
-            }
-            else if (openedModal.value?.length && name?.length) {
-                // old => new
-                openedWrapper.value = false;
-
-                setTimeout(() => {
-                    openedModal.value = name;
-                    openedWrapper.value = true;
-                }, 500);
-            }
+            }, 500);
         };
 
         provide('openedModal', openedModal);
