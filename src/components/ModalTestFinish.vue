@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_test modal_finish" data-modal-name="test_6" data-modal-important="on">
+    <section class="modal modal_test modal_finish" :class="{open}" ref="root">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
@@ -56,15 +56,26 @@
 </template>
 
 <script>
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalTestFinish',
     components: {
         ModalButtonClose,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
+    setup() {
+        const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
+
+        return {openModal, openedModal};
+    },
     data() {
         return {
+            name: 'test_6',
+            important: true,
             results: [
                 {
                     number: 1,
@@ -175,8 +186,7 @@ export default {
     },
     methods: {
         goToAnchor(to) {
-            // todo close modal
-            // this.$emit('menu-close');
+            this.openModal(null);
 
             setTimeout(()=>{
                 this.$router.push({name: 'Index', hash: '#' + to});

@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_test modal_stage" :data-modal-name="`test_${stage + 1}`" data-modal-important="on"
+    <section class="modal modal_test modal_stage" :data-modal-name="`test_${stage + 1}`"
              v-for="(stage) in stages" :key="stage">
         <div class="modal__body-0">
             <div class="modal__body-1">
@@ -33,23 +33,34 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalTestStage',
     components: {
         ModalButtonClose,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
     },
     data() {
         return {
+            stage: 1,
+            important: true,
+            // todo name. one level up?
             stages: [1, 2, 3, 4],
         };
+    },
+    computed: {
+        name () {
+            return `test_${this.stage + 1}`;
+        },
     },
 };
 </script>

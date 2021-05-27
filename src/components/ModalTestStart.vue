@@ -1,5 +1,5 @@
 <template>
-    <section class="modal modal_test modal_start" data-modal-name="test_1" data-modal-important="off">
+    <section class="modal modal_test modal_start" :class="{open}" ref="root">
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
@@ -26,18 +26,27 @@
 </template>
 
 <script>
-import {inject} from 'vue';
+import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
 import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
 
 export default {
     name: 'ModalTestStart',
     components: {
         ModalButtonClose,
     },
+    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
+    },
+    data() {
+        return {
+            name: 'test_1',
+            important: false,
+        };
     },
 };
 </script>

@@ -1,10 +1,11 @@
 <template>
-    <modal-test-start/>
-    <modal-test-stages/>
-    <modal-test-finish/>
+    <modal-test-start @modal-important="modalImportantHandler"/>
+    <modal-test-stages @modal-important="modalImportantHandler"/>
+    <modal-test-finish @modal-important="modalImportantHandler"/>
 </template>
 
 <script>
+import {emitsModalMixin} from '/src/mixins/miscModal';
 import ModalTestStart from '/src/components/ModalTestStart';
 import ModalTestStages from '/src/components/ModalTestStages';
 import ModalTestFinish from '/src/components/ModalTestFinish';
@@ -15,6 +16,12 @@ export default {
         ModalTestStart,
         ModalTestStages,
         ModalTestFinish,
+    },
+    mixins: [emitsModalMixin],
+    methods: {
+        modalImportantHandler(val) {
+            this.$emit('modal-important', val);
+        },
     },
 };
 </script>
