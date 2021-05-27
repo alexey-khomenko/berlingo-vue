@@ -1,5 +1,5 @@
 <template>
-    <div class="shadow" :class="{open: openedShadow}">
+    <div class="shadow" :class="{open: openedShadow}" @click="modalClose">
         <div class="modal-wrapper" :class="{open: openedWrapper}">
             <slot></slot>
         </div>
@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import {inject} from 'vue';
+
 export default {
     props: {
         openedShadow: {
@@ -18,6 +20,21 @@ export default {
             type: Boolean,
             default: false,
             required: true,
+        },
+        modalImportant: {
+            type: Boolean,
+            default: false,
+            required: true,
+        },
+    },
+    setup() {
+        const openModal = inject('openModal');
+
+        return {openModal};
+    },
+    methods: {
+        modalClose() {
+            if (!this.modalImportant) this.openModal(null);
         },
     },
 };

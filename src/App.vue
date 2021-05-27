@@ -2,10 +2,10 @@
     <page-wrapper :focus-wrap="focusWrap">
         <router-view/>
     </page-wrapper>
-    <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper">
-        <modal-auth @modal-important="modalImportantHandler"/>
-        <modal-receipt @modal-important="modalImportantHandler"/>
-        <modal-test /><!-- @modal-important="modalImportantHandler" -->
+    <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper" :modal-important="modalImportant">
+        <modal-auth @modal-important="modalImportantHandler" @click.stop/>
+        <modal-receipt @modal-important="modalImportantHandler" @click.stop/>
+        <modal-test @click.stop/><!-- @modal-important="modalImportantHandler" -->
     </page-shadow>
 </template>
 
@@ -85,7 +85,6 @@ export default {
     },
     methods: {
         modalImportantHandler(val) {
-            // todo modalImportant
             this.modalImportant = val;
         },
     },
