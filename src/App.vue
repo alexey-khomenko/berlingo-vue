@@ -35,8 +35,6 @@ export default {
         const openModal = (name) => {
             name = checkModalName(name);
 
-            console.log(openedModal.value, '=>', name);
-
             if (!openedModal.value?.length && name?.length) {
                 openModalInner(name);
             }

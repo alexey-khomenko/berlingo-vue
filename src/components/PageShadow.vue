@@ -34,7 +34,6 @@ export default {
     },
     methods: {
         modalClose() {
-            console.log('shadow');
             if (!this.modalImportant) this.openModal(null);
         },
     },

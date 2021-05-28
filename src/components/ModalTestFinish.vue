@@ -11,14 +11,18 @@
                     <modal-button-close/>
 
                     <template v-for="result in results" :key="result.number">
+                        <!-- todo data- -->
                         <div class="title" :data-result="result.number" data-hidden="on">
                             {{ result.title }}
                         </div>
+                        <!-- todo data- -->
                         <div class="subtitle" :data-result="result.number" data-hidden="on">
                             {{ result.subtitle }}
                         </div>
+                        <!-- todo data- -->
                         <div class="pens" :data-result="result.number" data-hidden="on">
                             <!-- todo href="#" -->
+                            <!-- todo data- -->
                             <a class="pens__button" href="#" data-pens-toggler>
                                 <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
@@ -26,6 +30,7 @@
                                 </svg>
                             </a>
                             <template v-for="pen in result.pens" :key="pen.number">
+                                <!-- todo data- -->
                                 <div class="pen" :data-slider="pen.number" data-hidden="off">
                                     <a class="pen__link" :href="pen.link">
                                         <img alt="" class="pen__image" :src="pen.image"/>

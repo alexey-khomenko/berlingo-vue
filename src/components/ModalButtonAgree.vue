@@ -1,4 +1,5 @@
 <template>
+    <!-- todo data- -->
     <input type="checkbox" :name="name" :id="name" data-hidden="on"/>
     <label class="form__checkbox" :for="name">
         <span class="form__check">

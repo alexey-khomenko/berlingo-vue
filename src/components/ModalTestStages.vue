@@ -11,8 +11,10 @@
                             <input type="radio" :id="`i-${step}_${n}`"
                                    :name="`step_${step}`" :value="n * 10"/>
                             <label :for="`i-${step}_${n}`">
+                                <!-- todo data- -->
                                 <img alt="" :src="require(`../assets/images/modal-test-${number}-${n}.png`)"
                                      data-selected="off"/>
+                                <!-- todo data- -->
                                 <img alt=""
                                      :src="require(`../assets/images/modal-test-${number}-${n}-selected.png`)"
                                      data-selected="on"/>
@@ -22,6 +24,7 @@
                     <!-- todo button -->
                     <!-- todo disabled для следующих этапов -->
                     <!-- todo href="#" -->
+                    <!-- todo data- -->
                     <a class="button" href="#" @click="openModal(`test_${number + 1}`)" data-disabled="on">
                         <span>Дальше</span>
                     </a>
