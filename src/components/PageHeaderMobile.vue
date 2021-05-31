@@ -96,6 +96,12 @@ export default {
 
         return {openModal};
     },
+    data() {
+        return {
+            timerIdAnchor: null,
+            timerIdModal: null,
+        };
+    },
     computed: {
         ...mapGetters({
             auth: 'getAuth',
@@ -109,14 +115,14 @@ export default {
         goToAnchor(e, to) {
             this.closeMenu(e);
 
-            setTimeout(() => {
+            this.timerIdAnchor = setTimeout(() => {
                 this.$router.push({name: 'Index', hash: '#' + to});
             }, 760);
         },
         openModalMobile(e, target) {
             this.closeMenu(e);
 
-            setTimeout(() => {
+            this.timerIdModal = setTimeout(() => {
                 this.openModal(target);
             }, 700);
         },
@@ -125,6 +131,10 @@ export default {
         this.$nextTick(() => {
             this.$refs.root.style.visibility = 'visible';
         });
+    },
+    beforeUnmount() {
+        clearTimeout(this.timerIdAnchor);
+        clearTimeout(this.timerIdModal);
     },
 };
 </script>

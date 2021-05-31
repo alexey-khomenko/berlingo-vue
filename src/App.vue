@@ -100,7 +100,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            // todo wrap.focus()
+            // todo wrap.focus(), timerId
             // mutation Observer на появление скролла
             this.focusWrap = !this.focusWrap;
         }, 900);

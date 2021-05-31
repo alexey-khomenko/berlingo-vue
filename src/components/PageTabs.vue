@@ -1,5 +1,13 @@
 <template>
-    <slot></slot>
+    <div class="title">
+        <slot name="title"></slot>
+    </div>
+    <div class="tabs">
+        <div class="tabs__head">
+            <slot name="head"></slot>
+        </div>
+        <slot name="body"></slot>
+    </div>
 </template>
 
 <script>
@@ -39,17 +47,11 @@ export default {
         font-weight: 400;
         font-size: 24px;
         line-height: 29px;
-        margin-bottom: 80px;
 
         @media (max-width: $md_max) {
             font-size: 18px;
             line-height: 22px;
             margin-top: -20px;
-            margin-bottom: 60px;
-        }
-
-        @media (max-width: $sm_max) {
-            margin-bottom: 40px;
         }
     }
 

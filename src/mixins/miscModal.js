@@ -17,6 +17,11 @@ export const setupModalMixin = {
 };
 
 export const openModalMixin = {
+    data() {
+        return {
+            timerIdModalMixin: null,
+        };
+    },
     computed: {
         open() {
             return this.openedModal === this.name;
@@ -24,12 +29,16 @@ export const openModalMixin = {
     },
     watch: {
         open(val) {
-            if (val) {
-                setTimeout(() => {
-                    this.$refs.root.focus();
-                }, 100);
-                this.$emit('modal-important', this.important);
-            }
+            if (val === null) return;
+
+            this.timerIdModalMixin = setTimeout(() => {
+                this.$refs.root.focus();
+            }, 100);
+
+            this.$emit('modal-important', this.important);
         },
     },
-}
+    beforeUnmount() {
+        clearTimeout(this.timerIdModalMixin);
+    },
+};

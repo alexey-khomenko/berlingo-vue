@@ -3,33 +3,35 @@
         <!-- todo data-anchor нужен -->
         <div class="main main_rel main_index index-shops__main" data-anchor="#shops">
             <page-tabs>
-                <div class="title">
+                <template #title>
                     Где купить?
-                </div>
-                <div class="tabs">
-                    <div class="tabs__head">
-                        <page-button type="button" :bordered="selected !== 0"
-                                     :color="selected === 0 ? 'green' : 'black'"
-                                     class="btn btn_retail"
-                                     :data-selected="selected === 0 ? 'on' : 'off'"
-                                     @click="selected = 0">
-                            <span>Розничные магазины</span>
-                        </page-button>
-                        <page-button type="button" :bordered="selected !== 1"
-                                     :color="selected === 1 ? 'blue' : 'black'"
-                                     class="btn btn_internet"
-                                     :data-selected="selected === 1 ? 'on' : 'off'"
-                                     @click="selected = 1">
-                            <span>Интернет-магазины</span>
-                        </page-button>
-                        <page-button type="button" :bordered="selected !== 2"
-                                     :color="selected === 2 ? 'red' : 'black'"
-                                     class="btn btn_federal"
-                                     :data-selected="selected === 2 ? 'on' : 'off'"
-                                     @click="selected = 2">
-                            <span>Федеральные сети</span>
-                        </page-button>
-                    </div>
+                </template>
+
+                <template #head>
+                    <page-button type="button" :bordered="selected !== 0"
+                                 :color="selected === 0 ? 'green' : 'black'"
+                                 class="btn btn_retail"
+                                 :data-selected="selected === 0 ? 'on' : 'off'"
+                                 @click="selected = 0">
+                        <span>Розничные магазины</span>
+                    </page-button>
+                    <page-button type="button" :bordered="selected !== 1"
+                                 :color="selected === 1 ? 'blue' : 'black'"
+                                 class="btn btn_internet"
+                                 :data-selected="selected === 1 ? 'on' : 'off'"
+                                 @click="selected = 1">
+                        <span>Интернет-магазины</span>
+                    </page-button>
+                    <page-button type="button" :bordered="selected !== 2"
+                                 :color="selected === 2 ? 'red' : 'black'"
+                                 class="btn btn_federal"
+                                 :data-selected="selected === 2 ? 'on' : 'off'"
+                                 @click="selected = 2">
+                        <span>Федеральные сети</span>
+                    </page-button>
+                </template>
+
+                <template #body>
                     <div class="tabs__body" :data-hidden="selected === 0 ? 'off' : 'on'">
                         <form novalidate @submit.prevent="">
                             <input type="text" autocomplete="off" aria-label="Город" placeholder="Введите ваш город"
@@ -104,14 +106,14 @@
                         </ul>
                     </div>
                     <div class="tabs__body" :data-hidden="selected === 2 ? 'off' : 'on'">
-                        <ul class="grid grid_federal">
-                            <li v-for="(federal, idx) in federals" :key="idx">
-                                <img alt="" class="image image_small"
-                                     :src="require(`../assets/images/${federal}`)"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                            <ul class="grid grid_federal">
+                                <li v-for="(federal, idx) in federals" :key="idx">
+                                    <img alt="" class="image image_small"
+                                         :src="require(`../assets/images/${federal}`)"/>
+                                </li>
+                            </ul>
+                        </div>
+                </template>
             </page-tabs>
         </div>
     </section>
@@ -141,6 +143,8 @@ export default {
             primaries: [],
             secondaries: [],
             federals: [],
+            timerIdBlur: null,
+            timerIdSelect: null,
         };
     },
     computed: {
@@ -150,9 +154,8 @@ export default {
     },
     methods: {
         blurSearch() {
-            setTimeout(() => {
+            this.timerIdBlur = setTimeout(() => {
                 if (this.searchCity.trim().length > 0) return;
-
                 this.showCities = false;
             }, 100);
         },
@@ -167,7 +170,8 @@ export default {
         selectCity(city) {
             this.searchCity = city;
             this.showCities = false;
-            setTimeout(async () => {
+
+            this.timerIdSelect = setTimeout(async () => {
                 this.retails = await loadRetails(city);
             }, 500);
         },
@@ -177,6 +181,10 @@ export default {
         this.primaries = await loadPrimaries();
         this.secondaries = await loadSecondaries();
         this.federals = await loadFederals();
+    },
+    beforeUnmount() {
+        clearTimeout(this.timerIdBlur);
+        clearTimeout(this.timerIdSelect);
     },
 };
 </script>

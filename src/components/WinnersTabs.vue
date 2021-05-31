@@ -2,14 +2,12 @@
     <section class="section winners-tabs">
         <div class="main main_rel main_winners winners-tabs__main" v-for="(group, idx) in groups" :key="idx">
             <page-tabs>
-                <div class="title">
+                <template #title>
                     {{ group.title }}
-                </div>
-                <div class="subtitle" v-if="group.subtitle">
-                    {{ group.subtitle }}
-                </div>
-                <div class="tabs">
-                    <div class="tabs__head" v-if="group.tabs.head.length">
+                </template>
+
+                <template #head>
+                    <template v-if="group.tabs.head.length">
                         <page-button type="button"
                                      :bordered="group.selected !== tab.number"
                                      :color="group.selected === tab.number ? tab.color : 'black'"
@@ -19,7 +17,15 @@
                                      @click="group.selected = tab.number">
                             <span>{{ tab.title }}</span>
                         </page-button>
-                    </div>
+                    </template>
+                    <template v-else-if="group.subtitle">
+                        <div class="subtitle">
+                            {{ group.subtitle }}
+                        </div>
+                    </template>
+                </template>
+
+                <template #body>
                     <div class="tabs__body"
                          :data-hidden="group.selected === tab.number ? 'off' : 'on'"
                          v-for="tab in group.tabs.body" :key="tab.number"
@@ -46,7 +52,7 @@
                             Победители ещё не определны. Розыгрыш состоится 16.05.2021
                         </div>
                     </div>
-                </div>
+                </template>
             </page-tabs>
         </div>
     </section>

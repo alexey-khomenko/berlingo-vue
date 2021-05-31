@@ -28,11 +28,6 @@ export default {
 
         return {openModal};
     },
-    data() {
-        return {
-            // auth: false,
-        };
-    },
     computed: {
         ...mapGetters({
             auth: 'getAuth',

@@ -51,8 +51,10 @@
                     <div class="buttons">
                         <!-- todo button -->
                         <!-- todo href="#" -->
-                        <a class="button button_shops" href="#" @click="goToAnchor('shops')"><span>Где купить?</span></a>
-                        <a class="button button_prizes" href="#" @click="goToAnchor('prizes')"><span>Выигать призы!</span></a>
+                        <a class="button button_shops" href="#"
+                           @click="goToAnchor('shops')"><span>Где купить?</span></a>
+                        <a class="button button_prizes" href="#"
+                           @click="goToAnchor('prizes')"><span>Выигать призы!</span></a>
                     </div>
                 </div>
             </div>
@@ -195,21 +197,25 @@ export default {
                     ],
                 },
             ],
+            timerId: null,
         };
     },
     computed: {
         name() {
             return `test_${this.number}`;
-        }
+        },
     },
     methods: {
         goToAnchor(to) {
             this.openModal(null);
 
-            setTimeout(()=>{
+            this.timerId = setTimeout(() => {
                 this.$router.push({name: 'Index', hash: '#' + to});
             }, 760);
         },
+    },
+    beforeUnmount() {
+        clearTimeout(this.timerId);
     },
 };
 </script>

@@ -35,11 +35,6 @@ export default {
 
         return {openModal};
     },
-    data() {
-        return {
-            // auth: false,
-        };
-    },
     mixins: [blurElemMixin],
     computed: {
         ...mapGetters({

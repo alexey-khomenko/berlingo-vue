@@ -16,18 +16,27 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            timerId: null,
+        };
+    },
     watch: {
         focusWrap() {
-            setTimeout(() => {
+            this.timerId = setTimeout(() => {
                 this.$refs.wrap.focus();
             }, 100);
-        }
+        },
+    },
+    beforeUnmount() {
+        clearTimeout(this.timerId);
     },
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
+
 .wrapper {
     &-outer {
         position: fixed;

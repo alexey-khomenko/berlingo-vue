@@ -18,7 +18,7 @@
                         {{ prize.title }}
                     </div>
                     <div class="prize__text">
-                        {{ text }}
+                        {{ $options.PRIZE_TEXT }}
                     </div>
                 </div>
             </li>
@@ -34,10 +34,10 @@ export default {
     components: {
         PageButton,
     },
+    PRIZE_TEXT: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
+        'получении приза.',
     data() {
         return {
-            text: 'В течение 5 (пяти) рабочих дней на указанную вами почту придет письмо с информацией о ' +
-                'получении приза.',
             prizes: [
                 {
                     image: require('../assets/images/account-my-applewatch.png'),
