@@ -1,69 +1,65 @@
 <template>
-    <section class="modal modal_receipt" :class="{open}" ref="root" @click.stop>
-        <div class="modal__body-0">
-            <div class="modal__body-1">
-                <div class="modal__body-2">
-                    <modal-button-close/>
+    <modal-wrapper class="modal_receipt" :class="{open}" ref="root" @click.stop>
+        <div class="title">
+            Зарегистрируй чек
+        </div>
+        <div class="subtitle">
+            После регистрации чека, он поступит на модерирование. Статус модерации чека ты сможешь
+            отследить в личном кабинете
+        </div>
 
-                    <div class="title">Зарегистрируй чек</div>
-                    <div class="subtitle">
-                        После регистрации чека, он поступит на модерирование. Статус модерации чека ты сможешь
-                        отследить в личном кабинете
-                    </div>
-                    <form class="form" @submit.prevent="">
-                        <div class="form__inputs">
-                            <label class="form__input">
-                                <input type="text" name="receipt-shop" maxlength="200"
-                                       placeholder="Укажи магазин покупки">
-                            </label>
-                            <!-- todo button -->
-                            <!-- todo data- -->
-                            <label class="button form__file" data-text="только JPG, JPEG, PNG до 20Мб"
-                                   data-hidden="off">
-                                <input type="file" name="receipt-file">
-                                <span>Загрузи фото Чека</span>
-                            </label>
-                            <!-- todo data- -->
-                            <div class="form__file-selected" data-hidden="on">
-                                <img alt="" src="">
-                                <span></span>
-                                <!-- todo href="#" -->
-                                <!-- todo data- -->
-                                <a href="#" data-receipt-shop-reset>
-                                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15.6673 0.335559L15.6639 0.332131C15.221 -0.11071 14.5033 -0.11071 14.0605 0.332131L7.99971 6.39349L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L6.39349 7.99971L0.332131 14.0611C-0.11071 14.5039 -0.11071 15.2216 0.332131 15.6644L0.335559 15.6679C0.7784 16.1107 1.49609 16.1107 1.93893 15.6679L7.99971 9.60594L14.0611 15.6673C14.5039 16.1101 15.2216 16.1101 15.6644 15.6673L15.6679 15.6639C16.1107 15.221 16.1107 14.5033 15.6679 14.0605L9.60594 7.99971L15.6673 1.93836C16.1101 1.49609 16.1101 0.7784 15.6673 0.335559Z"
-                                              fill="currentColor"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-
-                        <modal-button-agree name="receipt-agree"/>
-
-                        <!-- todo button -->
-                        <button class="button form__button" type="submit">
-                            <span>Зарегистрировать чек</span>
-                        </button>
-                    </form>
+        <form class="form" @submit.prevent>
+            <div class="form__inputs">
+                <label class="form__input">
+                    <input type="text" name="receipt-shop" maxlength="200"
+                           placeholder="Укажи магазин покупки">
+                </label>
+                <!-- todo button -->
+                <!-- todo data- -->
+                <label class="button form__file" data-text="только JPG, JPEG, PNG до 20Мб"
+                       data-hidden="off">
+                    <input type="file" name="receipt-file">
+                    <span>Загрузи фото Чека</span>
+                </label>
+                <!-- todo data- -->
+                <div class="form__file-selected" data-hidden="on">
+                    <img alt="" src="">
+                    <span></span>
+                    <!-- todo href="#" -->
+                    <!-- todo data- -->
+                    <a href="#" data-receipt-shop-reset>
+                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6673 0.335559L15.6639 0.332131C15.221 -0.11071 14.5033 -0.11071 14.0605 0.332131L7.99971 6.39349L1.93836 0.332131C1.49552 -0.11071 0.777829 -0.11071 0.334988 0.332131L0.332131 0.335559C-0.11071 0.7784 -0.11071 1.49609 0.332131 1.93893L6.39349 7.99971L0.332131 14.0611C-0.11071 14.5039 -0.11071 15.2216 0.332131 15.6644L0.335559 15.6679C0.7784 16.1107 1.49609 16.1107 1.93893 15.6679L7.99971 9.60594L14.0611 15.6673C14.5039 16.1101 15.2216 16.1101 15.6644 15.6673L15.6679 15.6639C16.1107 15.221 16.1107 14.5033 15.6679 14.0605L9.60594 7.99971L15.6673 1.93836C16.1101 1.49609 16.1101 0.7784 15.6673 0.335559Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <modal-button-agree name="receipt-agree"/>
+
+            <!-- todo button -->
+            <button class="button form__button" type="submit">
+                <span>Зарегистрировать чек</span>
+            </button>
+        </form>
+    </modal-wrapper>
 </template>
 
 <script>
-import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-import ModalButtonClose from '/src/components/ModalButtonClose';
-import ModalButtonAgree from '/src/components/ModalButtonAgree';
 import {inject} from 'vue';
+import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
+
+import ModalWrapper from '/src/components/ModalWrapper';
+import ModalButtonAgree from '/src/components/ModalButtonAgree';
 
 export default {
     name: 'ModalReceipt',
     components: {
-        ModalButtonClose,
+        ModalWrapper,
         ModalButtonAgree,
     },
-    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
+    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

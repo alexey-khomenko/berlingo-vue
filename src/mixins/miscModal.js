@@ -1,11 +1,5 @@
 // import {inject} from 'vue';
 
-export const emitsModalMixin = {
-    emits: {
-        'modal-important': value => typeof value === 'boolean',
-    },
-};
-
 export const setupModalMixin = {
     // todo setup() in mixin
     // setup() {
@@ -17,6 +11,9 @@ export const setupModalMixin = {
 };
 
 export const openModalMixin = {
+    emits: {
+        'modal-important': value => typeof value === 'boolean',
+    },
     data() {
         return {
             timerIdModalMixin: null,

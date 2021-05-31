@@ -1,50 +1,38 @@
 <template>
-    <section class="modal modal_test modal_start" :class="{open}" ref="root" @click.stop>
-        <div class="modal__body-0">
-            <div class="modal__body-1">
-                <div class="back">
-                    <img alt="" class="image_lg" src="../assets/images/modal-test-1-lg.png"/>
-                    <img alt="" class="image_md" src="../assets/images/modal-test-1-md.png"/>
-                    <img alt="" class="image_sm" src="../assets/images/modal-test-1-sm.png"/>
-                </div>
-                <div class="modal__body-2">
-                    <modal-button-close/>
-                    <div class="text">
-                        Я подготовил для тебя необычный тест. Просто выбирай картинки, которые тебе нравятся, а
-                        я подберу ручки, которые подчеркнут твою индивидуальность лучше всего! Погнали?
-                    </div>
-                    <div class="title">
-                        Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
-                    </div>
-                    <!-- todo button -->
-                    <!-- todo href="#" -->
-                    <a class="button" href="#" @click="openModal('test_2')"><span>Начать тест</span></a>
-                </div>
-            </div>
+    <modal-wrapper class="modal_test modal_start" :class="{open}" ref="root" @click.stop>
+        <template #back>
+            <img alt="" class="image_lg" src="../assets/images/modal-test-1-lg.png"/>
+            <img alt="" class="image_md" src="../assets/images/modal-test-1-md.png"/>
+            <img alt="" class="image_sm" src="../assets/images/modal-test-1-sm.png"/>
+        </template>
+
+        <div class="text">
+            Я подготовил для тебя необычный тест. Просто выбирай картинки, которые тебе нравятся, а
+            я подберу ручки, которые подчеркнут твою индивидуальность лучше всего! Погнали?
         </div>
-    </section>
+        <div class="title">
+            Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
+        </div>
+        <!-- todo button -->
+        <!-- todo href="#" -->
+        <a class="button" href="#" @click="openModal('test_2')">
+            <span>Начать тест</span>
+        </a>
+    </modal-wrapper>
 </template>
 
 <script>
-import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-import ModalButtonClose from '/src/components/ModalButtonClose';
 import {inject} from 'vue';
+import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
+
+import ModalWrapper from '/src/components/ModalWrapper';
 
 export default {
     name: 'ModalTestStart',
     components: {
-        ModalButtonClose,
+        ModalWrapper,
     },
-    props: {
-        number: {
-            type: Number,
-            required: true,
-            validator: function (value) {
-                return value > 0;
-            },
-        },
-    },
-    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
+    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
@@ -53,13 +41,9 @@ export default {
     },
     data() {
         return {
+            name: 'test_1',
             important: false,
         };
-    },
-    computed: {
-        name() {
-            return `test_${this.number}`;
-        }
     },
 };
 </script>

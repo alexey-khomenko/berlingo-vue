@@ -1,37 +1,25 @@
 <template>
-    <page-wrapper :focus-wrap="focusWrap">
-        <router-view/>
-    </page-wrapper>
-    <page-shadow :opened-shadow="openedShadow" :opened-wrapper="openedWrapper" :modal-important="modalImportant">
-        <modal-auth @modal-important="modalImportantHandler"/>
-        <modal-receipt @modal-important="modalImportantHandler"/>
-        <modal-test @modal-important="modalImportantHandler"/>
-    </page-shadow>
+    <page-wrapper/>
+    <page-shadow/>
 </template>
 
 <script>
 import {provide, ref} from 'vue';
-
 import PageWrapper from '/src/components/PageWrapper.vue';
 import PageShadow from '/src/components/PageShadow.vue';
-import ModalAuth from '/src/components/ModalAuth.vue';
-import ModalReceipt from '/src/components/ModalReceipt.vue';
-import ModalTest from '/src/components/ModalTest.vue';
 
 export default {
     name: 'App',
     components: {
         PageWrapper,
         PageShadow,
-        ModalAuth,
-        ModalReceipt,
-        ModalTest,
     },
     setup() {
         const focusWrap = ref(false);
         const openedShadow = ref(false);
         const openedWrapper = ref(false);
         const openedModal = ref(null);
+
         const openModal = (name) => {
             name = checkModalName(name);
 
@@ -83,27 +71,13 @@ export default {
             }, 500);
         };
 
+        provide('openedShadow', openedShadow);
+        provide('openedWrapper', openedWrapper);
         provide('openedModal', openedModal);
+
         provide('openModal', openModal);
 
-        return {focusWrap, openedShadow, openedWrapper};
-    },
-    data() {
-        return {
-            modalImportant: false,
-        };
-    },
-    methods: {
-        modalImportantHandler(val) {
-            this.modalImportant = val;
-        },
-    },
-    mounted() {
-        setTimeout(() => {
-            // todo wrap.focus(), timerId
-            // mutation Observer на появление скролла
-            this.focusWrap = !this.focusWrap;
-        }, 900);
+        provide('focusWrap', focusWrap);
     },
 };
 </script>

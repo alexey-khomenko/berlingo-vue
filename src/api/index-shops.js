@@ -1,7 +1,4 @@
 export const loadRetails = async (city) => {
-    const data = new FormData();
-    data.append('city', city);
-
     let results = [
         {
             title: 'Гипермаркет «Анвар»',
@@ -94,6 +91,9 @@ export const loadRetails = async (city) => {
             link: '#',
         },
     ];
+
+    const data = new FormData();
+    data.append('city', city);
 
     try {
         const response = await fetch('//berlingo.vue/ajax/retail_stores.php', {method: 'POST', body: data});

@@ -1,75 +1,68 @@
 <template>
-    <section class="modal modal_auth" :class="{open}" ref="root" @click.stop>
-        <div class="modal__body-0">
-            <div class="modal__body-1">
-                <div class="modal__body-2">
-                    <modal-button-close/>
-
-                    <div class="titles">
-                        <!-- todo href="#" -->
-                        <a href="#" @click="openModal('login')">Авторизация</a>
-                        <span class="center">или</span>
-                        <span class="title">регистрация</span>
-                    </div>
-                    <div class="subtitles">
-                        <div class="subtitles__left">
-                            Пожалуйста, зарегистрируйся, чтобы войти в личный кабинет и зарегистрировать чек
-                        </div>
-                        <div class="subtitles__right">
-                            Уже зарегистрирован?
-                            <!-- todo href="#" -->
-                            <a href="#" @click="openModal('login')">Войди</a>
-                            в личный кабинет
-                        </div>
-                    </div>
-
-                    <form class="form" @submit.prevent="">
-                        <div class="form__inputs">
-                            <label class="form__input">
-                                <input type="text" name="register-email" maxlength="200"
-                                       placeholder="Введи свой e-mail *">
-                            </label>
-                            <label class="form__input">
-                                <input type="tel" name="register-phone" maxlength="200" ref="tel"
-                                       placeholder="Введи свой телефон *">
-                            </label>
-                        </div>
-                        <div class="form__inputs">
-                            <label class="form__input">
-                                <input type="password" name="register-password" maxlength="200"
-                                       placeholder="Придумай пароль *"/>
-                            </label>
-                            <label class="form__input form__input_select">
-                                <input type="text" name="register-city" maxlength="200"
-                                       placeholder="Выбери свой город *"/>
-                            </label>
-                        </div>
-
-                        <modal-button-agree name="register-agree"/>
-
-                        <!-- todo button -->
-                        <button class="button" type="submit"><span>Зарегистрироваться</span></button>
-                    </form>
-                </div>
+    <modal-wrapper class="modal_auth" :class="{open}" ref="root" @click.stop>
+        <div class="titles">
+            <!-- todo href="#" -->
+            <a href="#" @click="openModal('login')">Авторизация</a>
+            <span class="center">или</span>
+            <span class="title">регистрация</span>
+        </div>
+        <div class="subtitles">
+            <div class="subtitles__left">
+                Пожалуйста, зарегистрируйся, чтобы войти в личный кабинет и зарегистрировать чек
+            </div>
+            <div class="subtitles__right">
+                Уже зарегистрирован?
+                <!-- todo href="#" -->
+                <a href="#" @click="openModal('login')">Войди</a>
+                в личный кабинет
             </div>
         </div>
-    </section>
+
+        <form class="form" @submit.prevent>
+            <div class="form__inputs">
+                <label class="form__input">
+                    <input type="text" name="register-email" maxlength="200"
+                           placeholder="Введи свой e-mail *">
+                </label>
+                <label class="form__input">
+                    <input type="tel" name="register-phone" maxlength="200" ref="tel"
+                           placeholder="Введи свой телефон *">
+                </label>
+            </div>
+            <div class="form__inputs">
+                <label class="form__input">
+                    <input type="password" name="register-password" maxlength="200"
+                           placeholder="Придумай пароль *"/>
+                </label>
+                <label class="form__input form__input_select">
+                    <input type="text" name="register-city" maxlength="200"
+                           placeholder="Выбери свой город *"/>
+                </label>
+            </div>
+
+            <modal-button-agree name="register-agree"/>
+
+            <!-- todo button -->
+            <button class="button" type="submit"><span>Зарегистрироваться</span></button>
+        </form>
+    </modal-wrapper>
 </template>
 
 <script>
-import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-import ModalButtonClose from '/src/components/ModalButtonClose';
+import {inject} from 'vue';
+import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
+
+import ModalWrapper from '/src/components/ModalWrapper';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 import Inputmask from 'inputmask';
-import {inject} from 'vue';
 
 export default {
     name: 'ModalAuthRegister',
     components: {
-        ModalButtonClose,
+        ModalWrapper,
         ModalButtonAgree,
     },
-    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
+    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

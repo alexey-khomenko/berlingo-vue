@@ -1,20 +1,20 @@
 <template>
     <div class="wrapper-outer" ref="wrap">
         <div class="wrapper-inner">
-            <slot></slot>
+            <router-view/>
         </div>
     </div>
 </template>
 
 <script>
+import {inject} from 'vue';
+
 export default {
     name: 'PageWrapper',
-    props: {
-        focusWrap: {
-            type: Boolean,
-            default: false,
-            required: true,
-        },
+    setup() {
+        const focusWrap = inject('focusWrap');
+
+        return {focusWrap};
     },
     data() {
         return {
@@ -27,6 +27,13 @@ export default {
                 this.$refs.wrap.focus();
             }, 100);
         },
+    },
+    mounted() {
+        // todo wrap.focus(), timerId
+        // mutation Observer на появление скролла
+        setTimeout(() => {
+            this.focusWrap = !this.focusWrap;
+        }, 900);
     },
     beforeUnmount() {
         clearTimeout(this.timerId);

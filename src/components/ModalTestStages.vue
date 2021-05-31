@@ -1,51 +1,50 @@
 <template>
-    <section class="modal modal_test modal_stage" :class="{open}" ref="root" @click.stop>
-        <div class="modal__body-0">
-            <div class="modal__body-1">
-                <div class="modal__body-2">
-                    <modal-button-close/>
-                    <div class="title">Шаг {{ step }}/4</div>
-                    <div class="subtitle">Выбери знак, который тебе больше нравится</div>
-                    <form class="form">
-                        <template v-for="(n, idx) in [1,2,3,4]" :key="idx">
-                            <input type="radio" :id="`i-${step}_${n}`"
-                                   :name="`step_${step}`" :value="n * 10"/>
-                            <label :for="`i-${step}_${n}`">
-                                <!-- todo data- -->
-                                <img alt="" :src="require(`../assets/images/modal-test-${number}-${n}.png`)"
-                                     data-selected="off"/>
-                                <!-- todo data- -->
-                                <img alt=""
-                                     :src="require(`../assets/images/modal-test-${number}-${n}-selected.png`)"
-                                     data-selected="on"/>
-                            </label>
-                        </template>
-                    </form>
-                    <!-- todo button -->
-                    <!-- todo disabled для следующих этапов -->
-                    <!-- todo href="#" -->
-                    <!-- todo data- -->
-                    <a class="button" href="#" @click="openModal(`test_${number + 1}`)" data-disabled="on">
-                        <span>Дальше</span>
-                    </a>
-                </div>
-            </div>
+    <modal-wrapper class="modal_test modal_stage" :class="{open}" ref="root" @click.stop>
+        <div class="title">
+            Шаг {{ step }}/4
         </div>
-    </section>
+        <div class="subtitle">
+            Выбери знак, который тебе больше нравится
+        </div>
+
+        <form class="form">
+            <template v-for="(n, idx) in [1,2,3,4]" :key="idx">
+                <input type="radio" :id="`i-${step}_${n}`"
+                       :name="`step_${step}`" :value="n * 10"/>
+                <label :for="`i-${step}_${n}`">
+                    <!-- todo data- -->
+                    <img alt="" :src="require(`../assets/images/modal-test-${step + 1}-${n}.png`)"
+                         data-selected="off"/>
+                    <!-- todo data- -->
+                    <img alt=""
+                         :src="require(`../assets/images/modal-test-${step + 1}-${n}-selected.png`)"
+                         data-selected="on"/>
+                </label>
+            </template>
+        </form>
+        <!-- todo button -->
+        <!-- todo disabled для следующих этапов -->
+        <!-- todo href="#" -->
+        <!-- todo data- -->
+        <a class="button" href="#" @click="openModal(`test_${step + 2}`)" data-disabled="on">
+            <span>Дальше</span>
+        </a>
+    </modal-wrapper>
 </template>
 
 <script>
-import {emitsModalMixin, setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-import ModalButtonClose from '/src/components/ModalButtonClose';
 import {inject} from 'vue';
+import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
+
+import ModalWrapper from '/src/components/ModalWrapper';
 
 export default {
     name: 'ModalTestStage',
     components: {
-        ModalButtonClose,
+        ModalWrapper,
     },
     props: {
-        number: {
+        step: {
             type: Number,
             required: true,
             validator: function (value) {
@@ -53,7 +52,7 @@ export default {
             },
         },
     },
-    mixins: [emitsModalMixin, setupModalMixin, openModalMixin],
+    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
@@ -67,11 +66,8 @@ export default {
     },
     computed: {
         name() {
-            return `test_${this.number}`;
+            return `test_${this.step + 1}`;
         },
-        step() {
-            return this.number - 1;
-        }
     },
 };
 </script>
