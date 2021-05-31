@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_test modal_start" :class="{open}" ref="root" @click.stop>
+    <modal-wrapper class="modal_test modal_start" :name="name">
         <template #back>
             <img alt="" class="image_lg" src="../assets/images/modal-test-1-lg.png"/>
             <img alt="" class="image_md" src="../assets/images/modal-test-1-md.png"/>

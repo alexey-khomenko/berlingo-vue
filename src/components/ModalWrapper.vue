@@ -1,5 +1,5 @@
 <template>
-    <section class="modal" ref="root">
+    <section class="modal" :class="{open}" ref="root" @click.stop>
         <div class="modal__body-0">
             <div class="modal__body-1">
                 <div class="back">
@@ -26,20 +26,52 @@ import {blurElemMixin} from '/src/mixins/blurElem';
 
 export default {
     name: 'ModalWrapper',
+    props: {
+        name: {
+            type: String,
+            required: true,
+            validator: function (value) {
+                return [
+                    null, 'login', 'register', 'success', 'receipt',
+                    'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
+                ].includes(value);
+            },
+        },
+    },
     mixins: [blurElemMixin],
     setup() {
         const openModal = inject('openModal');
+        const openedModal = inject('openedModal');
 
-        return {openModal};
+        return {openModal, openedModal};
+    },
+    data() {
+        return {
+            timerId: null,
+        };
+    },
+    computed: {
+        open() {
+            return this.openedModal === this.name;
+        },
+    },
+    watch: {
+        open(val) {
+            if (val === null) return;
+
+            this.timerId = setTimeout(() => {
+                this.$refs.root.focus();
+            }, 100);
+        },
     },
     methods: {
         closeModal(e) {
             this.blurElem(e);
             this.openModal(null);
         },
-        focus: function () {
-            this.$refs.root.focus();
-        },
+    },
+    beforeUnmount() {
+        clearTimeout(this.timerId);
     },
 };
 </script>

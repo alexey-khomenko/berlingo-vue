@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_auth" :class="{open}" ref="root" @click.stop>
+    <modal-wrapper class="modal_auth" :name="name">
         <div class="titles">
             <!-- todo href="#" -->
             <a href="#" @click="openModal('login')">Авторизация</a>

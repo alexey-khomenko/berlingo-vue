@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_auth" :class="{open}" ref="root" @click.stop>
+    <modal-wrapper class="modal_auth" :name="name">
         <div class="titles">
             <span class="title">Авторизация</span>
             <span class="center">или</span>

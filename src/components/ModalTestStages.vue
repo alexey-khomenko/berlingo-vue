@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_test modal_stage" :class="{open}" ref="root" @click.stop>
+    <modal-wrapper class="modal_test modal_stage" :name="name">
         <div class="title">
             Шаг {{ step }}/4
         </div>

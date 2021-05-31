@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_receipt" :class="{open}" ref="root" @click.stop>
+    <modal-wrapper class="modal_receipt" :name="name">
         <div class="title">
             Зарегистрируй чек
         </div>

@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import {provide, ref} from 'vue';
+import {provide, ref, readonly} from 'vue';
 import PageWrapper from '/src/components/PageWrapper.vue';
 import PageShadow from '/src/components/PageShadow.vue';
 
@@ -21,28 +21,15 @@ export default {
         const openedModal = ref(null);
 
         const openModal = (name) => {
-            name = checkModalName(name);
-
             if (!openedModal.value?.length && name?.length) {
                 openModalInner(name);
-            }
-            else if (openedModal.value?.length && !name?.length) {
-                closeModalInner(name);
             }
             else if (openedModal.value?.length && name?.length) {
                 toggleModalInner(name);
             }
-        };
-
-        const checkModalName = (name) => {
-            const modals = [
-                null, 'login', 'register', 'success', 'receipt',
-                'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
-            ];
-
-            if (!modals.includes(name)) console.error(`modal "${name}" not found`);
-
-            return modals.includes(name) ? name : null;
+            else if (openedModal.value?.length && !name?.length) {
+                closeModalInner(name);
+            }
         };
 
         const openModalInner = (name) => {
@@ -71,13 +58,13 @@ export default {
             }, 500);
         };
 
-        provide('openedShadow', openedShadow);
-        provide('openedWrapper', openedWrapper);
-        provide('openedModal', openedModal);
+        provide('openedShadow', readonly(openedShadow));
+        provide('openedWrapper', readonly(openedWrapper));
 
+        provide('openedModal', readonly(openedModal));
         provide('openModal', openModal);
 
-        provide('focusWrap', focusWrap);
+        provide('focusWrap', readonly(focusWrap));
     },
 };
 </script>
