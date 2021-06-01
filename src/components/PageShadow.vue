@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {inject, provide, ref} from 'vue';
+import {inject, provide, readonly, ref} from 'vue';
 import ModalAuthLogin from '/src/components/ModalAuthLogin';
 import ModalAuthRegister from '/src/components/ModalAuthRegister';
 import ModalAuthSuccess from '/src/components/ModalAuthSuccess';
@@ -44,6 +44,15 @@ export default {
         };
 
         provide('setModalImportant', setModalImportant);
+
+        const testResult = ref(0);
+
+        const setTestResult = (value) => {
+            testResult.value = +value;
+        };
+
+        provide('testResult', readonly(testResult));
+        provide('setTestResult', setTestResult);
 
         const openedShadow = inject('openedShadow');
         const openedWrapper = inject('openedWrapper');

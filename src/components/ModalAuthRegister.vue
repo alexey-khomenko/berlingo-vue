@@ -62,9 +62,8 @@ export default {
     },
     setup() {
         const openModal = inject('openModal');
-        const openedModal = inject('openedModal');
 
-        return {openModal, openedModal};
+        return {openModal};
     },
     data() {
         return {

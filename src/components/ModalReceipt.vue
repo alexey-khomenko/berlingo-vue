@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import {inject} from 'vue';
 import ModalWrapper from '/src/components/ModalWrapper';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 
@@ -56,12 +55,6 @@ export default {
     components: {
         ModalWrapper,
         ModalButtonAgree,
-    },
-    setup() {
-        const openModal = inject('openModal');
-        const openedModal = inject('openedModal');
-
-        return {openModal, openedModal};
     },
     data() {
         return {

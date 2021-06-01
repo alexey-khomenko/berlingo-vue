@@ -33,14 +33,22 @@ export default {
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
+        const setTestResult = inject('setTestResult');
 
-        return {openModal, openedModal};
+        return {openModal, openedModal, setTestResult};
     },
     data() {
         return {
             name: 'test_1',
             important: false,
         };
+    },
+    watch: {
+        openedModal(value) {
+            if (value !== this.name) return;
+
+            this.setTestResult(0);
+        },
     },
 };
 </script>

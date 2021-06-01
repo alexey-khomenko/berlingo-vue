@@ -6,15 +6,14 @@
             <img alt="" class="image_sm" src="../assets/images/modal-test-6-sm.png"/>
         </template>
 
+        <div class="title">
+            {{ title }}
+        </div>
+        <div class="subtitle">
+            {{ subtitle }}
+        </div>
+
         <template v-for="result in results" :key="result.number">
-            <!-- todo data- -->
-            <div class="title" :data-result="result.number" data-hidden="on">
-                {{ result.title }}
-            </div>
-            <!-- todo data- -->
-            <div class="subtitle" :data-result="result.number" data-hidden="on">
-                {{ result.subtitle }}
-            </div>
             <!-- todo data- -->
             <div class="pens" :data-result="result.number" data-hidden="on">
                 <!-- todo href="#" -->
@@ -65,22 +64,44 @@ export default {
         ModalWrapper,
         PageButton,
     },
+    RESULTS: [
+        {
+            title: 'Добряк',
+            subtitle: 'Нежные оттенки для легких и солнечных людей, которые ценят свой комфорт и спойную, ' +
+                'теплую атмосферу вокруг них.',
+        },
+        {
+            title: 'Бунтарь',
+            subtitle: 'Буйство красок для дерзких и активных личностей, которые всегда хотят выделяться из ' +
+                'общей массы и быть заметными. Не боятся отстаивать свои позиции.',
+        },
+        {
+            title: 'Прагматик',
+            subtitle: 'Классическая простота - для людей, которые предпочитают практичность вещей и всегда ' +
+                'страются держать фокус на важных задачах, не отвлекаясь на мелочи.',
+        },
+        {
+            title: 'Мечтатель',
+            subtitle: 'Ручки с необычными узорами для творческих и воздушных людей с горящими глазами, ' +
+                'которых вдохновляет мир вокруг них.',
+        },
+    ],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
+        const testResult = inject('testResult');
 
-        return {openModal, openedModal};
+        return {openModal, openedModal, testResult};
     },
     data() {
         return {
             name: 'test_6',
             important: true,
+            title: '',
+            subtitle: '',
             results: [
                 {
                     number: 1,
-                    title: 'Добряк',
-                    subtitle: 'Нежные оттенки для легких и солнечных людей, которые ценят свой комфорт и спойную, ' +
-                        'теплую атмосферу вокруг них.',
                     pens: [
                         {
                             number: 0,
@@ -104,9 +125,6 @@ export default {
                 },
                 {
                     number: 2,
-                    title: 'Бунтарь',
-                    subtitle: 'Буйство красок для дерзких и активных личностей, которые всегда хотят выделяться из ' +
-                        'общей массы и быть заметными. Не боятся отстаивать свои позиции.',
                     pens: [
                         {
                             number: 0,
@@ -130,9 +148,6 @@ export default {
                 },
                 {
                     number: 3,
-                    title: 'Прагматик',
-                    subtitle: 'Классическая простота - для людей, которые предпочитают практичность вещей и всегда ' +
-                        'страются держать фокус на важных задачах, не отвлекаясь на мелочи.',
                     pens: [
                         {
                             number: 0,
@@ -156,9 +171,6 @@ export default {
                 },
                 {
                     number: 4,
-                    title: 'Мечтатель',
-                    subtitle: 'Ручки с необычными узорами для творческих и воздушных людей с горящими глазами, ' +
-                        'которых вдохновляет мир вокруг них.',
                     pens: [
                         {
                             number: 0,
@@ -183,6 +195,33 @@ export default {
             ],
             timerId: null,
         };
+    },
+    watch: {
+        openedModal(value) {
+            if (value !== this.name) return;
+
+            let result;
+
+            if (this.testResult <= 70) {
+                result = 0;
+            }
+            else if (this.testResult <= 100) {
+                result = 1;
+            }
+            else if (this.testResult <= 130) {
+                result = 2;
+            }
+            else {
+                result = 3;
+            }
+
+            this.title = this.$options.RESULTS[result].title;
+            this.subtitle = this.$options.RESULTS[result].subtitle;
+
+            // todo результаты теста
+            // api
+            console.log(this.testResult, result);
+        },
     },
     methods: {
         goToAnchor(to) {

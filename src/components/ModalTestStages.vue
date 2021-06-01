@@ -51,8 +51,10 @@ export default {
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
+        const testResult = inject('testResult');
+        const setTestResult = inject('setTestResult');
 
-        return {openModal, openedModal};
+        return {openModal, openedModal, testResult, setTestResult};
     },
     data() {
         return {
@@ -76,8 +78,7 @@ export default {
     methods: {
         selectAnswer(value) {
             this.isDisabled = false;
-            // todo result += value;
-            console.log(value);
+            this.setTestResult(Number(this.testResult) + Number(value));
         },
     },
 };
