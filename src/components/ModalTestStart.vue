@@ -13,22 +13,22 @@
         <div class="title">
             Давай узнаем,<br> какая ручка<br> Berlingo подходит<br> именно тебе!
         </div>
-        <!-- todo button -->
-        <!-- todo href="#" -->
-        <a class="button" href="#" @click="openModal('test_2')">
+        <page-button type="button" class="btn_test_start" color="red" @click="openModal('test_2')">
             <span>Начать тест</span>
-        </a>
+        </page-button>
     </modal-wrapper>
 </template>
 
 <script>
 import {inject} from 'vue';
 import ModalWrapper from '/src/components/ModalWrapper';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'ModalTestStart',
     components: {
         ModalWrapper,
+        PageButton,
     },
     setup() {
         const openModal = inject('openModal');
@@ -148,10 +148,7 @@ export default {
         }
     }
 
-    // todo button
-    .button {
-        background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
-        color: #ffffff;
+    .btn_test_start {
         margin: 0 100px 34px;
         width: 203px;
 

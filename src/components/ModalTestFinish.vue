@@ -41,16 +41,15 @@
         </template>
 
         <div class="text">
-            Я подобрал для тебя ручки, которые подойдут именно тебе и подчеркнут твою
-            индивидуальность лучше всех!
+            Я подобрал для тебя ручки, которые подойдут именно тебе и подчеркнут твою индивидуальность лучше всех!
         </div>
         <div class="buttons">
-            <!-- todo button -->
-            <!-- todo href="#" -->
-            <a class="button button_shops" href="#"
-               @click="goToAnchor('shops')"><span>Где купить?</span></a>
-            <a class="button button_prizes" href="#"
-               @click="goToAnchor('prizes')"><span>Выигать призы!</span></a>
+            <page-button type="button" @click="goToAnchor('shops')" class="btn_shops" color="red">
+                <span>Где купить?</span>
+            </page-button>
+            <page-button type="button" @click="goToAnchor('prizes')" class="btn_prizes" color="white" bordered>
+                <span>Выигать призы!</span>
+            </page-button>
         </div>
     </modal-wrapper>
 </template>
@@ -58,11 +57,13 @@
 <script>
 import {inject} from 'vue';
 import ModalWrapper from '/src/components/ModalWrapper';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'ModalTestFinish',
     components: {
         ModalWrapper,
+        PageButton,
     },
     setup() {
         const openModal = inject('openModal');
@@ -473,31 +474,18 @@ export default {
             margin: 0 20px 436px;
         }
 
-        // todo button
-        .button {
-
-            &:not(:last-of-type) {
+        .btn {
+            &_shops {
+                width: 206px;
                 margin: 0 20px 0 0;
 
                 @media (max-width: $sm_max) {
+                    width: 140px;
                     margin: 0 0 20px 0;
                 }
             }
 
-            &_shops {
-                color: #ffffff;
-                background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
-                width: 206px;
-
-                @media (max-width: $sm_max) {
-                    width: 140px;
-                }
-            }
-
             &_prizes {
-                color: #000000;
-                background-color: #ffffff;
-                border: 2px solid #000000;
                 width: 237px;
 
                 @media (max-width: $sm_max) {

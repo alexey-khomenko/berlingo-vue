@@ -7,39 +7,37 @@
             Выбери знак, который тебе больше нравится
         </div>
 
-        <form class="form">
+        <form class="form" ref="form">
             <template v-for="(n, idx) in [1,2,3,4]" :key="idx">
                 <input type="radio" :id="`i-${step}_${n}`"
-                       :name="`step_${step}`" :value="n * 10"/>
+                       :name="`step_${step}`" @change="selectAnswer(n * 10)"/>
                 <label :for="`i-${step}_${n}`">
-                    <!-- todo data- -->
-                    <img alt="" :src="require(`../assets/images/modal-test-${step + 1}-${n}.png`)"
-                         data-selected="off"/>
-                    <!-- todo data- -->
-                    <img alt=""
-                         :src="require(`../assets/images/modal-test-${step + 1}-${n}-selected.png`)"
-                         data-selected="on"/>
+                    <!-- todo data-selected нужен -->
+                    <img alt="" data-selected="off"
+                         :src="require(`../assets/images/modal-test-${step + 1}-${n}.png`)"/>
+                    <!-- todo data-selected нужен -->
+                    <img alt="" data-selected="on"
+                         :src="require(`../assets/images/modal-test-${step + 1}-${n}-selected.png`)"/>
                 </label>
             </template>
         </form>
-        <!-- todo button -->
-        <!-- todo disabled для следующих этапов -->
-        <!-- todo href="#" -->
-        <!-- todo data- -->
-        <a class="button" href="#" @click="openModal(`test_${step + 2}`)" data-disabled="on">
+        <page-button type="button" class="btn_test_stage" color="green" @click="openModal(`test_${step + 2}`)"
+                     :disabled="isDisabled">
             <span>Дальше</span>
-        </a>
+        </page-button>
     </modal-wrapper>
 </template>
 
 <script>
 import {inject} from 'vue';
 import ModalWrapper from '/src/components/ModalWrapper';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'ModalTestStage',
     components: {
         ModalWrapper,
+        PageButton,
     },
     props: {
         step: {
@@ -59,11 +57,27 @@ export default {
     data() {
         return {
             important: true,
+            isDisabled: true,
         };
     },
     computed: {
         name() {
             return `test_${this.step + 1}`;
+        },
+    },
+    watch: {
+        openedModal(value) {
+            if (value !== this.name) return;
+
+            this.$refs.form.reset();
+            this.isDisabled = true;
+        },
+    },
+    methods: {
+        selectAnswer(value) {
+            this.isDisabled = false;
+            // todo result += value;
+            console.log(value);
         },
     },
 };
@@ -207,11 +221,8 @@ export default {
         }
     }
 
-    // todo button
-    .button {
+    .btn_test_stage {
         margin: 0 100px 54px;
-        background: linear-gradient(180deg, #04bb33 0%, #00b58a 100%);
-        color: #ffffff;
         width: 176px;
 
         @media (max-width: $md_max) {
