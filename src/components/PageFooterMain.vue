@@ -18,10 +18,10 @@
             </div>
 
             <div class="content__right">
-                <a href="#" download="download" @click="blurElem($event)">
+                <a href="#" download="download" @click="blurElement($event)">
                     Правила акции
                 </a>
-                <a href="#" download="download" @click="blurElem($event)">
+                <a href="#" download="download" @click="blurElement($event)">
                     Политика обработки персональных данных
                 </a>
             </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {blurElemMixin} from '/src/mixins/blurElem';
+import {inject} from 'vue';
 
 export default {
     name: 'PageFooterMain',
@@ -44,7 +44,11 @@ export default {
             },
         },
     },
-    mixins: [blurElemMixin],
+    setup() {
+        const blurElement = inject('blurElement');
+
+        return {blurElement};
+    },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_test modal_stage" :name="name">
+    <modal-wrapper class="modal_test modal_stage" :name="name" :important="important">
         <div class="title">
             Шаг {{ step }}/4
         </div>
@@ -34,8 +34,6 @@
 
 <script>
 import {inject} from 'vue';
-import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-
 import ModalWrapper from '/src/components/ModalWrapper';
 
 export default {
@@ -52,7 +50,6 @@ export default {
             },
         },
     },
-    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_receipt" :name="name">
+    <modal-wrapper class="modal_receipt" :name="name" :important="important">
         <div class="title">
             Зарегистрируй чек
         </div>
@@ -48,8 +48,6 @@
 
 <script>
 import {inject} from 'vue';
-import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-
 import ModalWrapper from '/src/components/ModalWrapper';
 import ModalButtonAgree from '/src/components/ModalButtonAgree';
 
@@ -59,7 +57,6 @@ export default {
         ModalWrapper,
         ModalButtonAgree,
     },
-    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

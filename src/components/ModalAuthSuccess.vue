@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_auth" :name="name">
+    <modal-wrapper class="modal_auth" :name="name" :important="important">
         <div class="titles">
             <!-- todo href="#" -->
             <a href="#" @click="openModal('login')">Авторизация</a>
@@ -20,8 +20,6 @@
 
 <script>
 import {inject} from 'vue';
-import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-
 import ModalWrapper from '/src/components/ModalWrapper';
 
 export default {
@@ -29,7 +27,6 @@ export default {
     components: {
         ModalWrapper,
     },
-    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

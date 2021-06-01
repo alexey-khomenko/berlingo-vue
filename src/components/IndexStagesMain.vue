@@ -6,7 +6,7 @@
         </div>
 
         <div class="text text_two">
-            <button type="button" @click="blurElem($event); openModal(auth ? 'receipt' : 'register');">
+            <button type="button" @click="blurElement($event); openModal(auth ? 'receipt' : 'register');">
                 Регистрируй
             </button>
             чек <br/> на сайте
@@ -26,16 +26,15 @@
 <script>
 import {inject} from 'vue';
 import {mapGetters} from 'vuex';
-import {blurElemMixin} from '/src/mixins/blurElem';
 
 export default {
     name: 'IndexStagesMain',
     setup() {
         const openModal = inject('openModal');
+        const blurElement = inject('blurElement');
 
-        return {openModal};
+        return {openModal, blurElement};
     },
-    mixins: [blurElemMixin],
     computed: {
         ...mapGetters({
             auth: 'getAuth',

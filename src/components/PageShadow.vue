@@ -1,22 +1,22 @@
 <template>
     <div class="shadow" :class="{open: openedShadow}">
         <div class="modal-wrapper" :class="{open: openedWrapper}" @click="modalClose">
-            <modal-auth-login @modal-important="modalImportantHandler"/>
-            <modal-auth-register @modal-important="modalImportantHandler"/>
-            <modal-auth-success @modal-important="modalImportantHandler"/>
-            <modal-receipt @modal-important="modalImportantHandler"/>
-            <modal-test-start @modal-important="modalImportantHandler"/>
-            <modal-test-stages @modal-important="modalImportantHandler" :step="1"/>
-            <modal-test-stages @modal-important="modalImportantHandler" :step="2"/>
-            <modal-test-stages @modal-important="modalImportantHandler" :step="3"/>
-            <modal-test-stages @modal-important="modalImportantHandler" :step="4"/>
-            <modal-test-finish @modal-important="modalImportantHandler"/>
+            <modal-auth-login/>
+            <modal-auth-register/>
+            <modal-auth-success/>
+            <modal-receipt/>
+            <modal-test-start/>
+            <modal-test-stages :step="1"/>
+            <modal-test-stages :step="2"/>
+            <modal-test-stages :step="3"/>
+            <modal-test-stages :step="4"/>
+            <modal-test-finish/>
         </div>
     </div>
 </template>
 
 <script>
-import {inject} from 'vue';
+import {inject, provide, ref} from 'vue';
 import ModalAuthLogin from '/src/components/ModalAuthLogin';
 import ModalAuthRegister from '/src/components/ModalAuthRegister';
 import ModalAuthSuccess from '/src/components/ModalAuthSuccess';
@@ -37,24 +37,24 @@ export default {
         ModalTestFinish,
     },
     setup() {
+        const modalImportant = ref(false);
+
+        const setModalImportant = (value) => {
+            modalImportant.value = value;
+        };
+
+        provide('setModalImportant', setModalImportant);
+
         const openedShadow = inject('openedShadow');
         const openedWrapper = inject('openedWrapper');
 
         const openModal = inject('openModal');
 
-        return {openedShadow, openedWrapper, openModal};
-    },
-    data() {
-        return {
-            modalImportant: false,
-        };
+        return {modalImportant, openedShadow, openedWrapper, openModal};
     },
     methods: {
         modalClose() {
             if (!this.modalImportant) this.openModal(null);
-        },
-        modalImportantHandler(val) {
-            this.modalImportant = val;
         },
     },
 };

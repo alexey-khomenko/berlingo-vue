@@ -22,7 +22,6 @@
 
 <script>
 import {inject} from 'vue';
-import {blurElemMixin} from '/src/mixins/blurElem';
 
 export default {
     name: 'ModalWrapper',
@@ -32,18 +31,25 @@ export default {
             required: true,
             validator: function (value) {
                 return [
-                    null, 'login', 'register', 'success', 'receipt',
+                    'login', 'register', 'success', 'receipt',
                     'test_1', 'test_2', 'test_3', 'test_4', 'test_5', 'test_6',
                 ].includes(value);
             },
         },
+        important: {
+            type: Boolean,
+            default: false,
+        },
     },
-    mixins: [blurElemMixin],
     setup() {
+        const setModalImportant = inject('setModalImportant');
+
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
 
-        return {openModal, openedModal};
+        const blurElement = inject('blurElement');
+
+        return {setModalImportant, openModal, openedModal, blurElement};
     },
     data() {
         return {
@@ -62,11 +68,13 @@ export default {
             this.timerId = setTimeout(() => {
                 this.$refs.root.focus();
             }, 100);
+
+            this.setModalImportant(this.important);
         },
     },
     methods: {
         closeModal(e) {
-            this.blurElem(e);
+            this.blurElement(e);
             this.openModal(null);
         },
     },

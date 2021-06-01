@@ -1,23 +1,23 @@
 <template>
-    <a :href="to" class="button" :class="classes" @click="blurElem($event)" v-if="type === 'a'">
+    <a :href="to" class="button" :class="classes" @click="blurElement($event)" v-if="type === 'a'">
         <slot></slot>
     </a>
 
-    <router-link :to="to" class="button" :class="classes" @click="blurElem($event)" v-else-if="type === 'link'">
+    <router-link :to="to" class="button" :class="classes" @click="blurElement($event)" v-else-if="type === 'link'">
         <slot></slot>
     </router-link>
 
-    <button type="button" class="button" :class="classes" @click="blurElem($event)" v-else-if="type === 'button'">
+    <button type="button" class="button" :class="classes" @click="blurElement($event)" v-else-if="type === 'button'">
         <slot></slot>
     </button>
 
-    <button type="submit" class="button" :class="classes" @click="blurElem($event)" v-else-if="type === 'submit'">
+    <button type="submit" class="button" :class="classes" @click="blurElement($event)" v-else-if="type === 'submit'">
         <slot></slot>
     </button>
 </template>
 
 <script>
-import {blurElemMixin} from '/src/mixins/blurElem';
+import {inject} from 'vue';
 
 export default {
     name: 'PageButton',
@@ -45,7 +45,11 @@ export default {
             default: false,
         },
     },
-    mixins: [blurElemMixin],
+    setup(){
+        const blurElement = inject('blurElement');
+
+        return {blurElement};
+    },
     computed: {
         classes() {
             let classes = [];

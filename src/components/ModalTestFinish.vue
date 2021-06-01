@@ -1,5 +1,5 @@
 <template>
-    <modal-wrapper class="modal_test modal_finish" :name="name">
+    <modal-wrapper class="modal_test modal_finish" :name="name" :important="important">
         <template #back>
             <img alt="" class="image_lg" src="../assets/images/modal-test-6-lg.png"/>
             <img alt="" class="image_md" src="../assets/images/modal-test-6-md.png"/>
@@ -57,8 +57,6 @@
 
 <script>
 import {inject} from 'vue';
-import {setupModalMixin, openModalMixin} from '/src/mixins/miscModal';
-
 import ModalWrapper from '/src/components/ModalWrapper';
 
 export default {
@@ -66,7 +64,6 @@ export default {
     components: {
         ModalWrapper,
     },
-    mixins: [setupModalMixin, openModalMixin],
     setup() {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');

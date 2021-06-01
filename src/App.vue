@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import {provide, ref, readonly} from 'vue';
+import {provide, ref, readonly, onBeforeUnmount} from 'vue';
 import PageWrapper from '/src/components/PageWrapper.vue';
 import PageShadow from '/src/components/PageShadow.vue';
 
@@ -22,26 +22,27 @@ export default {
 
         const openModal = (name) => {
             if (!openedModal.value?.length && name?.length) {
-                openModalInner(name);
+                showModal(name);
             }
             else if (openedModal.value?.length && name?.length) {
-                toggleModalInner(name);
+                toggleModal(name);
             }
             else if (openedModal.value?.length && !name?.length) {
-                closeModalInner(name);
+                hideModal(name);
             }
         };
 
-        const openModalInner = (name) => {
+        const showModal = (name) => {
             openedModal.value = name;
             openedShadow.value = true;
             openedWrapper.value = true;
         };
 
-        const closeModalInner = (name) => {
+        const timerIdHideModal = ref(null);
+        const hideModal = (name) => {
             openedWrapper.value = false;
 
-            setTimeout(() => {
+            timerIdHideModal.value = setTimeout(() => {
                 openedShadow.value = false;
                 openedModal.value = name;
 
@@ -49,10 +50,11 @@ export default {
             }, 600);
         };
 
-        const toggleModalInner = (name) => {
+        const timerIdToggleModal = ref(null);
+        const toggleModal = (name) => {
             openedWrapper.value = false;
 
-            setTimeout(() => {
+            timerIdToggleModal.value = setTimeout(() => {
                 openedModal.value = name;
                 openedWrapper.value = true;
             }, 500);
@@ -65,6 +67,25 @@ export default {
         provide('openModal', openModal);
 
         provide('focusWrap', readonly(focusWrap));
+
+        //
+
+        const timerIdBlurElem = ref(null);
+
+        const blurElement = (e) => {
+            timerIdBlurElem.value = setTimeout(() => {
+                e.target.closest('a')?.blur();
+                e.target.closest('button')?.blur();
+            }, 700);
+        };
+
+        provide('blurElement', blurElement);
+
+        onBeforeUnmount(() => {
+            clearTimeout(timerIdHideModal.value);
+            clearTimeout(timerIdToggleModal.value);
+            clearTimeout(timerIdBlurElem.value);
+        });
     },
 };
 </script>
