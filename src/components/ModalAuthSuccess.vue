@@ -1,8 +1,7 @@
 <template>
     <modal-wrapper class="modal_auth" :name="name" :important="important">
         <div class="titles">
-            <!-- todo href="#" -->
-            <a href="#" @click="openModal('login')">Авторизация</a>
+            <button type="button" @click="openModal('login')">Авторизация</button>
             <span class="center">или</span>
             <span class="title">регистрация</span>
         </div>
@@ -10,22 +9,22 @@
             Успех! Твой личный кабинет создан. Чтобы войти в него, перейди по ссылке в письме,
             отправленном тебе на e-mail.
         </div>
-        <!-- todo button -->
-        <!-- todo href="#" -->
-        <a class="button" href="#" @click="openModal(null)">
+        <page-button type="button" @click="openModal(null)" class="btn_success" color="red">
             <span>Хорошо</span>
-        </a>
+        </page-button>
     </modal-wrapper>
 </template>
 
 <script>
 import {inject} from 'vue';
 import ModalWrapper from '/src/components/ModalWrapper';
+import PageButton from '/src/components/PageButton';
 
 export default {
     name: 'ModalAuthSuccess',
     components: {
         ModalWrapper,
+        PageButton,
     },
     setup() {
         const openModal = inject('openModal');
@@ -40,3 +39,21 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import "../assets/scss/_variables.scss";
+
+.btn_success {
+    margin: 0 100px 80px;
+    width: 173px;
+
+    @media (max-width: $md_max) {
+        margin: 0 80px 60px;
+    }
+
+    @media (max-width: $sm_max) {
+        margin: 0 20px 40px;
+        width: 118px;
+    }
+}
+</style>

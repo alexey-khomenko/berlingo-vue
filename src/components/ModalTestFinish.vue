@@ -13,31 +13,25 @@
             {{ subtitle }}
         </div>
 
-        <template v-for="result in results" :key="result.number">
-            <!-- todo data- -->
-            <div class="pens" :data-result="result.number" data-hidden="on">
-                <!-- todo href="#" -->
-                <!-- todo data- -->
-                <a class="pens__button" href="#" data-pens-toggler>
-                    <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
-                              fill="currentColor"></path>
-                    </svg>
-                </a>
-                <template v-for="pen in result.pens" :key="pen.number">
-                    <!-- todo data- -->
-                    <div class="pen" :data-slider="pen.number" data-hidden="off">
-                        <a class="pen__link" :href="pen.link">
-                            <img alt="" class="pen__image" :src="pen.image"/>
-                        </a>
-                        <div class="pen__texts">
-                            <div class="pen__title">{{ pen.title }}</div>
-                            <div class="pen__text">{{ pen.text }}</div>
-                        </div>
+        <div class="pens">
+            <button type="button" class="pens__button" @click="changeSlide($event)">
+                <svg width="16" height="32" viewBox="0 0 16 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.375854 31.6749L0.377468 31.6765C0.851276 32.1284 1.59387 32.1037 2.03862 31.6221L15.679 16.8468C16.1148 16.3743 16.1059 15.6337 15.658 15.1727L15.5894 15.1026L2.03862 0.379276C1.59387 -0.103996 0.850467 -0.128738 0.375853 0.32402L0.374238 0.324844C-0.102798 0.780077 -0.127013 1.54457 0.320158 2.03032L13.188 15.999L0.320967 29.9694C-0.126205 30.4551 -0.10199 31.2204 0.375854 31.6749Z"
+                          fill="currentColor"></path>
+                </svg>
+            </button>
+            <template v-for="(pen, idx) in pens" :key="idx">
+                <div class="pen" data-slider :data-hidden="selected === idx ? 'off' : 'on'">
+                    <a class="pen__link" :href="pen.link">
+                        <img alt="" class="pen__image" :src="pen.image"/>
+                    </a>
+                    <div class="pen__texts">
+                        <div class="pen__title">{{ pen.title }}</div>
+                        <div class="pen__text">{{ pen.text }}</div>
                     </div>
-                </template>
-            </div>
-        </template>
+                </div>
+            </template>
+        </div>
 
         <div class="text">
             Я подобрал для тебя ручки, которые подойдут именно тебе и подчеркнут твою индивидуальность лучше всех!
@@ -55,6 +49,7 @@
 
 <script>
 import {inject} from 'vue';
+import {getPens} from '/src/api/modal-test';
 import ModalWrapper from '/src/components/ModalWrapper';
 import PageButton from '/src/components/PageButton';
 
@@ -90,8 +85,9 @@ export default {
         const openModal = inject('openModal');
         const openedModal = inject('openedModal');
         const testResult = inject('testResult');
+        const blurElement = inject('blurElement');
 
-        return {openModal, openedModal, testResult};
+        return {openModal, openedModal, testResult, blurElement};
     },
     data() {
         return {
@@ -99,105 +95,13 @@ export default {
             important: true,
             title: '',
             subtitle: '',
-            results: [
-                {
-                    number: 1,
-                    pens: [
-                        {
-                            number: 0,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 1 0',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                        {
-                            number: 1,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 1 1',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                    ],
-                },
-                {
-                    number: 2,
-                    pens: [
-                        {
-                            number: 0,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 2 0',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                        {
-                            number: 1,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 2 1',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                    ],
-                },
-                {
-                    number: 3,
-                    pens: [
-                        {
-                            number: 0,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 3 0',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                        {
-                            number: 1,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 3 1',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                    ],
-                },
-                {
-                    number: 4,
-                    pens: [
-                        {
-                            number: 0,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 3 0',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                        {
-                            number: 1,
-                            link: '#',
-                            image: require('../assets/images/0_content-modal-pens.png'),
-                            title: 'Color Zone 3 1',
-                            text: 'Эффектная шариковая ручка Berlingo Color Zone с клипом является частью ' +
-                                'одноименной яркой серии. Прорезиненное покрытие корпуса и утолщение в зоне захвата ' +
-                                'ручки обеспечивают высокий уровень комфорта при ее использовании.',
-                        },
-                    ],
-                },
-            ],
+            pens: [],
+            selected: 0,
             timerId: null,
         };
     },
     watch: {
-        openedModal(value) {
+        async openedModal(value) {
             if (value !== this.name) return;
 
             let result;
@@ -218,9 +122,7 @@ export default {
             this.title = this.$options.RESULTS[result].title;
             this.subtitle = this.$options.RESULTS[result].subtitle;
 
-            // todo результаты теста
-            // api
-            console.log(this.testResult, result);
+            this.pens = await getPens(result);
         },
     },
     methods: {
@@ -230,6 +132,10 @@ export default {
             this.timerId = setTimeout(() => {
                 this.$router.push({name: 'Index', hash: '#' + to});
             }, 760);
+        },
+        changeSlide(e) {
+            this.blurElement(e);
+            this.selected = this.selected < (this.pens.length - 1) ? this.selected + 1 : 0;
         },
     },
     beforeUnmount() {
@@ -388,6 +294,9 @@ export default {
 
         &__button {
             display: block;
+            padding: 0;
+            border: none;
+            background-color: transparent;
             position: absolute;
             left: 100%;
             top: 50%;

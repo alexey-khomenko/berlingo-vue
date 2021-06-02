@@ -160,41 +160,6 @@ export default {
                 }
             }
 
-            // todo button
-            .button {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 99999px;
-                box-sizing: border-box;
-                text-decoration: none;
-                height: 80px;
-
-                @media (max-width: $sm_max) {
-                    height: 60px;
-                }
-
-                &:hover span, &:focus span {
-                    transform: scale(1.05, 1.15);
-                }
-
-                span {
-                    padding-top: 3px;
-                    transition: transform 500ms ease;
-                    text-transform: uppercase;
-                    font-family: "Bebas Neue", sans-serif;
-                    font-style: normal;
-                    font-weight: 700;
-                    letter-spacing: 0.01em;
-                    font-size: 20px;
-
-                    @media (max-width: $sm_max) {
-                        font-size: 14px;
-                    }
-                }
-            }
-
             * {
                 box-sizing: border-box;
             }
@@ -253,7 +218,13 @@ export default {
             }
         }
 
-        a {
+        button {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
             color: #000000;
             position: relative;
             text-decoration: none;
@@ -311,49 +282,6 @@ export default {
         }
     }
 
-    // todo button
-    .button {
-        color: #ffffff;
-        cursor: pointer;
-        background: linear-gradient(180deg, #ff9c47 0%, #e600c6 100%);
-        border: none;
-    }
-
-    // todo button
-    &[data-modal-name="login"] .button {
-        margin: 0;
-        width: 162px;
-
-        @media (max-width: $sm_max) {
-            width: 109px;
-        }
-    }
-
-    // todo button
-    &[data-modal-name="register"] .button {
-        margin: 0;
-        width: 264px;
-
-        @media (max-width: $sm_max) {
-            width: 181px;
-        }
-    }
-
-    // todo button
-    &[data-modal-name="success"] .button {
-        margin: 0 100px 80px;
-        width: 173px;
-
-        @media (max-width: $md_max) {
-            margin: 0 80px 60px;
-        }
-
-        @media (max-width: $sm_max) {
-            margin: 0 20px 40px;
-            width: 118px;
-        }
-    }
-
     .subtitles {
         display: flex;
         flex-flow: row wrap;
@@ -394,7 +322,13 @@ export default {
         }
 
         &__right {
-            a {
+            button {
+                padding: 0;
+                background-color: transparent;
+                border: none;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
                 color: #000000;
                 position: relative;
                 text-decoration: none;

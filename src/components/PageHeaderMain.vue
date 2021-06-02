@@ -34,7 +34,8 @@
                     Зарегистрировать чек
                 </button>
 
-                <router-link to="/account" class="link link_user" @click="blurElement($event)" v-show="auth">
+                <router-link to="/account" class="link link_user" v-show="auth"
+                             @click="blurElement($event)">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>
@@ -43,8 +44,8 @@
                     </svg>
                 </router-link>
 
-                <button type="button" class="link link_user" @click="openModalHeader($event, 'login');"
-                        v-show="!auth">
+                <button type="button" class="link link_user" v-show="!auth"
+                        @click="openModalHeader($event, 'login');">
                     <svg width="17" height="20" viewBox="0 0 17 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.49996 0C6.07366 0 4.1095 1.89182 4.1095 4.22877C4.1095 6.56571 6.07366 8.45754 8.49996 8.45754C10.9263 8.45754 12.8904 6.56571 12.8904 4.22877C12.8904 1.89182 10.9263 0 8.49996 0Z"
                               fill="currentColor"></path>

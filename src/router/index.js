@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import store from '/src/store';
 
 const routes = [
     {
@@ -55,8 +56,16 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = to?.meta.title;
-    next();
+    const isAuthenticated = store.getters.getAuth;
+
+    if (to.name === 'Account' && !isAuthenticated) {
+        document.title = routes.filter((route) => route.name === 'Index')[0]?.meta.title;
+        next({name: 'Index'});
+    }
+    else {
+        document.title = to?.meta.title;
+        next();
+    }
 });
 
 export default router;

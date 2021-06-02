@@ -1,5 +1,4 @@
 <template>
-    <!-- todo data-anchor нужен -->
     <div class="main main_abs prizes__main" data-anchor="#prizes" :class="`main_${page} prizes__main_${page}`">
         <div class="content">
             <div class="card card_primary">

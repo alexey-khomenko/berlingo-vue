@@ -12,10 +12,8 @@
                 <input type="radio" :id="`i-${step}_${n}`"
                        :name="`step_${step}`" @change="selectAnswer(n * 10)"/>
                 <label :for="`i-${step}_${n}`">
-                    <!-- todo data-selected нужен -->
                     <img alt="" data-selected="off"
                          :src="require(`../assets/images/modal-test-${step + 1}-${n}.png`)"/>
-                    <!-- todo data-selected нужен -->
                     <img alt="" data-selected="on"
                          :src="require(`../assets/images/modal-test-${step + 1}-${n}-selected.png`)"/>
                 </label>

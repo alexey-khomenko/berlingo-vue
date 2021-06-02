@@ -76,7 +76,7 @@ export default {
             timerIdBlurElem.value = setTimeout(() => {
                 e.target.closest('a')?.blur();
                 e.target.closest('button')?.blur();
-            }, 700);
+            }, 500);
         };
 
         provide('blurElement', blurElement);

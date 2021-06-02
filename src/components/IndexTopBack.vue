@@ -1,5 +1,4 @@
 <template>
-<!-- todo data-slider нужен -->
     <div class="back index-top__back" data-slider
          :data-hidden="selected === idx ? 'off' : 'on'"
          v-for="(slide, idx) in slides" :key="idx"

@@ -1,5 +1,6 @@
 import {createStore} from 'vuex';
 import router from '/src/router';
+import {authLogin} from '/src/api/modal-auth-login';
 
 export default createStore({
     state: {
@@ -11,13 +12,14 @@ export default createStore({
         },
     },
     actions: {
-        login(context, fields) {
-            // todo login
-            console.log(fields);
+        async login(context, fields) {
+            const result = await authLogin(fields.email, fields.password)
 
-            setTimeout(() => {
+            if (result === '+') {
                 context.commit('auth', true);
-            }, 15000);
+            }
+
+            return result;
         },
         logout(context) {
             context.commit('auth', false);
